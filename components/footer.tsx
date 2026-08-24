@@ -121,6 +121,16 @@ export default function Footer() {
                   Instagram
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/seifashraf-dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-400 transition-colors hover:text-white"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
           <div>
