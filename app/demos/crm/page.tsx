@@ -18,6 +18,7 @@ import PipelineView from "./PipelineView";
 import ClientsView from "./ClientsView";
 import AutomationsView from "./AutomationsView";
 import AssistantView from "./AssistantView";
+import Website from "./Website";
 
 const NAV: { id: View; label: string; icon: React.ReactNode }[] = [
   {
@@ -63,6 +64,8 @@ const NAV: { id: View; label: string; icon: React.ReactNode }[] = [
 ];
 
 export default function FlowDeskDemo() {
+  // The demo lands on the product SITE; the working app is one click away.
+  const [mode, setMode] = useState<"site" | "app">("site");
   const [view, setView] = useState<View>("pipeline");
   const [clients, setClients] = useState<Client[]>(SEED_CLIENTS);
   const [rules, setRules] = useState<AutomationRule[]>(SEED_RULES);
@@ -172,6 +175,22 @@ export default function FlowDeskDemo() {
     setView("clients");
   };
 
+  // Deep links from the product site open the app on a specific view.
+  const openApp = (target?: View) => {
+    if (target) setView(target);
+    setMode("app");
+    window.scrollTo(0, 0);
+  };
+
+  const backToSite = () => {
+    setMode("site");
+    window.scrollTo(0, 0);
+  };
+
+  if (mode === "site") {
+    return <Website onOpenApp={openApp} />;
+  }
+
   return (
     <div className="min-h-screen bg-ink-950 text-ink-100">
       {/* Product top bar */}
@@ -187,6 +206,16 @@ export default function FlowDeskDemo() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={backToSite}
+              className="flex items-center gap-1.5 rounded-lg border border-ink-700 px-2.5 py-1.5 text-xs text-ink-300 transition-colors hover:border-flow-400 hover:text-flow-300"
+            >
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
+                <path d="M6.5 1.5 3 5l3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to site
+            </button>
             <span className="hidden rounded-full border border-ink-700 bg-ink-900/60 px-3 py-1 font-mono text-[11px] text-ink-300 sm:inline">
               Tenant: Hartwell &amp; Co
             </span>
@@ -266,7 +295,7 @@ export default function FlowDeskDemo() {
       {/* Toast */}
       {toast !== null && (
         <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4">
-          <div className="rounded-xl border border-flow-400/40 bg-ink-900 px-4 py-2.5 text-sm text-ink-100 shadow-lg shadow-flow-500/10">
+          <div className="fd-toast-in rounded-xl border border-flow-400/40 bg-ink-900 px-4 py-2.5 text-sm text-ink-100 shadow-lg shadow-flow-500/10">
             {toast}
           </div>
         </div>

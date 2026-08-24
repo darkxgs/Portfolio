@@ -1,4 +1,5 @@
 import { Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
+import "./motion.css";
 
 const body = Instrument_Sans({ subsets: ["latin"] });
 const money = IBM_Plex_Mono({
