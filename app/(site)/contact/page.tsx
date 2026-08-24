@@ -162,6 +162,24 @@ export default function Contact() {
                 </div>
                 <HoverArrow />
               </a>
+              <a
+                href="https://www.linkedin.com/in/seifashraf-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-reveal
+                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-slate-500">04</span>
+                  <div>
+                    <p className="font-medium text-white">LinkedIn</p>
+                    <p className="font-mono text-sm text-slate-400">
+                      /in/seifashraf-dev
+                    </p>
+                  </div>
+                </div>
+                <HoverArrow />
+              </a>
             </div>
           </SectionReveal>
         </div>
