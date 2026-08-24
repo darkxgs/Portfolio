@@ -21,7 +21,7 @@ export default function Footer() {
           <h2 className="font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] font-bold tracking-tight text-white">
             Let&apos;s work
             <br />
-            together
+            <em className="font-accent font-normal italic">together</em>
           </h2>
           <Magnetic strength={0.3}>
             <Link

@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Archivo,
+  Inter,
+  Instrument_Serif,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -11,6 +16,12 @@ const archivo = Archivo({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+});
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}
     >
       <body className="bg-slate-950 font-sans text-slate-300 antialiased">
         {children}

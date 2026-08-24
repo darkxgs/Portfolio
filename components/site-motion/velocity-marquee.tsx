@@ -14,8 +14,9 @@ type Props = {
 
 /* Infinite horizontal marquee whose speed picks up with scroll
    velocity (Dennis-style). Four duplicated copies, xPercent wrapped
-   in [-25, 0]. Static (no drift) under prefers-reduced-motion;
-   overflow is contained so the page never scrolls horizontally. */
+   in [-25, 0]. The base drift runs for EVERYONE; only the
+   scroll-velocity boost is skipped under prefers-reduced-motion.
+   Overflow is contained so the page never scrolls horizontally. */
 export default function VelocityMarquee({
   text,
   className = "",
@@ -26,17 +27,21 @@ export default function VelocityMarquee({
 
   useIsoLayoutEffect(() => {
     const track = trackRef.current;
-    if (!track || prefersReducedMotion()) return;
+    if (!track) return;
 
     let x = 0;
     let boost = 0;
     const wrap = gsap.utils.wrap(-25, 0);
 
-    const st = ScrollTrigger.create({
-      onUpdate: (self) => {
-        boost = gsap.utils.clamp(-40, 40, self.getVelocity() / 60);
-      },
-    });
+    /* Scroll-velocity boost only when motion is not reduced;
+       the calm base drift itself runs for everyone. */
+    const st = prefersReducedMotion()
+      ? null
+      : ScrollTrigger.create({
+          onUpdate: (self) => {
+            boost = gsap.utils.clamp(-40, 40, self.getVelocity() / 60);
+          },
+        });
 
     const tick = (_time: number, deltaTime: number) => {
       const dt = deltaTime / 1000;
@@ -48,7 +53,7 @@ export default function VelocityMarquee({
 
     return () => {
       gsap.ticker.remove(tick);
-      st.kill();
+      st?.kill();
       gsap.set(track, { xPercent: 0 });
     };
   }, [baseSpeed]);

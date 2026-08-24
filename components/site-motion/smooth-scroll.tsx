@@ -11,14 +11,20 @@ import {
 
 /* Lenis smooth scroll driving GSAP ScrollTrigger — the setup the
    Awwwards-winning freelance portfolios actually run. Mounted in the
-   (site) layout only, so the demos are untouched. Disabled for
-   prefers-reduced-motion and coarse (touch) pointers, where native
-   scrolling is the better experience. */
+   (site) layout only, so the demos are untouched.
+
+   Policy: Lenis runs for ALL fine-pointer users. prefers-reduced-motion
+   does NOT disable it — it only raises the lerp to ~0.18 for a subtler
+   glide. Coarse (touch) pointers keep native scrolling, which is
+   already smooth. */
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
-    if (prefersReducedMotion() || isCoarsePointer()) return;
+    if (isCoarsePointer()) return;
 
-    const lenis = new Lenis({ lerp: 0.1, anchors: true });
+    const lenis = new Lenis({
+      lerp: prefersReducedMotion() ? 0.18 : 0.1,
+      anchors: true,
+    });
     lenis.on("scroll", () => ScrollTrigger.update());
 
     const tick = (time: number) => {

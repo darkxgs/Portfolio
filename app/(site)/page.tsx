@@ -92,15 +92,43 @@ function Globe() {
   );
 }
 
+/* Circular rotating "available" badge — SVG textPath spinning slowly. */
+function RotatingBadge({ className = "" }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={className}>
+      <div className="animate-badge-spin relative h-24 w-24">
+        <svg viewBox="0 0 100 100" className="h-full w-full">
+          <defs>
+            <path
+              id="badge-circle"
+              d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"
+            />
+          </defs>
+          <text className="fill-slate-400 font-mono text-[9px] tracking-[0.14em] uppercase">
+            <textPath href="#badge-circle" textLength="250">
+              Available for projects — 2026 —&#160;
+            </textPath>
+          </text>
+          <circle cx="50" cy="50" r="3.5" className="fill-emerald-400" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const workItems = toWorkItems(projects).slice(0, 4);
 
   return (
     <>
-      {/* ============ Hero ============ */}
+      {/* ============ Hero — deep ink ============ */}
       <section className="relative flex min-h-svh flex-col overflow-hidden">
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-130 w-200 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"
+          aria-hidden="true"
+        />
+        <div
+          className="grid-hairline pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pt-28 pb-10">
@@ -108,12 +136,25 @@ export default function Home() {
             Portfolio — 2026
           </p>
 
-          <RevealText
-            as="h1"
-            mode="load"
-            lines={["Seif", "Ashraf"]}
-            className="mt-4 font-display text-[clamp(4rem,14vw,13rem)] leading-[0.9] font-extrabold tracking-tight text-white"
-          />
+          <div className="relative">
+            {/* Arch portrait — overlaps the name on lg+, behind the text */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1/2 right-10 z-0 hidden -translate-y-[52%] rotate-[-2deg] lg:block xl:right-24"
+            >
+              <img
+                src="/seif.png"
+                alt=""
+                className="h-[300px] w-[235px] rounded-t-full object-cover object-top ring-1 ring-emerald-400/70 ring-offset-4 ring-offset-slate-950"
+              />
+            </div>
+            <RevealText
+              as="h1"
+              mode="load"
+              lines={["Seif", "Ashraf"]}
+              className="relative z-10 mt-4 font-display text-[clamp(4rem,14vw,13rem)] leading-[0.9] font-extrabold tracking-tight text-white"
+            />
+          </div>
 
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-end">
             <div className="flex flex-col items-start gap-6">
@@ -134,7 +175,10 @@ export default function Home() {
                 <ArrowDownRight className="mt-1 shrink-0 text-emerald-400" />
                 <p className="max-w-md text-lg leading-snug text-white sm:text-xl">
                   Full Stack Developer — websites, custom software &amp;
-                  automation
+                  automation that help businesses{" "}
+                  <em className="font-accent text-[1.15em] font-normal text-emerald-400 italic">
+                    grow
+                  </em>
                 </p>
               </div>
             </div>
@@ -162,6 +206,7 @@ export default function Home() {
                     Get in touch
                   </Link>
                 </Magnetic>
+                <RotatingBadge className="ml-2 hidden sm:block" />
               </div>
               <p className="mt-8 font-mono text-xs tracking-wide text-slate-500">
                 Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API ·
@@ -173,94 +218,107 @@ export default function Home() {
 
         {/* Hero-bottom velocity marquee */}
         <VelocityMarquee
-          text={"Websites — Custom Software — Automation — AI Integrations — "}
+          text={"Websites — Custom Software — Automation — AI Integrations — "}
           className="border-t border-slate-800/60 py-4"
           trackClassName="text-outline font-display text-[clamp(3rem,9vw,7rem)] font-extrabold tracking-tight uppercase"
         />
       </section>
 
-      {/* ============ Selected work ============ */}
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
-              01 — Work
-            </p>
-            <RevealText
-              as="h2"
-              lines={["Selected work"]}
-              className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
-            />
+      {/* ============ Selected work — full-bleed paper ============ */}
+      <section className="bg-paper text-ink-text">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="font-mono text-xs tracking-widest text-emerald-700 uppercase">
+                01 — Work
+              </p>
+              <RevealText
+                as="h2"
+                lines={[
+                  <>
+                    Selected{" "}
+                    <em className="font-accent font-normal italic">work</em>
+                  </>,
+                ]}
+                className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink-text"
+              />
+            </div>
+            <Link
+              href="/projects"
+              className="group mb-2 text-sm font-medium text-emerald-700 transition-colors hover:text-emerald-600"
+            >
+              All projects{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
-          <Link
-            href="/projects"
-            className="group mb-2 text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
-          >
-            All projects{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
-        </div>
-        <p className="mt-6 max-w-xl text-sm leading-relaxed text-slate-400">
-          A live production site and a set of production-grade demo builds —
-          every one opens in your browser, so you can see the real thing, not
-          just read about it. Demos are clearly labeled as demos.
-        </p>
-        <div className="mt-12">
-          <WorkList items={workItems} />
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-soft">
+            A live production site and a set of production-grade demo builds —
+            every one opens in your browser, so you can see the real thing, not
+            just read about it. Demos are clearly labeled as demos.
+          </p>
+          <div className="mt-12">
+            <WorkList items={workItems} tone="paper" />
+          </div>
         </div>
       </section>
 
-      {/* ============ Services strip ============ */}
+      {/* ============ Services strip — deeper paper ============ */}
       <SectionReveal>
-        <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
-            02 — Services
-          </p>
-          <RevealText
-            as="h2"
-            lines={["What I do"]}
-            className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
-          />
-          <div className="mt-12 border-t border-slate-800">
-            {services.map((service) => (
-              <Link
-                key={service.n}
-                href={service.href}
-                data-reveal
-                className="group grid gap-3 border-b border-slate-800 py-8 transition-colors hover:bg-slate-900/40 md:grid-cols-[3.5rem_1fr_1.2fr_auto] md:items-center md:gap-x-8 md:py-10"
-              >
-                <span className="font-mono text-sm text-slate-500">
-                  {service.n}
-                </span>
-                <h3 className="font-display text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-emerald-300 sm:text-3xl">
-                  {service.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-400">
-                  {service.description}
-                </p>
-                <span
-                  className="hidden text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-400 md:block"
-                  aria-hidden="true"
+        <section className="bg-paper-deep text-ink-text">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+            <p className="font-mono text-xs tracking-widest text-emerald-800 uppercase">
+              02 — Services
+            </p>
+            <RevealText
+              as="h2"
+              lines={[
+                <>
+                  What I <em className="font-accent font-normal italic">do</em>
+                </>,
+              ]}
+              className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-ink-text"
+            />
+            <div className="mt-12 border-t border-ink-text/15">
+              {services.map((service) => (
+                <Link
+                  key={service.n}
+                  href={service.href}
+                  data-reveal
+                  className="group grid gap-3 border-b border-ink-text/15 py-8 transition-colors hover:bg-paper md:grid-cols-[3.5rem_1fr_1.2fr_auto] md:items-center md:gap-x-8 md:py-10"
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M4 12h16m0 0-6-6m6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </Link>
-            ))}
+                  <span className="font-mono text-sm text-ink-faint">
+                    {service.n}
+                  </span>
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-ink-text transition-colors group-hover:text-emerald-700 sm:text-3xl">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-soft">
+                    {service.description}
+                  </p>
+                  <span
+                    className="hidden text-ink-faint transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-700 md:block"
+                    aria-hidden="true"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M4 12h16m0 0-6-6m6 6-6 6"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </SectionReveal>
 
-      {/* ============ How I work ============ */}
+      {/* ============ How I work — back to ink ============ */}
       <SectionReveal>
         <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
@@ -268,7 +326,11 @@ export default function Home() {
           </p>
           <RevealText
             as="h2"
-            lines={["How I work"]}
+            lines={[
+              <>
+                How I <em className="font-accent font-normal italic">work</em>
+              </>,
+            ]}
             className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
           />
           <div className="mt-12 grid gap-10 md:grid-cols-3">
@@ -287,12 +349,18 @@ export default function Home() {
         </section>
       </SectionReveal>
 
-      {/* ============ CTA band ============ */}
+      {/* ============ CTA band — ink with emerald ============ */}
       <section className="border-t border-slate-800/80">
         <div className="mx-auto flex max-w-7xl flex-col items-center px-6 py-28 text-center sm:py-36">
           <RevealText
             as="h2"
-            lines={["Have a problem", "software could solve?"]}
+            lines={[
+              "Have a problem",
+              <>
+                <em className="font-accent font-normal italic">software</em>{" "}
+                could solve?
+              </>,
+            ]}
             className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.98] font-bold tracking-tight text-white"
           />
           <p className="mx-auto mt-6 max-w-xl text-slate-400">

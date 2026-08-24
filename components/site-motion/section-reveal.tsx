@@ -10,8 +10,9 @@ import { useIsoLayoutEffect } from "./use-iso-layout-effect";
 
 /* Wrap a section; every descendant carrying data-reveal fades in and
    rises as it enters the viewport (each element gets its own trigger,
-   so staggering emerges from layout). SSR renders everything visible;
-   reduced motion keeps it that way. */
+   so staggering emerges from layout). Runs for EVERYONE — reveals are
+   part of the design, not gated behind reduced-motion. SSR renders
+   everything visible, so JS-off users see a complete page. */
 export function SectionReveal({
   children,
   className = "",
@@ -25,7 +26,7 @@ export function SectionReveal({
 
   useIsoLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    if (!el) return;
 
     const targets = Array.from(
       el.querySelectorAll<HTMLElement>("[data-reveal]"),

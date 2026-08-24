@@ -34,7 +34,9 @@ export default function Nav() {
         open
           ? "bg-slate-950" /* no backdrop-filter while the overlay is open — a filter would become the containing block for the fixed overlay */
           : scrolled
-            ? "border-b border-slate-800/60 bg-slate-950/70 backdrop-blur-md"
+            ? /* ink translucent — keeps the nav legible over both the
+                 dark and the paper sections it overlays */
+              "border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md"
             : "border-b border-transparent bg-gradient-to-b from-slate-950/80 to-transparent"
       }`}
     >
