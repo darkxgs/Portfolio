@@ -12,6 +12,7 @@ import {
   getPractitioner,
   getTreatment,
 } from "./data";
+import { CalendarIcon } from "./icons";
 
 type DeskTab = "calendar" | "reminders" | "patients";
 
@@ -269,7 +270,7 @@ export default function FrontDeskView({ appointments, onCancel }: FrontDeskViewP
                     <dl className="mt-4 space-y-3 text-sm">
                       <div>
                         <dt className="text-xs uppercase tracking-wide text-mist-600">Treatment</dt>
-                        <dd className="mt-0.5 text-mist-800">{t.emoji} {t.name} · {t.durationMin} min · £{t.price}</dd>
+                        <dd className="mt-0.5 text-mist-800">{t.name} · {t.durationMin} min · £{t.price}</dd>
                       </div>
                       <div>
                         <dt className="text-xs uppercase tracking-wide text-mist-600">Practitioner</dt>
@@ -334,7 +335,9 @@ export default function FrontDeskView({ appointments, onCancel }: FrontDeskViewP
               })()
             ) : (
               <div className="py-10 text-center">
-                <p className="text-3xl">🗓️</p>
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-mist-200 bg-mist-100 text-mist-500">
+                  <CalendarIcon className="h-6 w-6" />
+                </span>
                 <p className="mt-3 text-sm text-mist-600">Click an appointment block to see patient details, notes and actions.</p>
               </div>
             )}

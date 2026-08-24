@@ -12,6 +12,7 @@ import {
   getPractitioner,
   getTreatment,
 } from "./data";
+import { ToothIcon, TreatmentGlyph } from "./icons";
 
 export interface BookingInput {
   patientName: string;
@@ -26,6 +27,10 @@ interface PatientViewProps {
   appointments: Appointment[];
   onBook: (input: BookingInput) => string;
   onGoToDesk: () => void;
+  /** Preselects a treatment and jumps straight to step 2. */
+  initialTreatmentId?: string;
+  /** Preselects a practitioner on step 2. */
+  initialPractitionerId?: string;
 }
 
 type Step = 1 | 2 | 3;
@@ -41,10 +46,16 @@ const STEP_LABELS: { step: Step; label: string }[] = [
   { step: 3, label: "Your details" },
 ];
 
-export default function PatientView({ appointments, onBook, onGoToDesk }: PatientViewProps) {
-  const [step, setStep] = useState<Step>(1);
-  const [treatmentId, setTreatmentId] = useState<string | null>(null);
-  const [practitionerId, setPractitionerId] = useState<string | null>(null);
+export default function PatientView({
+  appointments,
+  onBook,
+  onGoToDesk,
+  initialTreatmentId,
+  initialPractitionerId,
+}: PatientViewProps) {
+  const [step, setStep] = useState<Step>(initialTreatmentId ? 2 : 1);
+  const [treatmentId, setTreatmentId] = useState<string | null>(initialTreatmentId ?? null);
+  const [practitionerId, setPractitionerId] = useState<string | null>(initialPractitionerId ?? null);
   const [pick, setPick] = useState<{ day: number; slot: number } | null>(null);
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -120,7 +131,7 @@ export default function PatientView({ appointments, onBook, onGoToDesk }: Patien
             <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <dt className="text-xs uppercase tracking-wide text-mist-600">Treatment</dt>
-                <dd className="mt-1 text-sm text-mist-900">{t.emoji} {t.name}</dd>
+                <dd className="mt-1 text-sm text-mist-900">{t.name}</dd>
                 <dd className="text-xs text-mist-600">{t.durationMin} min · £{t.price}</dd>
               </div>
               <div>
@@ -143,10 +154,12 @@ export default function PatientView({ appointments, onBook, onGoToDesk }: Patien
           <div className="mt-6">
             <p className="text-xs uppercase tracking-wide text-mist-600">Simulated SMS reminder · scheduled 24h before your visit</p>
             <div className="mt-3 flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-care-300 bg-care-100 text-sm">🦷</div>
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-care-300 bg-care-100 text-care-700">
+                <ToothIcon className="h-4.5 w-4.5" />
+              </div>
               <div className="max-w-md rounded-2xl rounded-tl-sm bg-care-600 px-4 py-3">
                 <p className="text-sm leading-relaxed text-white">
-                  Hi {firstName(name)}! Reminder from BrightSmile Dental: your {t.name.toLowerCase()} with {p.name} is tomorrow, {dayLabel} at {time}. Reply C to cancel or R to reschedule. See you soon! 😁
+                  Hi {firstName(name)}! Reminder from BrightSmile Dental: your {t.name.toLowerCase()} with {p.name} is tomorrow, {dayLabel} at {time}. Reply C to cancel or R to reschedule. See you soon!
                 </p>
                 <p className="mt-1.5 text-right text-[10px] font-mono text-care-100">SMS · auto-scheduled</p>
               </div>
@@ -228,7 +241,13 @@ export default function PatientView({ appointments, onBook, onGoToDesk }: Patien
                         : "border-mist-200 bg-mist-50 hover:border-mist-400"
                     }`}
                   >
-                    <span className="text-2xl">{t.emoji}</span>
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border ${
+                        selected ? "border-care-300 bg-white text-care-700" : "border-mist-200 bg-white text-care-600"
+                      }`}
+                    >
+                      <TreatmentGlyph icon={t.icon} className="h-5 w-5" />
+                    </span>
                     <span className="flex-1">
                       <span className="flex items-center justify-between gap-2">
                         <span className={`text-sm font-semibold ${selected ? "text-care-800" : "text-mist-900"}`}>{t.name}</span>
@@ -356,7 +375,7 @@ export default function PatientView({ appointments, onBook, onGoToDesk }: Patien
 
             <div className="mt-5 rounded-xl border border-mist-200 bg-mist-100 p-4 text-sm">
               <p className="text-mist-800">
-                {getTreatment(treatmentId).emoji} {getTreatment(treatmentId).name} · {getPractitioner(practitionerId).name} ·{" "}
+                {getTreatment(treatmentId).name} · {getPractitioner(practitionerId).name} ·{" "}
                 <span className="font-mono text-care-700">{DAYS[pick.day].label} {DAYS[pick.day].date}, {SLOTS[pick.slot]}</span>
               </p>
               <p className="mt-1 text-xs text-mist-600">
