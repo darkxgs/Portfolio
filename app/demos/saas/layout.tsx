@@ -1,4 +1,5 @@
 import { Figtree, Space_Grotesk } from "next/font/google";
+import "./motion.css";
 
 const body = Figtree({ subsets: ["latin"] });
 const display = Space_Grotesk({
