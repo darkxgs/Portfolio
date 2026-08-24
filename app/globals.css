@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* BrightSmile Dental — "Calm clinical" (light): care teal + mist neutrals + mint */
+  --color-care-50: #f0f7f8;
+  --color-care-100: #e3f1f2;
+  --color-care-200: #c4e2e5;
+  --color-care-300: #93cbd1;
+  --color-care-400: #4fa9b4;
+  --color-care-500: #2b93a1;
+  --color-care-600: #146c77;
+  --color-care-700: #0f5860;
+  --color-care-800: #0d474e;
+  --color-care-900: #0b3a40;
+  --color-mist-50: #f6f9f9;
+  --color-mist-100: #eef3f4;
+  --color-mist-200: #dce7e8;
+  --color-mist-300: #c2d2d4;
+  --color-mist-400: #9fb3b6;
+  --color-mist-500: #7c9296;
+  --color-mist-600: #5b7479;
+  --color-mist-700: #3f585e;
+  --color-mist-800: #26474e;
+  --color-mist-900: #12343b;
+  --color-mint-100: #ddf0e7;
+  --color-mint-500: #3e9c76;
+  --color-mint-600: #2f7f5f;
+  --color-mint-700: #256a4f;
+
+  /* TasteBite — "Ember & char" (dark warm): ember terracotta + char browns */
+  --color-ember-200: #f7c8a6;
+  --color-ember-300: #f2a878;
+  --color-ember-400: #e9834e;
+  --color-ember-500: #d96b34;
+  --color-ember-600: #b5511f;
+  --color-ember-700: #8f3f18;
+  --color-char-50: #f4ede3;
+  --color-char-100: #e7dfd2;
+  --color-char-200: #cfc4b2;
+  --color-char-300: #a79a88;
+  --color-char-400: #8a7c6a;
+  --color-char-500: #6b5f50;
+  --color-char-600: #544a3e;
+  --color-char-700: #3a3128;
+  --color-char-800: #2a231c;
+  --color-char-900: #201a15;
+  --color-char-950: #16120e;
+  --color-fresh-400: #9cbb77;
+  --color-fresh-500: #7fa35b;
+  --color-fresh-600: #648347;
+
+  /* FlowDesk — "Ink & brass" (dark cold): flow periwinkle + ink navy + brass */
+  --color-flow-200: #b8c4f7;
+  --color-flow-300: #93a6f2;
+  --color-flow-400: #6e85e8;
+  --color-flow-500: #5468d4;
+  --color-flow-600: #3f51b0;
+  --color-flow-700: #32418c;
+  --color-ink-50: #e8ecf7;
+  --color-ink-100: #d8deed;
+  --color-ink-200: #b9c2db;
+  --color-ink-300: #93a0bf;
+  --color-ink-400: #7484a8;
+  --color-ink-500: #55648c;
+  --color-ink-600: #3e4c71;
+  --color-ink-700: #26314f;
+  --color-ink-800: #1a2340;
+  --color-ink-900: #131a2e;
+  --color-ink-950: #0d1220;
+  --color-brass-300: #e4cd9c;
+  --color-brass-400: #d4b980;
+  --color-brass-500: #c9a96a;
+  --color-brass-600: #a28445;
+
+  /* Metricly — "Graphite & signal" (dark tech): metric azure + graphite + semantic */
+  --color-metric-200: #a8dcf5;
+  --color-metric-300: #7ccdef;
+  --color-metric-400: #45b7e8;
+  --color-metric-500: #2496c9;
+  --color-metric-600: #1b76a0;
+  --color-metric-700: #175e80;
+  --color-graphite-50: #e9edf2;
+  --color-graphite-100: #d7dde5;
+  --color-graphite-200: #b6bfcc;
+  --color-graphite-300: #8b95a5;
+  --color-graphite-400: #6b7687;
+  --color-graphite-500: #4e586a;
+  --color-graphite-600: #3a4353;
+  --color-graphite-700: #262c36;
+  --color-graphite-800: #191e25;
+  --color-graphite-900: #12151a;
+  --color-graphite-950: #0b0d10;
+  --color-pos-400: #6cd3a7;
+  --color-pos-500: #46c28e;
+  --color-pos-600: #35a375;
+  --color-risk-400: #e88787;
+  --color-risk-500: #e06a6a;
+  --color-risk-600: #c14f4f;
+
+  /* GreenBowl — "Fresh market" (light): leaf greens + sage neutrals + citrus */
+  --color-leaf-50: #f1f8f1;
+  --color-leaf-100: #e2f0e3;
+  --color-leaf-200: #c4e0c7;
+  --color-leaf-300: #9bc9a1;
+  --color-leaf-400: #66ab72;
+  --color-leaf-500: #3e8e51;
+  --color-leaf-600: #2e7440;
+  --color-leaf-700: #255d34;
+  --color-leaf-800: #1e4b2b;
+  --color-leaf-900: #16391f;
+  --color-sage-50: #f7f9f5;
+  --color-sage-100: #eff3eb;
+  --color-sage-200: #dfe6d8;
+  --color-sage-300: #c5cfbb;
+  --color-sage-400: #9fac93;
+  --color-sage-500: #7c8a70;
+  --color-sage-600: #5d6b52;
+  --color-sage-700: #45523c;
+  --color-sage-800: #333d2c;
+  --color-sage-900: #202918;
+  --color-citrus-100: #faeed3;
+  --color-citrus-400: #f0b450;
+  --color-citrus-500: #e39a2e;
+  --color-citrus-600: #c07e1d;
+  --color-citrus-700: #9a6314;
+}
+
+::selection {
+  background-color: rgb(52 211 153 / 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
