@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Magnetic from "@/components/site-motion/magnetic";
+import RevealText from "@/components/site-motion/reveal-text";
+import { SectionReveal } from "@/components/site-motion/section-reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -27,64 +30,141 @@ const steps = [
   },
 ];
 
+function HoverArrow() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="shrink-0 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-400"
+    >
+      <path
+        d="M4 12h16m0 0-6-6m6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Contact() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-      <div className="grid gap-16 lg:grid-cols-2">
+    <div className="mx-auto max-w-7xl px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
+      <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+        Contact
+      </p>
+      <RevealText
+        as="h1"
+        mode="load"
+        lines={["Let's work", "together."]}
+        className="mt-4 font-display text-[clamp(3.25rem,10vw,9rem)] leading-[0.92] font-bold tracking-tight text-white"
+      />
+
+      <div className="mt-16 grid gap-16 lg:grid-cols-2">
         <div>
-          <p className="font-mono text-sm tracking-widest text-emerald-400 uppercase">
-            Contact
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-white">
             Tell me what slows your business down.
-          </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-400">
+          </h2>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-slate-400">
             The best first message isn&apos;t &quot;I need a website&quot; —
             it&apos;s &quot;here&apos;s what&apos;s costing us time or
             customers.&quot; Start there, and I&apos;ll take it seriously.
           </p>
 
-          <div className="mt-10">
+          <Magnetic strength={0.3} className="mt-10">
             <a
               href="mailto:seifdarkx@gmail.com?subject=Project%20enquiry"
-              className="inline-block rounded-lg bg-emerald-500 px-8 py-4 text-base font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+              className="flex h-44 w-44 flex-col items-center justify-center gap-1 rounded-full bg-emerald-500 p-6 text-center text-slate-950 transition-colors hover:bg-emerald-400 sm:h-52 sm:w-52"
             >
-              seifdarkx@gmail.com
+              <span className="text-base font-medium">Email me</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 12L12 2M12 2H4M12 2v8"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
-            <p className="mt-4 text-sm text-slate-500">
-              Direct email — no forms, no auto-responders. I read every message.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+          </Magnetic>
+          <p className="mt-6 text-sm text-slate-500">
+            Direct email — no forms, no auto-responders. I read every message.
+          </p>
+
+          {/* Channel rows */}
+          <SectionReveal>
+            <div className="mt-12 border-t border-slate-800">
+              <a
+                href="mailto:seifdarkx@gmail.com?subject=Project%20enquiry"
+                data-reveal
+                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-slate-500">01</span>
+                  <div>
+                    <p className="font-medium text-white">Email</p>
+                    <p className="font-mono text-sm text-slate-400">
+                      seifdarkx@gmail.com
+                    </p>
+                  </div>
+                </div>
+                <HoverArrow />
+              </a>
               <a
                 href="https://wa.me/201069896831"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 rounded-lg border border-slate-700 px-5 py-3 text-sm font-medium text-slate-200 transition-colors hover:border-emerald-500/50 hover:text-white"
+                data-reveal
+                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="text-emerald-400">
-                  <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z" />
-                </svg>
-                WhatsApp · +20 106 989 6831
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-slate-500">02</span>
+                  <div>
+                    <p className="font-medium text-white">WhatsApp</p>
+                    <p className="font-mono text-sm text-slate-400">
+                      +20 106 989 6831
+                    </p>
+                  </div>
+                </div>
+                <HoverArrow />
               </a>
               <a
                 href="https://www.instagram.com/seif_ashrafg/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 rounded-lg border border-slate-700 px-5 py-3 text-sm font-medium text-slate-200 transition-colors hover:border-emerald-500/50 hover:text-white"
+                data-reveal
+                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" className="text-emerald-400">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4.2" />
-                  <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
-                </svg>
-                @seif_ashrafg
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-slate-500">03</span>
+                  <div>
+                    <p className="font-medium text-white">Instagram</p>
+                    <p className="font-mono text-sm text-slate-400">
+                      @seif_ashrafg
+                    </p>
+                  </div>
+                </div>
+                <HoverArrow />
               </a>
             </div>
-          </div>
+          </SectionReveal>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10">
-          <h2 className="text-lg font-semibold text-white">What happens next</h2>
+        <div className="h-fit rounded-3xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10">
+          <h2 className="font-display text-lg font-bold text-white">
+            What happens next
+          </h2>
           <div className="mt-8 space-y-8">
             {steps.map((step) => (
               <div key={step.n} className="flex gap-5">
