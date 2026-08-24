@@ -10,7 +10,7 @@ export default function Footer() {
             Full Stack Developer · Websites, software &amp; automation
           </p>
         </div>
-        <div className="flex items-center gap-6 text-sm text-slate-400">
+        <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
           <Link href="/projects" className="transition-colors hover:text-white">
             Projects
           </Link>
@@ -22,6 +22,22 @@ export default function Footer() {
             className="transition-colors hover:text-white"
           >
             seifdarkx@gmail.com
+          </a>
+          <a
+            href="https://wa.me/201069896831"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-white"
+          >
+            WhatsApp
+          </a>
+          <a
+            href="https://www.instagram.com/seif_ashrafg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-white"
+          >
+            Instagram
           </a>
         </div>
       </div>
