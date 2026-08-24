@@ -5,6 +5,7 @@ import BillingView from "./BillingView";
 import DashboardView from "./DashboardView";
 import HealthView from "./HealthView";
 import UsersView from "./UsersView";
+import Website from "./Website";
 import type { ViewKey } from "./data";
 
 interface NavItem {
@@ -87,7 +88,25 @@ const VIEW_TITLES: Record<ViewKey, { title: string; sub: string }> = {
 };
 
 export default function MetriclyDemo() {
+  // The demo lands on the product SITE; the working app is one click away.
+  const [mode, setMode] = useState<"site" | "app">("site");
   const [view, setView] = useState<ViewKey>("dashboard");
+
+  // Deep links from the product site open the app on a specific view.
+  const openApp = (target?: ViewKey): void => {
+    if (target) setView(target);
+    setMode("app");
+    window.scrollTo(0, 0);
+  };
+
+  const backToSite = (): void => {
+    setMode("site");
+    window.scrollTo(0, 0);
+  };
+
+  if (mode === "site") {
+    return <Website onOpenApp={openApp} />;
+  }
 
   return (
     <div className="min-h-screen bg-graphite-950 text-graphite-100">
@@ -108,6 +127,22 @@ export default function MetriclyDemo() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={backToSite}
+              className="flex items-center gap-1.5 rounded-lg border border-graphite-700 px-2.5 py-1.5 text-xs text-graphite-300 transition-colors hover:border-metric-400 hover:text-metric-300"
+            >
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
+                <path
+                  d="M6.5 1.5 3 5l3.5 3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Back to site
+            </button>
             <span className="hidden items-center gap-2 rounded-lg border border-graphite-700 bg-graphite-900/60 px-3 py-1.5 text-xs text-graphite-300 md:flex">
               <span className="h-1.5 w-1.5 rounded-full bg-metric-400" />
               Workspace: <span className="font-mono text-graphite-100">Inkflow</span>
