@@ -60,7 +60,12 @@ export default function Contact() {
       <RevealText
         as="h1"
         mode="load"
-        lines={["Let's work", "together."]}
+        lines={[
+          "Let's work",
+          <em key="accent" className="font-accent font-normal italic">
+            together.
+          </em>,
+        ]}
         className="mt-4 font-display text-[clamp(3.25rem,10vw,9rem)] leading-[0.92] font-bold tracking-tight text-white"
       />
 

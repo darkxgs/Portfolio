@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, type Ref } from "react";
-import { gsap, prefersReducedMotion } from "./gsap";
+import { useRef, type ReactNode, type Ref } from "react";
+import { gsap } from "./gsap";
 import { useIsoLayoutEffect } from "./use-iso-layout-effect";
 
 type Props = {
-  /* Each entry renders as one masked line (overflow-hidden wrapper). */
-  lines: string[];
+  /* Each entry renders as one masked line (overflow-hidden wrapper).
+     Entries may be rich nodes (e.g. an italic accent word). */
+  lines: ReactNode[];
   as?: "h1" | "h2" | "h3" | "p" | "div";
   className?: string;
   lineClassName?: string;
@@ -17,10 +18,11 @@ type Props = {
   stagger?: number;
 };
 
-/* Line-mask text reveal: translateY(110%) -> 0 inside overflow-hidden
-   line wrappers, power4.out, ~80ms stagger. SSR-safe — the server
-   renders the text plainly; with JS off or reduced motion nothing is
-   ever hidden. */
+/* Line-mask text reveal: translateY(120%) -> 0 inside overflow-hidden
+   line wrappers, 1.1s power4.out, ~90ms stagger. Runs for EVERYONE —
+   reveals are core to the design, not a reduced-motion casualty.
+   SSR-safe: the server renders the text plainly; with JS off nothing
+   is ever hidden. */
 export default function RevealText({
   lines,
   as = "div",
@@ -28,18 +30,18 @@ export default function RevealText({
   lineClassName = "",
   mode = "scroll",
   delay = 0,
-  stagger = 0.08,
+  stagger = 0.09,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
 
   useIsoLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
+    if (!el) return;
 
     const targets = el.querySelectorAll<HTMLElement>("[data-reveal-line]");
     if (targets.length === 0) return;
 
-    gsap.set(targets, { yPercent: 110 });
+    gsap.set(targets, { yPercent: 120 });
     const vars: gsap.TweenVars = {
       yPercent: 0,
       duration: 1.1,

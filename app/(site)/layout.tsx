@@ -11,6 +11,8 @@ export default function SiteLayout({
       <Nav />
       <main>{children}</main>
       <Footer />
+      {/* Full-viewport film grain — sits above content, below cursor dot */}
+      <div aria-hidden="true" className="film-grain" />
       <CursorDot />
     </SmoothScroll>
   );

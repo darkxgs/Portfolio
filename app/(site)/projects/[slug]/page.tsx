@@ -224,9 +224,10 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <div className="mt-24 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-        <p className="text-sm leading-relaxed text-slate-400">
-          <span className="font-medium text-slate-300">
+      {/* Paper accent card — warm break inside the dark case study */}
+      <div className="mt-24 rounded-2xl bg-paper p-6 sm:p-8">
+        <p className="text-sm leading-relaxed text-ink-soft">
+          <span className="font-medium text-ink-text">
             {project.kind === "live" ? "About this project:" : "Honesty note:"}
           </span>{" "}
           {project.demoNote}

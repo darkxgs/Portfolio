@@ -1,12 +1,13 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { gsap, prefersReducedMotion, isFinePointer } from "./gsap";
+import { gsap, isFinePointer } from "./gsap";
 import { useIsoLayoutEffect } from "./use-iso-layout-effect";
 
 /* Magnetic wrapper — the element leans toward the pointer and snaps
-   back with an elastic ease on leave. No-op on touch devices and for
-   prefers-reduced-motion. */
+   back with an elastic ease on leave. Runs for every fine-pointer
+   user (it is pointer feedback, not autonomous motion); no-op on
+   touch devices only. */
 export default function Magnetic({
   children,
   strength = 0.35,
@@ -20,7 +21,7 @@ export default function Magnetic({
 
   useIsoLayoutEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion() || !isFinePointer()) return;
+    if (!el || !isFinePointer()) return;
 
     const xTo = gsap.quickTo(el, "x", { duration: 0.35, ease: "power3.out" });
     const yTo = gsap.quickTo(el, "y", { duration: 0.35, ease: "power3.out" });

@@ -1,13 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  gsap,
-  prefersReducedMotion,
-  isFinePointer,
-} from "@/components/site-motion/gsap";
+import { gsap, isFinePointer } from "@/components/site-motion/gsap";
 import { useIsoLayoutEffect } from "@/components/site-motion/use-iso-layout-effect";
 
 export type WorkListItem = {
@@ -17,6 +13,8 @@ export type WorkListItem = {
   year: string;
   live: boolean;
   demoUrl: string;
+  /* Per-project brand tint (hex) — dot, hover accents, preview ring. */
+  accent: string;
 };
 
 const PREVIEW_W = 352; // px — w-[22rem]
@@ -26,22 +24,33 @@ const PREVIEW_H = 220; // px — matches aspect ratio of the shots
    linking to case studies. On desktop, hovering a row reveals a
    floating preview of the project's real screenshot that trails the
    cursor within the section (gsap quickTo). On mobile every row shows
-   a static thumbnail card instead. */
-export default function WorkList({ items }: { items: WorkListItem[] }) {
+   a static thumbnail card instead.
+
+   tone="paper" renders the ink-on-paper variant used on the light
+   sections; hovering a row shifts index, chip border, and preview
+   ring to that project's own brand tint, and (on paper) sweeps an
+   accent underline beneath the title. */
+export default function WorkList({
+  items,
+  tone = "dark",
+}: {
+  items: WorkListItem[];
+  tone?: "dark" | "paper";
+}) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<number | null>(null);
   const [enabled, setEnabled] = useState(false);
 
+  const paper = tone === "paper";
+
   useIsoLayoutEffect(() => {
     const section = sectionRef.current;
     const preview = previewRef.current;
     if (!section || !preview) return;
-    if (
-      prefersReducedMotion() ||
-      !isFinePointer() ||
-      !window.matchMedia("(min-width: 768px)").matches
-    ) {
+    /* Hover preview is pointer feedback — it runs regardless of
+       prefers-reduced-motion; only touch/narrow layouts skip it. */
+    if (!isFinePointer() || !window.matchMedia("(min-width: 768px)").matches) {
       return;
     }
 
@@ -74,13 +83,28 @@ export default function WorkList({ items }: { items: WorkListItem[] }) {
     });
   }, [active, enabled]);
 
+  const rowBorder = paper ? "border-ink-text/15" : "border-slate-800";
+  const indexColor = paper ? "text-ink-faint" : "text-slate-500";
+  const titleColor = paper
+    ? "text-ink-text"
+    : "text-white group-hover:text-emerald-300";
+  const metaColor = paper ? "text-ink-faint" : "text-slate-500";
+  const yearColor = paper ? "text-ink-faint/80" : "text-slate-600";
+  const liveChip = paper
+    ? "border-emerald-700/40 bg-emerald-700/10 text-emerald-700 hover:bg-emerald-700/15"
+    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20";
+  const demoChip = paper
+    ? "border-ink-text/25 text-ink-soft hover:border-ink-text/50 hover:text-ink-text"
+    : "border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200";
+
   return (
     <div ref={sectionRef} className="relative">
-      <ul className="border-t border-slate-800">
+      <ul className={`border-t ${rowBorder}`}>
         {items.map((item, i) => (
           <li
             key={item.slug}
-            className="group relative border-b border-slate-800"
+            className={`group relative border-b ${rowBorder}`}
+            style={{ "--row-accent": item.accent } as CSSProperties}
             onMouseEnter={() => enabled && setActive(i)}
             onMouseLeave={() => setActive(null)}
           >
@@ -92,7 +116,7 @@ export default function WorkList({ items }: { items: WorkListItem[] }) {
 
             {/* Static thumbnail card — mobile only */}
             <div className="pt-8 md:hidden">
-              <div className="overflow-hidden rounded-xl border border-slate-800">
+              <div className={`overflow-hidden rounded-xl border ${rowBorder}`}>
                 <Image
                   src={`/screens/${item.slug}.png`}
                   alt={`Screenshot of ${item.title}`}
@@ -104,17 +128,39 @@ export default function WorkList({ items }: { items: WorkListItem[] }) {
             </div>
 
             <div className="flex flex-col gap-3 py-8 transition-transform duration-300 md:grid md:grid-cols-[3.5rem_1fr_auto] md:items-center md:gap-x-8 md:py-10 md:group-hover:-translate-y-1">
-              <span className="font-mono text-xs text-slate-500 md:text-sm">
-                {String(i + 1).padStart(2, "0")}
+              <span className="flex items-center gap-2">
+                {/* Always-visible brand-tint dot */}
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: item.accent }}
+                />
+                <span
+                  className={`font-mono text-xs transition-colors duration-300 group-hover:text-[color:var(--row-accent)] md:text-sm ${indexColor}`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </span>
-              <h3 className="font-display text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-emerald-300 sm:text-3xl md:text-[clamp(1.75rem,3.2vw,3rem)] md:leading-[1.05]">
-                {item.title}
+              <h3
+                className={`font-display text-2xl font-bold tracking-tight transition-colors duration-300 sm:text-3xl md:text-[clamp(1.75rem,3.2vw,3rem)] md:leading-[1.05] ${titleColor}`}
+              >
+                <span className="relative inline-block">
+                  {item.title}
+                  {paper && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-[color:var(--row-accent)] transition-transform duration-500 ease-out group-hover:scale-x-100"
+                    />
+                  )}
+                </span>
               </h3>
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 md:justify-end">
-                <span className="font-mono text-xs tracking-wide text-slate-500 uppercase">
+                <span
+                  className={`font-mono text-xs tracking-wide uppercase ${metaColor}`}
+                >
                   {item.category}
                 </span>
-                <span className="font-mono text-xs text-slate-600">
+                <span className={`font-mono text-xs ${yearColor}`}>
                   {item.year}
                 </span>
                 {item.live ? (
@@ -122,14 +168,14 @@ export default function WorkList({ items }: { items: WorkListItem[] }) {
                     href={item.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 font-mono text-[10px] tracking-wide text-emerald-300 uppercase transition-colors hover:bg-emerald-500/20"
+                    className={`relative z-10 rounded-full border px-3 py-1 font-mono text-[10px] tracking-wide uppercase transition-colors duration-300 group-hover:border-[color:var(--row-accent)] ${liveChip}`}
                   >
                     Live project
                   </a>
                 ) : (
                   <Link
                     href={item.demoUrl}
-                    className="relative z-10 rounded-full border border-slate-700 px-3 py-1 font-mono text-[10px] tracking-wide text-slate-400 uppercase transition-colors hover:border-slate-500 hover:text-slate-200"
+                    className={`relative z-10 rounded-full border px-3 py-1 font-mono text-[10px] tracking-wide uppercase transition-colors duration-300 group-hover:border-[color:var(--row-accent)] ${demoChip}`}
                   >
                     Live demo
                   </Link>
@@ -140,11 +186,16 @@ export default function WorkList({ items }: { items: WorkListItem[] }) {
         ))}
       </ul>
 
-      {/* Floating cursor-following preview — desktop only */}
+      {/* Floating cursor-following preview — desktop only.
+          Frame ring takes the hovered project's brand tint. */}
       <div
         ref={previewRef}
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 z-20 hidden h-[220px] w-[22rem] overflow-hidden rounded-lg border border-slate-700/60 opacity-0 shadow-2xl shadow-black/50 md:block"
+        className="pointer-events-none absolute top-0 left-0 z-20 hidden h-[220px] w-[22rem] overflow-hidden rounded-lg border-2 opacity-0 shadow-2xl shadow-black/50 transition-[border-color] duration-300 md:block"
+        style={{
+          borderColor:
+            active !== null ? items[active].accent : "rgb(51 65 85 / 0.6)",
+        }}
       >
         {items.map((item, i) => (
           <Image
