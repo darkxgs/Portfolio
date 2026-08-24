@@ -1,22 +1,29 @@
 import Link from "next/link";
-import AppShot from "@/components/app-shot";
-import ProjectCard from "@/components/project-card";
+import Magnetic from "@/components/site-motion/magnetic";
+import RevealText from "@/components/site-motion/reveal-text";
+import VelocityMarquee from "@/components/site-motion/velocity-marquee";
+import { SectionReveal } from "@/components/site-motion/section-reveal";
+import WorkList from "@/components/work-list";
 import { projects } from "@/lib/projects";
+import { toWorkItems } from "@/lib/work-meta";
 
 const services = [
   {
+    n: "01",
     title: "Business Websites",
     description:
       "Modern, fast websites built to convert visitors into customers — not just look good. Clear structure, strong mobile experience, and messaging that sells.",
     href: "/services#websites",
   },
   {
+    n: "02",
     title: "Business Automation",
     description:
       "Workflow automation, CRM systems, AI assistants, and internal tools that remove repetitive manual work so your team can focus on customers.",
     href: "/services#automation",
   },
   {
+    n: "03",
     title: "Custom Software",
     description:
       "Dashboards, management systems, customer portals, and SaaS products — built around how your business actually works, not the other way around.",
@@ -45,137 +52,230 @@ const steps = [
   },
 ];
 
+function ArrowDownRight({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M5 5l14 14M19 19V7M19 19H7"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function Globe() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      aria-hidden="true"
+      className="animate-spin-slow"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <ellipse cx="12" cy="12" rx="4" ry="9" />
+      <path d="M3 12h18M4.6 7h14.8M4.6 17h14.8" />
+    </svg>
+  );
+}
+
 export default function Home() {
+  const workItems = toWorkItems(projects).slice(0, 4);
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
+      {/* ============ Hero ============ */}
+      <section className="relative flex min-h-svh flex-col overflow-hidden">
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-130 w-200 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"
           aria-hidden="true"
         />
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 pt-24 pb-20 sm:pt-28 sm:pb-24 lg:grid-cols-[1.05fr_1fr]">
-          <div>
-            <p className="font-mono text-sm tracking-widest text-emerald-400 uppercase">
-              Seif Ashraf · Full Stack Developer
-            </p>
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-              Websites, custom software &amp; automation that help businesses
-              grow.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
-              I help companies replace manual processes, outdated websites, and
-              disconnected tools with software built around how they actually
-              work — so they win more customers and waste less time.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/projects"
-                className="rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
-              >
-                See my work
-              </Link>
-              <Link
-                href="/contact"
-                className="rounded-lg border border-slate-700 px-6 py-3 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:text-white"
-              >
-                Get in touch
-              </Link>
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pt-28 pb-10">
+          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+            Portfolio — 2026
+          </p>
+
+          <RevealText
+            as="h1"
+            mode="load"
+            lines={["Seif", "Ashraf"]}
+            className="mt-4 font-display text-[clamp(4rem,14vw,13rem)] leading-[0.9] font-extrabold tracking-tight text-white"
+          />
+
+          <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-end">
+            <div className="flex flex-col items-start gap-6">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900 p-2">
+                <img
+                  src="/seif.png"
+                  alt="Seif Ashraf"
+                  className="h-9 w-9 rounded-full object-cover object-top"
+                />
+                <span className="text-sm text-slate-200">
+                  Cairo based · working worldwide
+                </span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-300">
+                  <Globe />
+                </span>
+              </div>
+              <div className="flex items-start gap-4">
+                <ArrowDownRight className="mt-1 shrink-0 text-emerald-400" />
+                <p className="max-w-md text-lg leading-snug text-white sm:text-xl">
+                  Full Stack Developer — websites, custom software &amp;
+                  automation
+                </p>
+              </div>
             </div>
-            <p className="mt-10 font-mono text-xs tracking-wide text-slate-500">
-              Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API · Claude
-              AI
-            </p>
-          </div>
-          <div className="hidden lg:block">
-            <Link
-              href="/demos/saas"
-              aria-label="Open the Metricly SaaS dashboard live demo"
-            >
-              <AppShot
-                slug="saas-dashboard"
-                alt="Screenshot of the Metricly SaaS analytics demo"
-              />
-            </Link>
-            <p className="mt-3 text-center text-xs text-slate-500">
-              A working demo build — click to open the live app.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Services */}
-      <section className="border-t border-slate-800/80">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            What I do
-          </h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {services.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-7 transition-colors hover:border-emerald-500/40"
-              >
-                <h3 className="text-lg font-semibold text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
-                  {service.description}
-                </p>
-                <p className="mt-5 text-sm font-medium text-emerald-400">
-                  Learn more{" "}
-                  <span className="inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured projects */}
-      <section className="border-t border-slate-800/80">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                Projects
-              </h2>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
-                A live production site and a set of production-grade demo
-                builds — every one opens in your browser, so you can see the
-                real thing, not just read about it. Demos are clearly labeled
-                as demos.
+              <p className="max-w-xl leading-relaxed text-slate-400">
+                I help companies replace manual processes, outdated websites,
+                and disconnected tools with software built around how they
+                actually work — so they win more customers and waste less time.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Magnetic strength={0.3}>
+                  <Link
+                    href="/projects"
+                    className="block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+                  >
+                    See my work
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.3}>
+                  <Link
+                    href="/contact"
+                    className="block rounded-full border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:text-white"
+                  >
+                    Get in touch
+                  </Link>
+                </Magnetic>
+              </div>
+              <p className="mt-8 font-mono text-xs tracking-wide text-slate-500">
+                Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API ·
+                Claude AI
               </p>
             </div>
-            <Link
-              href="/projects"
-              className="hidden shrink-0 text-sm font-medium text-emerald-400 hover:text-emerald-300 sm:block"
-            >
-              All projects →
-            </Link>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {projects.slice(0, 4).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+        </div>
+
+        {/* Hero-bottom velocity marquee */}
+        <VelocityMarquee
+          text={"Websites — Custom Software — Automation — AI Integrations — "}
+          className="border-t border-slate-800/60 py-4"
+          trackClassName="text-outline font-display text-[clamp(3rem,9vw,7rem)] font-extrabold tracking-tight uppercase"
+        />
+      </section>
+
+      {/* ============ Selected work ============ */}
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
+              01 — Work
+            </p>
+            <RevealText
+              as="h2"
+              lines={["Selected work"]}
+              className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
+            />
           </div>
+          <Link
+            href="/projects"
+            className="group mb-2 text-sm font-medium text-emerald-400 transition-colors hover:text-emerald-300"
+          >
+            All projects{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
+        </div>
+        <p className="mt-6 max-w-xl text-sm leading-relaxed text-slate-400">
+          A live production site and a set of production-grade demo builds —
+          every one opens in your browser, so you can see the real thing, not
+          just read about it. Demos are clearly labeled as demos.
+        </p>
+        <div className="mt-12">
+          <WorkList items={workItems} />
         </div>
       </section>
 
-      {/* How I work */}
-      <section className="border-t border-slate-800/80">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            How I work
-          </h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
+      {/* ============ Services strip ============ */}
+      <SectionReveal>
+        <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
+            02 — Services
+          </p>
+          <RevealText
+            as="h2"
+            lines={["What I do"]}
+            className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
+          />
+          <div className="mt-12 border-t border-slate-800">
+            {services.map((service) => (
+              <Link
+                key={service.n}
+                href={service.href}
+                data-reveal
+                className="group grid gap-3 border-b border-slate-800 py-8 transition-colors hover:bg-slate-900/40 md:grid-cols-[3.5rem_1fr_1.2fr_auto] md:items-center md:gap-x-8 md:py-10"
+              >
+                <span className="font-mono text-sm text-slate-500">
+                  {service.n}
+                </span>
+                <h3 className="font-display text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-emerald-300 sm:text-3xl">
+                  {service.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-400">
+                  {service.description}
+                </p>
+                <span
+                  className="hidden text-slate-500 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-400 md:block"
+                  aria-hidden="true"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M4 12h16m0 0-6-6m6 6-6 6"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </SectionReveal>
+
+      {/* ============ How I work ============ */}
+      <SectionReveal>
+        <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
+            03 — Process
+          </p>
+          <RevealText
+            as="h2"
+            lines={["How I work"]}
+            className="mt-3 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight text-white"
+          />
+          <div className="mt-12 grid gap-10 md:grid-cols-3">
             {steps.map((step) => (
-              <div key={step.n}>
+              <div key={step.n} data-reveal>
                 <p className="font-mono text-sm text-emerald-400">{step.n}</p>
-                <h3 className="mt-3 text-lg font-semibold text-white">
+                <h3 className="mt-3 font-display text-xl font-bold text-white">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-400">
@@ -184,25 +284,29 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionReveal>
 
-      {/* CTA */}
+      {/* ============ CTA band ============ */}
       <section className="border-t border-slate-800/80">
-        <div className="mx-auto max-w-6xl px-6 py-24 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Have a problem software could solve?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-slate-400">
+        <div className="mx-auto flex max-w-7xl flex-col items-center px-6 py-28 text-center sm:py-36">
+          <RevealText
+            as="h2"
+            lines={["Have a problem", "software could solve?"]}
+            className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.98] font-bold tracking-tight text-white"
+          />
+          <p className="mx-auto mt-6 max-w-xl text-slate-400">
             Tell me what slows your business down. I&apos;ll tell you honestly
             whether software can fix it — and what it would take.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-block rounded-lg bg-emerald-500 px-8 py-3 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
-          >
-            Start a conversation
-          </Link>
+          <Magnetic strength={0.3} className="mt-12">
+            <Link
+              href="/contact"
+              className="flex h-40 w-40 items-center justify-center rounded-full bg-emerald-500 p-6 text-center text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400 sm:h-48 sm:w-48"
+            >
+              Start a conversation
+            </Link>
+          </Magnetic>
         </div>
       </section>
     </>
