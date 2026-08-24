@@ -1,12 +1,22 @@
 export type ViewId = "patient" | "desk";
 
+export type TreatmentIcon =
+  | "tooth"
+  | "sparkle"
+  | "smile"
+  | "shield"
+  | "cross"
+  | "aligner"
+  | "star"
+  | "implant";
+
 export interface Treatment {
   id: string;
   name: string;
   blurb: string;
   durationMin: number;
   price: number;
-  emoji: string;
+  icon: TreatmentIcon;
 }
 
 export interface PractitionerColor {
@@ -21,6 +31,8 @@ export interface Practitioner {
   name: string;
   role: string;
   initials: string;
+  credential: string;
+  bio: string;
   color: PractitionerColor;
 }
 
@@ -55,7 +67,7 @@ export const TREATMENTS: Treatment[] = [
     blurb: "Full dental exam with X-rays and a personal treatment plan.",
     durationMin: 30,
     price: 55,
-    emoji: "🦷",
+    icon: "tooth",
   },
   {
     id: "hygiene",
@@ -63,7 +75,7 @@ export const TREATMENTS: Treatment[] = [
     blurb: "Scale & polish with our hygienist. Fresh-mouth guarantee.",
     durationMin: 45,
     price: 75,
-    emoji: "✨",
+    icon: "sparkle",
   },
   {
     id: "whitening",
@@ -71,7 +83,7 @@ export const TREATMENTS: Treatment[] = [
     blurb: "In-chair whitening — up to four shades brighter in one visit.",
     durationMin: 60,
     price: 220,
-    emoji: "😁",
+    icon: "smile",
   },
   {
     id: "filling",
@@ -79,7 +91,31 @@ export const TREATMENTS: Treatment[] = [
     blurb: "Tooth-coloured composite filling, matched to your smile.",
     durationMin: 45,
     price: 120,
-    emoji: "🪥",
+    icon: "shield",
+  },
+  {
+    id: "aligners",
+    name: "Clear aligner consult",
+    blurb: "Digital smile scan, 3D preview and a fixed aligner quote.",
+    durationMin: 45,
+    price: 65,
+    icon: "aligner",
+  },
+  {
+    id: "veneers",
+    name: "Veneer consult",
+    blurb: "Smile design session — see your options and exact prices.",
+    durationMin: 45,
+    price: 65,
+    icon: "star",
+  },
+  {
+    id: "implants",
+    name: "Implant consult",
+    blurb: "3D scan and a full implant plan with staged costs.",
+    durationMin: 60,
+    price: 95,
+    icon: "implant",
   },
   {
     id: "emergency",
@@ -87,7 +123,140 @@ export const TREATMENTS: Treatment[] = [
     blurb: "Same-week slot for pain, swelling or a broken tooth.",
     durationMin: 30,
     price: 95,
-    emoji: "🚑",
+    icon: "cross",
+  },
+];
+
+/**
+ * Treatments as presented on the public website. Each maps to a bookable
+ * wizard treatment (big-ticket items start with a bookable consult).
+ */
+export interface WebsiteTreatment {
+  id: string;
+  wizardId: string; // id in TREATMENTS the "Book this" button preselects
+  name: string;
+  benefit: string;
+  duration: string;
+  priceLabel: string;
+  includes: string[];
+  note?: string;
+}
+
+export const WEBSITE_TREATMENTS: WebsiteTreatment[] = [
+  {
+    id: "site-checkup",
+    wizardId: "checkup",
+    name: "Check-up & exam",
+    benefit: "A full picture of your oral health — and a plan you actually understand.",
+    duration: "30 min",
+    priceLabel: "£55",
+    includes: [
+      "Full mouth & gum examination",
+      "Digital X-rays where needed",
+      "Oral cancer screening",
+      "Written plan with fixed prices",
+    ],
+  },
+  {
+    id: "site-hygiene",
+    wizardId: "hygiene",
+    name: "Hygiene clean",
+    benefit: "Fresh-feeling teeth and healthier gums in a single visit.",
+    duration: "45 min",
+    priceLabel: "£75",
+    includes: [
+      "Scale & polish with our hygienist",
+      "Stain removal (tea, coffee, red wine)",
+      "Gum-health score you can track",
+      "Tailored home-care advice",
+    ],
+  },
+  {
+    id: "site-whitening",
+    wizardId: "whitening",
+    name: "Teeth whitening",
+    benefit: "Up to four shades brighter, safely supervised in the chair.",
+    duration: "60 min",
+    priceLabel: "from £220",
+    includes: [
+      "In-chair professional whitening",
+      "Custom take-home top-up trays",
+      "Shade check before & after",
+      "Sensitivity-managed protocol",
+    ],
+  },
+  {
+    id: "site-fillings",
+    wizardId: "filling",
+    name: "White fillings",
+    benefit: "Tooth-coloured repairs that disappear into your smile.",
+    duration: "45 min",
+    priceLabel: "from £120",
+    includes: [
+      "Shade-matched composite",
+      "Numbing checked before we start",
+      "Bite check & final polish",
+      "Aftercare advice included",
+    ],
+  },
+  {
+    id: "site-aligners",
+    wizardId: "aligners",
+    name: "Clear aligners",
+    benefit: "Straighten your smile discreetly — no fixed braces.",
+    duration: "6–18 months",
+    priceLabel: "from £1,850",
+    includes: [
+      "Digital smile scan & 3D preview",
+      "All aligner sets included",
+      "Reviews every 6–8 weeks",
+      "Retainers & whitening at the end",
+    ],
+    note: "Starts with a 45-minute consult (£65) — book that online below.",
+  },
+  {
+    id: "site-veneers",
+    wizardId: "veneers",
+    name: "Veneers",
+    benefit: "Hand-finished porcelain for chips, gaps and shape.",
+    duration: "2–3 visits",
+    priceLabel: "from £450 / tooth",
+    includes: [
+      "Smile design & trial preview",
+      "Minimal-prep porcelain veneers",
+      "Precise shade matching",
+      "Protective night guard included",
+    ],
+    note: "Starts with a 45-minute consult (£65) — book that online below.",
+  },
+  {
+    id: "site-implants",
+    wizardId: "implants",
+    name: "Dental implants",
+    benefit: "A fixed, natural-feeling replacement for missing teeth.",
+    duration: "3–6 months",
+    priceLabel: "from £2,300",
+    includes: [
+      "3D scan & guided planning",
+      "Titanium implant & placement",
+      "Custom porcelain crown",
+      "All reviews & aftercare included",
+    ],
+    note: "Starts with a 60-minute consult (£95) — book that online below.",
+  },
+  {
+    id: "site-emergency",
+    wizardId: "emergency",
+    name: "Emergency care",
+    benefit: "In pain? We keep same-day slots free every weekday morning.",
+    duration: "30 min",
+    priceLabel: "from £95",
+    includes: [
+      "Same-day assessment & pain relief",
+      "X-ray of the problem tooth",
+      "Temporary or permanent fix where possible",
+      "Follow-up plan with fixed prices",
+    ],
   },
 ];
 
@@ -97,6 +266,8 @@ export const PRACTITIONERS: Practitioner[] = [
     name: "Dr. Lina Farouk",
     role: "Principal dentist",
     initials: "LF",
+    credential: "BDS — GDC registered",
+    bio: "Founded BrightSmile to make dentistry feel unhurried. Special interest in cosmetic work and looking after nervous patients.",
     color: {
       avatar: "bg-care-100 text-care-800 border-care-300",
       block: "bg-care-100 border-care-300",
@@ -109,6 +280,8 @@ export const PRACTITIONERS: Practitioner[] = [
     name: "Dr. Omar Nassar",
     role: "Associate dentist",
     initials: "ON",
+    credential: "BDS — GDC registered",
+    bio: "Leads our restorative and implant work, and covers most same-day emergency slots. Known for a very steady hand.",
     color: {
       avatar: "bg-mint-100 text-mint-700 border-mint-500/40",
       block: "bg-mint-100 border-mint-500/40",
@@ -121,6 +294,8 @@ export const PRACTITIONERS: Practitioner[] = [
     name: "Nour El-Sayed",
     role: "Dental hygienist",
     initials: "NE",
+    credential: "Dip Dental Hygiene — GDC registered",
+    bio: "Runs our hygiene programme — gum health, stain removal and honest home-care coaching. Gentle with sensitive teeth.",
     color: {
       avatar: "bg-amber-100 text-amber-700 border-amber-300",
       block: "bg-amber-100 border-amber-300",
@@ -206,6 +381,17 @@ export const SEED_PATIENTS: SeedPatient[] = [
   { id: "pt-15", name: "Yasmin Fawzy", phone: "07700 900873", visits: 5, lastVisit: "11 Dec 2025" },
   { id: "pt-16", name: "Ziad Selim", phone: "07700 900027", visits: 3, lastVisit: "16 Feb 2026" },
 ];
+
+/** Fictional practice contact details (demo data). */
+export const CLINIC = {
+  phone: "0123 456 7890",
+  phoneHref: "tel:01234567890",
+  email: "hello@brightsmile.example",
+  address1: "12 Demo Lane",
+  address2: "Maple Hollow (fictional), DM0 0DE",
+  rating: "4.9",
+  reviewCount: "210+",
+};
 
 export function getTreatment(id: string): Treatment {
   const t = TREATMENTS.find((x) => x.id === id);
