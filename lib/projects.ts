@@ -263,7 +263,7 @@ export const projects: Project[] = [
       "PostgreSQL",
       "Prisma",
       "BullMQ + Redis",
-      "Claude API",
+      "LLM API integration",
       "Tailwind CSS",
     ],
     businessValue: [

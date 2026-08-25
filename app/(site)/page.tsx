@@ -209,8 +209,8 @@ export default function Home() {
                 <RotatingBadge className="ml-2 hidden sm:block" />
               </div>
               <p className="mt-8 font-mono text-xs tracking-wide text-slate-500">
-                Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API ·
-                Claude AI
+                Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API · AI
+                integrations
               </p>
             </div>
           </div>
