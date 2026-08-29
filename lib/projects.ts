@@ -1,7 +1,8 @@
 export type Project = {
   slug: string;
-  /* "live" = real production site (demoUrl is the external URL); default is a demo build */
-  kind?: "live" | "demo";
+  /* "live" = real production site; "concept" = self-initiated pitch rebuild for a real
+     company, deployed at an external URL; default is a demo build */
+  kind?: "live" | "demo" | "concept";
   title: string;
   tagline: string;
   target: string;
@@ -81,6 +82,67 @@ export const projects: Project[] = [
     demoNote:
       "This is a real production website, live at saladstore-eg.vercel.app — designed and built end to end, from mockups and bilingual copy to code and deployment.",
     demoUrl: "https://saladstore-eg.vercel.app/?lang=en",
+  },
+  {
+    slug: "blue-sky-events",
+    kind: "concept",
+    title: "Blue Sky Events — Concept Rebuild",
+    tagline:
+      "A brand-true concept site for a real Cairo congress house, built entirely from their published record.",
+    target:
+      "Blue Sky Events, an Egyptian congress and exhibition management company staging medical and scientific congresses in Cairo, Alexandria and Luxor since 2013 — ICCE, Oto Alex, EAVMA, PACMM and more.",
+    problem:
+      "The company's production work fills five-star ballrooms, but its web presence undersells it: the public page is assembled from large flat images with almost no text a search engine can read, several navigation links return 404 — including registration and sponsorship — and the contact form isn't wired to anything, so enquiries silently disappear.",
+    solution:
+      "A self-initiated concept rebuild, shipped as a working pitch. Every event name, venue, date and photograph comes from the company's own published record — nothing invented, and the site labels itself a concept. Fully bilingual Arabic/English with true RTL, an editorial motion system, a unified navy photo treatment that turns Instagram-sourced photography into one visual family, and a page that loads in a fraction of the original's weight.",
+    features: [
+      {
+        name: "Bilingual AR/EN with true RTL",
+        description:
+          "A one-tap language toggle flips the entire site — layout direction, typography and native-quality Arabic copy — and remembers the choice, with no flash of the wrong language on reload.",
+      },
+      {
+        name: "Editorial motion system",
+        description:
+          "Smooth scrolling, line-masked headline reveals, velocity marquees and magnetic buttons — the same motion language used by award-winning studio sites, tuned to stay on for every visitor.",
+      },
+      {
+        name: "Unified photo treatment",
+        description:
+          "A navy duotone grade, film grain and real captions turn mixed-quality event photography into one deliberate visual family — and no image ever renders above its native resolution.",
+      },
+      {
+        name: "Track-record grid from the published record",
+        description:
+          "Eleven named congresses with their real venues, cities and dates; events without usable photography get branded cards rather than stock images.",
+      },
+      {
+        name: "Working enquiry form",
+        description:
+          "Client-side validation with a clear success state — and choosing a service anywhere on the page pre-selects the matching event type in the form.",
+      },
+      {
+        name: "Performance as a feature",
+        description:
+          "Under 1.5 MB and interactive in about a second on the first visit — where the site it reimagines ships tens of megabytes of flat images.",
+      },
+    ],
+    tech: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "GSAP + ScrollTrigger",
+      "Lenis",
+      "Custom AR/EN i18n (RTL)",
+    ],
+    businessValue: [
+      "Shows how a congress house's own archive — photos, venues, named events — can be turned into a credible sales asset without inventing a single claim.",
+      "Demonstrates true bilingual delivery for a market where most competitor congress sites ship English-only.",
+      "Proves that a fast, search-readable rebuild is achievable within the constraints of real, imperfect source material.",
+    ],
+    demoNote:
+      "This is a concept, not commissioned work: a live pitch built for a real company from publicly available material, and clearly labelled as a design concept on the site itself.",
+    demoUrl: "https://blue-skye.vercel.app",
   },
   {
     slug: "clinic-management",

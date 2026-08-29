@@ -62,9 +62,9 @@ export default async function ProjectPage({
       </Link>
 
       <div className="mt-10 flex flex-wrap items-center gap-4">
-        {project.kind === "live" ? (
+        {project.kind === "live" || project.kind === "concept" ? (
           <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 font-mono text-xs tracking-wide text-emerald-300 uppercase">
-            Live project
+            {project.kind === "concept" ? "Concept · live" : "Live project"}
           </span>
         ) : (
           <span className="rounded-full border border-slate-700 px-3 py-1 font-mono text-xs tracking-wide text-slate-400 uppercase">
@@ -86,14 +86,14 @@ export default async function ProjectPage({
 
       <div className="mt-10 flex flex-wrap items-center gap-5">
         <Magnetic strength={0.3}>
-          {project.kind === "live" ? (
+          {project.kind === "live" || project.kind === "concept" ? (
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
             >
-              Visit the live site →
+              {project.kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
             </a>
           ) : (
             <Link
@@ -107,13 +107,15 @@ export default async function ProjectPage({
         <p className="text-sm text-slate-500">
           {project.kind === "live"
             ? "Opens in a new tab — this is the real site, in production."
-            : "Runs in your browser — fictional data, nothing to install."}
+            : project.kind === "concept"
+              ? "Opens in a new tab — a live concept preview built as a pitch, not commissioned work."
+              : "Runs in your browser — fictional data, nothing to install."}
         </p>
       </div>
 
       <div className="mt-16 max-w-4xl">
         <Parallax amount={5}>
-          {project.kind === "live" ? (
+          {project.kind === "live" || project.kind === "concept" ? (
             <a
               href={project.demoUrl}
               target="_blank"
@@ -137,7 +139,9 @@ export default async function ProjectPage({
         <p className="mt-4 text-sm text-slate-500">
           {project.kind === "live"
             ? "Real screenshot of the production site — click it to visit."
-            : "Real screenshot of the working demo — click it to try the app itself."}
+            : project.kind === "concept"
+              ? "Real screenshot of the live concept — click it to browse the full site."
+              : "Real screenshot of the working demo — click it to try the app itself."}
         </p>
       </div>
 
@@ -243,7 +247,9 @@ export default async function ProjectPage({
         <p className="mx-auto mt-5 max-w-lg text-slate-400">
           {project.kind === "live"
             ? "This one is live in production. If your business needs something like it, I can build the version that fits how you work."
-            : "This demo maps to a real problem. If it's one your business has, I can build the version that fits how you work."}
+            : project.kind === "concept"
+              ? "This concept was built from a real company's published record. If your business deserves the same treatment, I can build the version that fits how you work."
+              : "This demo maps to a real problem. If it's one your business has, I can build the version that fits how you work."}
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-5">
           <Magnetic strength={0.3}>
@@ -255,14 +261,14 @@ export default async function ProjectPage({
             </Link>
           </Magnetic>
           <Magnetic strength={0.3}>
-            {project.kind === "live" ? (
+            {project.kind === "live" || project.kind === "concept" ? (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-full border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:text-white"
               >
-                Visit the live site
+                {project.kind === "concept" ? "Browse the concept" : "Visit the live site"}
               </a>
             ) : (
               <Link
