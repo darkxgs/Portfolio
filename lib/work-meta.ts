@@ -5,6 +5,7 @@ import type { WorkListItem } from "@/components/work-list";
    Content data itself stays in lib/projects.ts, untouched. */
 const categories: Record<string, string> = {
   "salad-store": "Website · E-commerce",
+  "blue-sky-events": "Concept · Congress house",
   "clinic-management": "Web application",
   "restaurant-platform": "Ordering platform",
   "crm-automation": "CRM · Automation · AI",
@@ -16,6 +17,7 @@ const categories: Record<string, string> = {
    Used for the row dot, hover accents, and the preview frame ring. */
 const accents: Record<string, string> = {
   "salad-store": "#3e8e51", // leaf
+  "blue-sky-events": "#2b9fe3", // sky
   "clinic-management": "#146c77", // teal
   "restaurant-platform": "#d96b34", // ember
   "crm-automation": "#6e85e8", // periwinkle
@@ -29,7 +31,7 @@ export function toWorkItems(projects: Project[]): WorkListItem[] {
     title: p.title,
     category: categories[p.slug] ?? "Web application",
     year: "2026",
-    live: p.kind === "live",
+    kind: p.kind ?? "demo",
     demoUrl: p.demoUrl,
     accent: accents[p.slug] ?? "#34d399",
   }));

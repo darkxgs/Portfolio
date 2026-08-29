@@ -3,7 +3,7 @@ import AppShot from "@/components/app-shot";
 import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const live = project.kind === "live";
+  const live = project.kind === "live" || project.kind === "concept";
   const shot = <AppShot slug={project.slug} alt={`Screenshot of ${project.title}`} />;
 
   return (
@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           </h3>
           {live ? (
             <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] tracking-wide text-emerald-300 uppercase">
-              Live project
+              {project.kind === "concept" ? "Concept · live" : "Live project"}
             </span>
           ) : (
             <span className="rounded-full border border-slate-700 px-2 py-0.5 font-mono text-[10px] tracking-wide text-slate-400 uppercase">
@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="text-sm font-medium text-emerald-400 hover:text-emerald-300"
             >
-              Visit the live site →
+              {project.kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
             </a>
           ) : (
             <Link

@@ -11,7 +11,7 @@ export type WorkListItem = {
   title: string;
   category: string;
   year: string;
-  live: boolean;
+  kind: "live" | "demo" | "concept";
   demoUrl: string;
   /* Per-project brand tint (hex) — dot, hover accents, preview ring. */
   accent: string;
@@ -163,14 +163,14 @@ export default function WorkList({
                 <span className={`font-mono text-xs ${yearColor}`}>
                   {item.year}
                 </span>
-                {item.live ? (
+                {item.kind !== "demo" ? (
                   <a
                     href={item.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`relative z-10 rounded-full border px-3 py-1 font-mono text-[10px] tracking-wide uppercase transition-colors duration-300 group-hover:border-[color:var(--row-accent)] ${liveChip}`}
                   >
-                    Live project
+                    {item.kind === "live" ? "Live project" : "Concept · live"}
                   </a>
                 ) : (
                   <Link
