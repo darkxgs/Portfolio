@@ -129,16 +129,16 @@
 }
 
 ::selection {
-  background-color: rgb(52 211 153 / 0.25);
+  background-color: rgb(217 123 74 / 0.28);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Keyboard focus: emerald-400 ring, offset so it clears rounded pills. */
+/* Keyboard focus: accent-400 ring, offset so it clears rounded pills. */
 :focus-visible {
-  outline: 2px solid #34d399;
+  outline: 2px solid #e8955f;
   outline-offset: 4px;
 }
 
@@ -206,6 +206,19 @@ html.lenis body {
     serif;
 
   /* Warm paper theme for alternating light sections */
+  /* Site ground: a neutral warm-black instead of Tailwind's blue-black
+     slate-950, so the copper accent and the paper sections sit together. */
+  --color-ground-950: #0b0d10;
+  --color-ground-900: #15181d;
+  --color-ground-800: #262a31;
+  /* Signature accent: copper. 300/400 are text on ink, 500 is the button
+     fill (ink text on it), 700/800 are text and chips on paper. */
+  --color-accent-300: #f2b184;
+  --color-accent-400: #e8955f;
+  --color-accent-500: #d97b4a;
+  --color-accent-600: #b9603a;
+  --color-accent-700: #8f4a2a;
+  --color-accent-800: #6e381f;
   --color-paper: #f2efe6;
   --color-paper-deep: #e7e2d4;
   --color-ink-text: #12130f;

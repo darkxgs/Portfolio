@@ -25,7 +25,7 @@ const destinations = [
 export default function NotFoundContent() {
   return (
     <div className="mx-auto max-w-7xl px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
-      <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+      <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
         404
       </p>
       <h1 className="mt-4 font-display text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] font-bold tracking-tight text-white">
@@ -41,13 +41,13 @@ export default function NotFoundContent() {
           <li key={d.href}>
             <Link
               href={d.href}
-              className="group flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-colors hover:border-emerald-500/40"
+              className="group flex items-start gap-4 rounded-2xl border border-ground-800 bg-ground-900/40 p-6 transition-colors hover:border-accent-500/40"
             >
-              <span className="font-mono text-sm text-emerald-400">
+              <span className="font-mono text-sm text-accent-400">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>
-                <span className="block font-display text-xl font-bold text-white transition-colors group-hover:text-emerald-300">
+                <span className="block font-display text-xl font-bold text-white transition-colors group-hover:text-accent-300">
                   {d.label}
                 </span>
                 <span className="mt-1 block text-sm leading-relaxed text-slate-400">

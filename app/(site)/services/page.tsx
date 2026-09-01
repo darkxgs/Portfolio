@@ -70,7 +70,7 @@ function Check({ paper }: { paper: boolean }) {
       viewBox="0 0 16 16"
       fill="none"
       aria-hidden="true"
-      className={`mt-1 shrink-0 ${paper ? "text-emerald-700" : "text-emerald-400"}`}
+      className={`mt-1 shrink-0 ${paper ? "text-accent-700" : "text-accent-400"}`}
     >
       <path
         d="M2.5 8.5l3.5 3.5 7.5-8"
@@ -88,7 +88,7 @@ export default function Services() {
     <>
       {/* Ink hero */}
       <div className="mx-auto max-w-7xl px-6 pt-28 pb-16 sm:pt-36 sm:pb-20">
-        <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+        <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
           Services
         </p>
         <RevealText
@@ -98,7 +98,7 @@ export default function Services() {
             "Three ways I help",
             <>
               businesses{" "}
-              <em className="font-accent font-normal text-emerald-400 italic">
+              <em className="font-accent font-normal text-accent-400 italic">
                 grow
               </em>
             </>,
@@ -123,11 +123,11 @@ export default function Services() {
             <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
               <div
                 className={`flex items-baseline gap-4 border-t pt-10 ${
-                  paper ? "border-ink-text/15" : "border-slate-800"
+                  paper ? "border-ink-text/15" : "border-ground-800"
                 }`}
               >
                 <span
-                  className={`font-mono text-sm ${paper ? "text-emerald-700" : "text-emerald-400"}`}
+                  className={`font-mono text-sm ${paper ? "text-accent-700" : "text-accent-400"}`}
                 >
                   {service.n}
                 </span>
@@ -159,8 +159,8 @@ export default function Services() {
                     <p
                       className={`mt-8 border-l-2 pl-4 text-sm leading-relaxed italic ${
                         paper
-                          ? "border-emerald-700/50 text-ink-soft"
-                          : "border-emerald-500/50 text-slate-400"
+                          ? "border-accent-700/50 text-ink-soft"
+                          : "border-accent-500/50 text-slate-400"
                       }`}
                     >
                       {service.fit}
@@ -174,7 +174,7 @@ export default function Services() {
                         className={`flex gap-3 rounded-xl border p-4 text-sm ${
                           paper
                             ? "border-ink-text/15 bg-paper-deep/60 text-ink-soft"
-                            : "border-slate-800/70 bg-slate-900/30 text-slate-300"
+                            : "border-ground-800/70 bg-ground-900/30 text-slate-300"
                         }`}
                       >
                         <Check paper={paper} />
@@ -191,7 +191,7 @@ export default function Services() {
 
       {/* Ink CTA */}
       <div className="mx-auto max-w-7xl px-6 pt-8 pb-24 sm:pb-32">
-        <div className="flex flex-col items-center border-t border-slate-800 pt-20 text-center">
+        <div className="flex flex-col items-center border-t border-ground-800 pt-20 text-center">
           <RevealText
             as="h2"
             lines={[
@@ -211,7 +211,7 @@ export default function Services() {
           <Magnetic strength={0.3} className="mt-8">
             <Link
               href="/contact"
-              className="block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+              className="block rounded-full bg-accent-500 px-7 py-3.5 text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400"
             >
               Describe your problem
             </Link>

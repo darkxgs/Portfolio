@@ -57,7 +57,7 @@ function Check() {
       viewBox="0 0 16 16"
       fill="none"
       aria-hidden="true"
-      className="mt-1 shrink-0 text-emerald-400"
+      className="mt-1 shrink-0 text-accent-400"
     >
       <path
         d="M2.5 8.5l3.5 3.5 7.5-8"
@@ -76,7 +76,7 @@ function TechChips({ items }: { items: string[] }) {
       {items.map((t) => (
         <span
           key={t}
-          className="rounded-md bg-slate-800/80 px-3 py-1.5 font-mono text-xs text-slate-300"
+          className="rounded-md bg-ground-800/80 px-3 py-1.5 font-mono text-xs text-slate-300"
         >
           {t}
         </span>
@@ -86,7 +86,7 @@ function TechChips({ items }: { items: string[] }) {
 }
 
 const primaryButton =
-  "block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400";
+  "block rounded-full bg-accent-500 px-7 py-3.5 text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400";
 const secondaryButton =
   "block rounded-full border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:text-white";
 
@@ -136,7 +136,7 @@ export default async function ProjectPage({
 
       <div className="mt-10 flex flex-wrap items-center gap-4">
         {kind !== "demo" ? (
-          <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 font-mono text-xs tracking-wide text-emerald-300 uppercase">
+          <span className="rounded-full border border-accent-500/40 bg-accent-500/10 px-3 py-1 font-mono text-xs tracking-wide text-accent-300 uppercase">
             {chip}
           </span>
         ) : (
@@ -232,7 +232,7 @@ export default async function ProjectPage({
                 <figure
                   key={shot.src}
                   data-reveal
-                  className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900 shadow-xl shadow-black/30"
+                  className="overflow-hidden rounded-xl border border-slate-700/70 bg-ground-900 shadow-xl shadow-black/30"
                 >
                   <Image
                     src={shot.src}
@@ -242,7 +242,7 @@ export default async function ProjectPage({
                     className="w-full"
                   />
                   {shot.caption && (
-                    <figcaption className="border-t border-slate-800 px-4 py-3 text-xs leading-relaxed text-slate-400">
+                    <figcaption className="border-t border-ground-800 px-4 py-3 text-xs leading-relaxed text-slate-400">
                       {shot.caption}
                     </figcaption>
                   )}
@@ -256,7 +256,7 @@ export default async function ProjectPage({
       <SectionReveal>
         <div className="mt-24 grid gap-14 lg:grid-cols-2">
           <section data-reveal>
-            <h2 className="font-mono text-sm tracking-widest text-emerald-400 uppercase">
+            <h2 className="font-mono text-sm tracking-widest text-accent-400 uppercase">
               The problem
             </h2>
             <p className="mt-5 leading-relaxed text-slate-300">
@@ -264,7 +264,7 @@ export default async function ProjectPage({
             </p>
           </section>
           <section data-reveal>
-            <h2 className="font-mono text-sm tracking-widest text-emerald-400 uppercase">
+            <h2 className="font-mono text-sm tracking-widest text-accent-400 uppercase">
               The solution
             </h2>
             <p className="mt-5 leading-relaxed text-slate-300">
@@ -286,7 +286,7 @@ export default async function ProjectPage({
               <div
                 key={feature.name}
                 data-reveal
-                className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-colors hover:border-emerald-500/30"
+                className="rounded-2xl border border-ground-800 bg-ground-900/40 p-6 transition-colors hover:border-accent-500/30"
               >
                 <h3 className="font-display font-bold text-white">
                   {feature.name}
@@ -373,7 +373,7 @@ export default async function ProjectPage({
         )}
       </div>
 
-      <div className="mt-24 rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center sm:p-16">
+      <div className="mt-24 rounded-3xl border border-accent-500/20 bg-accent-500/5 p-10 text-center sm:p-16">
         <RevealText
           as="h2"
           lines={["Want something like this", "for your business?"]}
@@ -395,7 +395,7 @@ export default async function ProjectPage({
             </Link>
           </Magnetic>
           {production ? (
-            <span className="rounded-full border border-slate-800 px-7 py-3.5 text-sm text-slate-400">
+            <span className="rounded-full border border-ground-800 px-7 py-3.5 text-sm text-slate-400">
               Internal system, no public link
             </span>
           ) : (

@@ -42,7 +42,7 @@ export default function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         open
-          ? "bg-slate-950" /* no backdrop-filter while the overlay is open — a filter would become the containing block for the fixed overlay */
+          ? "bg-ground-950" /* no backdrop-filter while the overlay is open — a filter would become the containing block for the fixed overlay */
           : scrolled
             ? /* ink translucent — keeps the nav legible over both the
                  dark and the paper sections it overlays */
@@ -51,8 +51,8 @@ export default function Nav() {
                  animating at that moment (worst right after client-side
                  navigation). A near-opaque ink bar reads the same over this
                  dark site and costs nothing. */
-              "border-b border-slate-800/60 bg-slate-950/90"
-            : "border-b border-transparent bg-gradient-to-b from-slate-950/80 to-transparent"
+              "border-b border-ground-800/60 bg-ground-950/90"
+            : "border-b border-transparent bg-gradient-to-b from-ground-950/80 to-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:h-20">
@@ -61,7 +61,7 @@ export default function Nav() {
           className="relative z-50 flex items-baseline gap-2"
           onClick={() => setOpen(false)}
         >
-          <span className="font-mono text-sm text-emerald-400">&lt;/&gt;</span>
+          <span className="font-mono text-sm text-accent-400">&lt;/&gt;</span>
           <span className="font-display text-base font-semibold tracking-tight text-white">
             Seif Ashraf
           </span>
@@ -91,7 +91,7 @@ export default function Nav() {
           <Magnetic strength={0.3} className="ml-3">
             <Link
               href="/contact"
-              className="block rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+              className="block rounded-full bg-accent-500 px-5 py-2.5 text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400"
             >
               Start a project
             </Link>
@@ -117,7 +117,7 @@ export default function Nav() {
       {/* Full-screen mobile overlay with staggered large-type reveal */}
       <div
         aria-hidden={!open}
-        className={`fixed inset-0 z-40 flex flex-col justify-center bg-slate-950 px-8 transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col justify-center bg-ground-950 px-8 transition-opacity duration-300 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -136,7 +136,7 @@ export default function Nav() {
               }`}
               style={{ transitionDelay: open ? `${120 + i * 70}ms` : "0ms" }}
             >
-              <span className="font-mono text-sm text-emerald-400">
+              <span className="font-mono text-sm text-accent-400">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="font-display text-5xl font-bold tracking-tight text-white">

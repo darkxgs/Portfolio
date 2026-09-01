@@ -20,12 +20,12 @@ export default function AppShot({ slug, alt }: { slug: string; alt: string }) {
   const frame = frames[slug];
   if (!frame) return null;
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900 shadow-2xl shadow-black/40">
-      <div className="flex items-center gap-2 border-b border-slate-700/70 bg-slate-800/60 px-4 py-2.5">
+    <div className="overflow-hidden rounded-xl border border-slate-700/70 bg-ground-900 shadow-2xl shadow-black/40">
+      <div className="flex items-center gap-2 border-b border-slate-700/70 bg-ground-800/60 px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
-        <span className="ml-3 flex-1 truncate rounded-md bg-slate-900/80 px-3 py-1 font-mono text-[10px] text-slate-400">
+        <span className="ml-3 flex-1 truncate rounded-md bg-ground-900/80 px-3 py-1 font-mono text-[10px] text-slate-400">
           {frame.label}
         </span>
       </div>

@@ -17,7 +17,7 @@ export default function Projects() {
     <>
       {/* Ink hero */}
       <div className="mx-auto max-w-7xl px-6 pt-28 pb-20 sm:pt-36 sm:pb-24">
-        <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+        <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
           Projects
         </p>
         <RevealText
@@ -39,7 +39,7 @@ export default function Projects() {
           company from its published record. And five{" "}
           <Link
             href="/demos"
-            className="text-emerald-400 underline decoration-emerald-400/40 underline-offset-4 transition-colors hover:text-emerald-300"
+            className="text-accent-400 underline decoration-accent-400/40 underline-offset-4 transition-colors hover:text-accent-300"
           >
             interactive demos
           </Link>{" "}

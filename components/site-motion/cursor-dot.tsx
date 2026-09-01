@@ -60,7 +60,7 @@ export default function CursorDot() {
     <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-[90] h-2.5 w-2.5 rounded-full bg-emerald-400 opacity-0 max-md:hidden"
+      className="pointer-events-none fixed top-0 left-0 z-[90] h-2.5 w-2.5 rounded-full bg-accent-400 opacity-0 max-md:hidden"
     />
   );
 }
