@@ -147,16 +147,19 @@ export default function Home() {
             {/* Arch portrait — overlaps the name on lg+, behind the text */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 right-10 z-0 hidden -translate-y-[52%] rotate-[-2deg] lg:block xl:right-24"
+              className="pointer-events-none absolute top-1/2 right-10 z-0 hidden -translate-y-[52%] lg:block xl:right-24"
             >
+              {/* Source is a 750px edit, so the arch is kept at ≤ half the
+                  native width and served at high quality: crisp on 2x screens. */}
               <Image
                 src="/seif-portrait.webp"
                 alt=""
-                width={470}
-                height={600}
+                width={562}
+                height={750}
                 priority
-                sizes="(min-width:1024px) 235px, 0px"
-                className="h-[300px] w-[235px] rounded-t-full object-cover object-top ring-1 ring-accent-400/70 ring-offset-4 ring-offset-ground-950"
+                quality={92}
+                sizes="(min-width:1024px) 250px, 0px"
+                className="h-[334px] w-[250px] rounded-t-full object-cover object-top ring-1 ring-accent-400/70 ring-offset-4 ring-offset-ground-950"
               />
             </div>
             <RevealText
@@ -173,8 +176,9 @@ export default function Home() {
                 <Image
                   src="/seif-avatar.webp"
                   alt="Seif Ashraf"
-                  width={96}
-                  height={96}
+                  width={128}
+                  height={128}
+                  quality={90}
                   sizes="36px"
                   className="h-9 w-9 rounded-full object-cover object-top"
                 />

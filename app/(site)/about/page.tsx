@@ -99,15 +99,18 @@ export default function About() {
             </div>
             <figure
               data-reveal
-              className="relative overflow-hidden rounded-3xl border border-ground-800"
+              className="relative w-full max-w-[375px] overflow-hidden rounded-3xl border border-ground-800 lg:ml-auto"
             >
+              {/* 750px source shown at ≤375 CSS px so it stays sharp on 2x
+                  screens instead of being upscaled. */}
               <Image
-                src="/seif-portrait.webp"
+                src="/seif-square.webp"
                 alt="Portrait of Seif Ashraf"
-                width={470}
-                height={600}
-                sizes="(min-width:1024px) 520px, 100vw"
-                className="w-full object-cover saturate-[0.85]"
+                width={750}
+                height={750}
+                quality={92}
+                sizes="(min-width:1024px) 375px, (min-width:640px) 375px, 100vw"
+                className="w-full object-cover"
               />
               <div
                 className="absolute inset-0 bg-gradient-to-t from-ground-950/70 via-transparent to-transparent"
