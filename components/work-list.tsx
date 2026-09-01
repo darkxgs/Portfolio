@@ -93,16 +93,16 @@ export default function WorkList({
     });
   }, [active, enabled]);
 
-  const rowBorder = paper ? "border-ink-text/15" : "border-slate-800";
+  const rowBorder = paper ? "border-ink-text/15" : "border-ground-800";
   const indexColor = paper ? "text-ink-faint" : "text-slate-400";
   const titleColor = paper
     ? "text-ink-text"
-    : "text-white group-hover:text-emerald-300 group-focus-within:text-emerald-300";
+    : "text-white group-hover:text-accent-300 group-focus-within:text-accent-300";
   const metaColor = paper ? "text-ink-faint" : "text-slate-400";
   const yearColor = paper ? "text-ink-faint/80" : "text-slate-500";
   const liveChip = paper
-    ? "border-emerald-700/40 bg-emerald-700/10 text-emerald-800 hover:bg-emerald-700/15"
-    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20";
+    ? "border-accent-700/40 bg-accent-700/10 text-accent-800 hover:bg-accent-700/15"
+    : "border-accent-500/40 bg-accent-500/10 text-accent-300 hover:bg-accent-500/20";
   /* Hover accents, repeated for keyboard focus within the row. */
   const accentText =
     "group-hover:text-[color:var(--row-accent)] group-focus-within:text-[color:var(--row-accent)]";

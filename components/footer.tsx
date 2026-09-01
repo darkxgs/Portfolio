@@ -13,9 +13,9 @@ const sitemap = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-slate-800/80">
+    <footer className="relative overflow-hidden border-t border-ground-800/80">
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-10 sm:pt-28">
-        <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
+        <p className="font-mono text-xs tracking-widest text-accent-400 uppercase">
           Next step
         </p>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-10">
@@ -27,7 +27,7 @@ export default function Footer() {
           <Magnetic strength={0.3}>
             <Link
               href="/contact"
-              className="flex h-36 w-36 items-center justify-center rounded-full bg-emerald-500 p-4 text-center text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400 sm:h-44 sm:w-44"
+              className="flex h-36 w-36 items-center justify-center rounded-full bg-accent-500 p-4 text-center text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400 sm:h-44 sm:w-44"
             >
               Get in touch
               <svg
@@ -54,7 +54,7 @@ export default function Footer() {
           <Magnetic strength={0.25}>
             <a
               href="mailto:hello@seifashraf.dev"
-              className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-emerald-500/50 hover:text-white"
+              className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-accent-500/50 hover:text-white"
             >
               hello@seifashraf.dev
             </a>
@@ -64,14 +64,14 @@ export default function Footer() {
               href="https://wa.me/201069896831"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-emerald-500/50 hover:text-white"
+              className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-accent-500/50 hover:text-white"
             >
               WhatsApp
             </a>
           </Magnetic>
         </div>
 
-        <div className="mt-20 grid gap-10 border-t border-slate-800/80 pt-10 sm:grid-cols-3">
+        <div className="mt-20 grid gap-10 border-t border-ground-800/80 pt-10 sm:grid-cols-3">
           <div>
             <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
               Sitemap

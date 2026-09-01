@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         : "Interactive demo";
 
   return (
-    <div className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-colors hover:border-emerald-500/40">
+    <div className="group flex flex-col rounded-2xl border border-ground-800 bg-ground-900/40 p-6 transition-colors hover:border-accent-500/40">
       {production ? (
         shot
       ) : external ? (
@@ -37,12 +37,12 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="mt-6 flex flex-1 flex-col">
         <div className="flex items-center gap-3">
           <h3 className="text-lg font-semibold text-white">
-            <Link href={`/projects/${project.slug}`} className="hover:text-emerald-300">
+            <Link href={`/projects/${project.slug}`} className="hover:text-accent-300">
               {project.title}
             </Link>
           </h3>
           {kind !== "demo" ? (
-            <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] tracking-wide text-emerald-300 uppercase">
+            <span className="rounded-full border border-accent-500/40 bg-accent-500/10 px-2 py-0.5 font-mono text-[10px] tracking-wide text-accent-300 uppercase">
               {chip}
             </span>
           ) : (
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.tech.slice(0, 4).map((t) => (
             <span
               key={t}
-              className="rounded-md bg-slate-800/80 px-2 py-1 font-mono text-[11px] text-slate-400"
+              className="rounded-md bg-ground-800/80 px-2 py-1 font-mono text-[11px] text-slate-400"
             >
               {t}
             </span>
@@ -74,14 +74,14 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              className="text-sm font-medium text-accent-400 hover:text-accent-300"
             >
               {kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
             </a>
           ) : (
             <Link
               href={url}
-              className="text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              className="text-sm font-medium text-accent-400 hover:text-accent-300"
             >
               Open the interactive demo →
             </Link>

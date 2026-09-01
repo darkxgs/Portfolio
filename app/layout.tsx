@@ -110,7 +110,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-slate-950 font-sans text-slate-300 antialiased">
+      <body className="bg-ground-950 font-sans text-slate-300 antialiased">
         {children}
       </body>
     </html>

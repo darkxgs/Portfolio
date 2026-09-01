@@ -61,7 +61,7 @@ function HoverArrow() {
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
-      className="shrink-0 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-400"
+      className="shrink-0 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-400"
     >
       <path
         d="M4 12h16m0 0-6-6m6 6-6 6"
@@ -77,7 +77,7 @@ function HoverArrow() {
 export default function Contact() {
   return (
     <div className="mx-auto max-w-7xl px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
-      <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+      <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
         Contact
       </p>
       <RevealText
@@ -105,7 +105,7 @@ export default function Contact() {
           <Magnetic strength={0.3} className="mt-10">
             <a
               href="mailto:hello@seifashraf.dev?subject=Project%20enquiry"
-              className="flex h-44 w-44 flex-col items-center justify-center gap-1 rounded-full bg-emerald-500 p-6 text-center text-slate-950 transition-colors hover:bg-emerald-400 sm:h-52 sm:w-52"
+              className="flex h-44 w-44 flex-col items-center justify-center gap-1 rounded-full bg-accent-500 p-6 text-center text-ground-950 transition-colors hover:bg-accent-400 sm:h-52 sm:w-52"
             >
               <span className="text-base font-medium">Email me</span>
               <svg
@@ -131,11 +131,11 @@ export default function Contact() {
 
           {/* Channel rows */}
           <SectionReveal>
-            <div className="mt-12 border-t border-slate-800">
+            <div className="mt-12 border-t border-ground-800">
               <a
                 href="mailto:hello@seifashraf.dev?subject=Project%20enquiry"
                 data-reveal
-                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+                className="group flex items-center justify-between gap-4 border-b border-ground-800 py-5 transition-colors hover:bg-ground-900/40"
               >
                 <div className="flex items-center gap-4">
                   <span className="font-mono text-xs text-slate-400">01</span>
@@ -153,7 +153,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-reveal
-                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+                className="group flex items-center justify-between gap-4 border-b border-ground-800 py-5 transition-colors hover:bg-ground-900/40"
               >
                 <div className="flex items-center gap-4">
                   <span className="font-mono text-xs text-slate-400">02</span>
@@ -171,7 +171,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-reveal
-                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+                className="group flex items-center justify-between gap-4 border-b border-ground-800 py-5 transition-colors hover:bg-ground-900/40"
               >
                 <div className="flex items-center gap-4">
                   <span className="font-mono text-xs text-slate-400">03</span>
@@ -189,7 +189,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-reveal
-                className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
+                className="group flex items-center justify-between gap-4 border-b border-ground-800 py-5 transition-colors hover:bg-ground-900/40"
               >
                 <div className="flex items-center gap-4">
                   <span className="font-mono text-xs text-slate-400">04</span>
@@ -207,14 +207,14 @@ export default function Contact() {
         </div>
 
         <div className="space-y-8">
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10">
+          <div className="rounded-3xl border border-ground-800 bg-ground-900/40 p-8 sm:p-10">
             <h2 className="font-display text-lg font-bold text-white">
               What happens next
             </h2>
             <div className="mt-8 space-y-8">
               {steps.map((step) => (
                 <div key={step.n} className="flex gap-5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 font-mono text-sm text-emerald-400">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent-500/40 font-mono text-sm text-accent-400">
                     {step.n}
                   </div>
                   <div>
@@ -228,7 +228,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-8 sm:p-10">
+          <div className="rounded-3xl border border-accent-500/20 bg-accent-500/5 p-8 sm:p-10">
             <h2 className="font-display text-lg font-bold text-white">
               Working with me from the UK or Ireland
             </h2>
@@ -237,7 +237,7 @@ export default function Contact() {
                 <li key={item.title} className="flex gap-4">
                   <span
                     aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400"
                   />
                   <div>
                     <h3 className="font-medium text-white">{item.title}</h3>

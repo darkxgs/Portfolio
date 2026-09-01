@@ -53,7 +53,7 @@ export default function About() {
     <>
       {/* Ink hero + intro */}
       <div className="mx-auto max-w-7xl px-6 pt-28 pb-20 sm:pt-36 sm:pb-24">
-        <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+        <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
           About
         </p>
         <RevealText
@@ -99,7 +99,7 @@ export default function About() {
             </div>
             <figure
               data-reveal
-              className="relative overflow-hidden rounded-3xl border border-slate-800"
+              className="relative overflow-hidden rounded-3xl border border-ground-800"
             >
               <Image
                 src="/seif-portrait.webp"
@@ -110,7 +110,7 @@ export default function About() {
                 className="w-full object-cover saturate-[0.85]"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-ground-950/70 via-transparent to-transparent"
                 aria-hidden="true"
               />
               <figcaption className="absolute bottom-4 left-5 font-mono text-xs tracking-widest text-slate-300 uppercase">
@@ -125,7 +125,7 @@ export default function About() {
       <section className="bg-paper text-ink-text">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
           <div className="flex items-baseline gap-4">
-            <span className="font-mono text-sm text-emerald-700">01</span>
+            <span className="font-mono text-sm text-accent-700">01</span>
             <RevealText
               as="h2"
               lines={[
@@ -146,7 +146,7 @@ export default function About() {
                 <div
                   key={s.name}
                   data-reveal
-                  className="rounded-2xl border border-ink-text/15 bg-paper-deep/60 p-6 transition-colors hover:border-emerald-700/40"
+                  className="rounded-2xl border border-ink-text/15 bg-paper-deep/60 p-6 transition-colors hover:border-accent-700/40"
                 >
                   <h3 className="font-display font-bold text-ink-text">
                     {s.name}
@@ -165,7 +165,7 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
         <section>
           <div className="flex items-baseline gap-4">
-            <span className="font-mono text-sm text-emerald-400">02</span>
+            <span className="font-mono text-sm text-accent-400">02</span>
             <RevealText
               as="h2"
               lines={["How I think about projects"]}
@@ -173,7 +173,7 @@ export default function About() {
             />
           </div>
           <SectionReveal>
-            <div className="mt-10 grid gap-10 border-t border-slate-800 pt-10 md:grid-cols-3">
+            <div className="mt-10 grid gap-10 border-t border-ground-800 pt-10 md:grid-cols-3">
               {principles.map((p, i) => (
                 <div key={p.title} data-reveal>
                   <p className="font-mono text-sm text-slate-400">
@@ -191,7 +191,7 @@ export default function About() {
           </SectionReveal>
         </section>
 
-        <div className="mt-28 flex flex-col items-center rounded-3xl border border-slate-800 bg-slate-900/40 p-10 text-center sm:p-16">
+        <div className="mt-28 flex flex-col items-center rounded-3xl border border-ground-800 bg-ground-900/40 p-10 text-center sm:p-16">
           <RevealText
             as="h2"
             lines={[
@@ -210,7 +210,7 @@ export default function About() {
           <Magnetic strength={0.3} className="mt-8">
             <Link
               href="/contact"
-              className="block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+              className="block rounded-full bg-accent-500 px-7 py-3.5 text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400"
             >
               Get in touch
             </Link>

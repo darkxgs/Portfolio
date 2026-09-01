@@ -116,7 +116,7 @@ function RotatingBadge({ className = "" }: { className?: string }) {
               Available for projects — 2026 —&#160;
             </textPath>
           </text>
-          <circle cx="50" cy="50" r="3.5" className="fill-emerald-400" />
+          <circle cx="50" cy="50" r="3.5" className="fill-accent-400" />
         </svg>
       </div>
     </div>
@@ -131,7 +131,7 @@ export default function Home() {
       {/* ============ Hero — deep ink ============ */}
       <section className="relative flex min-h-svh flex-col overflow-hidden">
         <div
-          className="pointer-events-none absolute -top-40 left-1/2 h-130 w-200 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"
+          className="pointer-events-none absolute -top-40 left-1/2 h-130 w-200 -translate-x-1/2 rounded-full bg-accent-500/10 blur-3xl"
           aria-hidden="true"
         />
         <div
@@ -139,7 +139,7 @@ export default function Home() {
           aria-hidden="true"
         />
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pt-28 pb-10">
-          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
+          <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
             Freelance developer · Cairo · working with UK &amp; Irish businesses
           </p>
 
@@ -156,7 +156,7 @@ export default function Home() {
                 height={600}
                 priority
                 sizes="(min-width:1024px) 235px, 0px"
-                className="h-[300px] w-[235px] rounded-t-full object-cover object-top ring-1 ring-emerald-400/70 ring-offset-4 ring-offset-slate-950"
+                className="h-[300px] w-[235px] rounded-t-full object-cover object-top ring-1 ring-accent-400/70 ring-offset-4 ring-offset-ground-950"
               />
             </div>
             <RevealText
@@ -169,7 +169,7 @@ export default function Home() {
 
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-end">
             <div className="flex flex-col items-start gap-6">
-              <div className="inline-flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900 p-2">
+              <div className="inline-flex items-center gap-3 rounded-full border border-ground-800 bg-ground-900 p-2">
                 <Image
                   src="/seif-avatar.webp"
                   alt="Seif Ashraf"
@@ -181,12 +181,12 @@ export default function Home() {
                 <span className="text-sm text-slate-200">
                   Cairo · two hours ahead of London
                 </span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-300">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ground-800 text-slate-300">
                   <Globe />
                 </span>
               </div>
               <div className="flex items-start gap-4">
-                <ArrowDownRight className="mt-1 shrink-0 text-emerald-400" />
+                <ArrowDownRight className="mt-1 shrink-0 text-accent-400" />
                 <p className="max-w-md text-lg leading-snug text-white sm:text-xl">
                   I build the website, booking system or back-office tool your
                   business is missing.
@@ -205,7 +205,7 @@ export default function Home() {
                 <Magnetic strength={0.3}>
                   <Link
                     href="/projects"
-                    className="block rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400"
+                    className="block rounded-full bg-accent-500 px-7 py-3.5 text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400"
                   >
                     See my work
                   </Link>
@@ -231,7 +231,7 @@ export default function Home() {
         {/* Hero-bottom velocity marquee */}
         <VelocityMarquee
           text={"Websites — Custom Software — Automation — AI Integrations — "}
-          className="border-t border-slate-800/60 py-4"
+          className="border-t border-ground-800/60 py-4"
           trackClassName="text-outline font-display text-[clamp(3rem,9vw,7rem)] font-extrabold tracking-tight uppercase"
         />
       </section>
@@ -241,7 +241,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="font-mono text-xs tracking-widest text-emerald-800 uppercase">
+              <p className="font-mono text-xs tracking-widest text-accent-800 uppercase">
                 01 — Work
               </p>
               <RevealText
@@ -257,7 +257,7 @@ export default function Home() {
             </div>
             <Link
               href="/projects"
-              className="group mb-2 text-sm font-medium text-emerald-700 transition-colors hover:text-emerald-600"
+              className="group mb-2 text-sm font-medium text-accent-700 transition-colors hover:text-accent-600"
             >
               All projects{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1">
@@ -279,7 +279,7 @@ export default function Home() {
       <SectionReveal>
         <section className="bg-paper-deep text-ink-text">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-            <p className="font-mono text-xs tracking-widest text-emerald-800 uppercase">
+            <p className="font-mono text-xs tracking-widest text-accent-800 uppercase">
               02 — Services
             </p>
             <RevealText
@@ -302,14 +302,14 @@ export default function Home() {
                   <span className="font-mono text-sm text-ink-faint">
                     {service.n}
                   </span>
-                  <h3 className="font-display text-2xl font-bold tracking-tight text-ink-text transition-colors group-hover:text-emerald-700 sm:text-3xl">
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-ink-text transition-colors group-hover:text-accent-700 sm:text-3xl">
                     {service.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-ink-soft">
                     {service.description}
                   </p>
                   <span
-                    className="hidden text-ink-faint transition-transform duration-300 group-hover:translate-x-1 group-hover:text-emerald-700 md:block"
+                    className="hidden text-ink-faint transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent-700 md:block"
                     aria-hidden="true"
                   >
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -332,7 +332,7 @@ export default function Home() {
       {/* ============ How I work — back to ink ============ */}
       <SectionReveal>
         <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase">
+          <p className="font-mono text-xs tracking-widest text-accent-400 uppercase">
             03 — Process
           </p>
           <RevealText
@@ -347,7 +347,7 @@ export default function Home() {
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {steps.map((step) => (
               <div key={step.n} data-reveal>
-                <p className="font-mono text-sm text-emerald-400">{step.n}</p>
+                <p className="font-mono text-sm text-accent-400">{step.n}</p>
                 <h3 className="mt-3 font-display text-xl font-bold text-white">
                   {step.title}
                 </h3>
@@ -361,7 +361,7 @@ export default function Home() {
       </SectionReveal>
 
       {/* ============ CTA band — ink with emerald ============ */}
-      <section className="border-t border-slate-800/80">
+      <section className="border-t border-ground-800/80">
         <div className="mx-auto flex max-w-7xl flex-col items-center px-6 py-28 text-center sm:py-36">
           <RevealText
             as="h2"
@@ -381,7 +381,7 @@ export default function Home() {
           <Magnetic strength={0.3} className="mt-12">
             <Link
               href="/contact"
-              className="flex h-40 w-40 items-center justify-center rounded-full bg-emerald-500 p-6 text-center text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400 sm:h-48 sm:w-48"
+              className="flex h-40 w-40 items-center justify-center rounded-full bg-accent-500 p-6 text-center text-sm font-medium text-ground-950 transition-colors hover:bg-accent-400 sm:h-48 sm:w-48"
             >
               Start a conversation
             </Link>
