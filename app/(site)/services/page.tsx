@@ -7,7 +7,8 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Business websites, business automation, and custom software — built by Seif Ashraf, Full Stack Developer.",
+    "Websites, automation and custom software for small businesses, by Seif Ashraf, a freelance full-stack developer in Cairo working with UK and Irish businesses.",
+  alternates: { canonical: "/services" },
 };
 
 const services = [
@@ -15,17 +16,17 @@ const services = [
     id: "websites",
     n: "01",
     label: "Business Websites",
-    title: "Websites that win customers, not just visits",
+    title: "A website customers can book, order or enquire from",
     intro:
-      "For companies whose website is outdated, slow, hard to use on a phone — or missing entirely. A modern website is often the cheapest revenue upgrade a business can make.",
+      "For businesses whose website is slow on a phone, hasn't changed in years, or doesn't exist yet. Salad Store in Cairo is one I built: an Arabic-first site with one-tap English, where every dish opens WhatsApp with the order already written.",
     deliverables: [
-      "Modern, fast website with a design that fits your brand",
-      "Mobile-first experience — most of your customers are on their phone",
-      "Clear structure and messaging built to convert visitors into enquiries",
-      "Booking, ordering, or contact flows wired straight into how you work",
-      "Easy content updates so you are never dependent on a developer for text changes",
+      "A fast site in your brand, built for the phone first, because that is where most of your customers are",
+      "Pages that lead somewhere: a booking, an order or an enquiry",
+      "Booking, ordering or contact flows wired into how you already work, WhatsApp included",
+      "Text you can edit yourself, so a price change does not need a developer",
+      "Search-readable pages with structured data, so the site can be found",
     ],
-    fit: "A good fit if customers say they “couldn’t find” something on your site, if competitors look sharper online, or if your site hasn’t changed in years.",
+    fit: "A good fit if customers say they “couldn’t find” something on your site, or if it hasn’t changed in years.",
   },
   {
     id: "automation",
@@ -33,31 +34,31 @@ const services = [
     label: "Business Automation",
     title: "Stop paying staff to do what software does better",
     intro:
-      "For companies drowning in manual work: appointment scheduling by phone, order confirmations typed by hand, spreadsheets passed around by email. Automation gives that time back.",
+      "For businesses where the same task is done by hand every day, like confirmations typed out one at a time or attendance copied into a salary sheet. In the workshop platform I built, salaries now compute from pasted attendance and an hourly rate; that used to be a monthly job done by hand.",
     deliverables: [
-      "Workflow automation — reminders, confirmations, and follow-ups that send themselves",
-      "CRM systems that track every lead and customer without manual data entry",
-      "AI assistants that draft replies, summarize documents, and answer routine questions",
-      "Internal tools that replace fragile spreadsheets with reliable systems",
-      "Integrations that make your existing tools finally talk to each other",
+      "Reminders and confirmations that send themselves",
+      "A CRM that records every lead and customer without anyone typing it in twice",
+      "AI assistants that draft replies for a person to check and send",
+      "Internal tools that replace the spreadsheet everyone edits",
+      "Integrations between the tools you already pay for",
     ],
-    fit: "A good fit if your team repeats the same digital task every day, if things fall through the cracks between tools, or if growth is limited by admin capacity.",
+    fit: "A good fit if your team repeats the same digital task every day, or if things fall through the cracks between tools.",
   },
   {
     id: "software",
     n: "03",
     label: "Custom Software",
-    title: "Software built around your business — not the other way around",
+    title: "Custom software for the process off-the-shelf tools can't handle",
     intro:
-      "For companies that have outgrown off-the-shelf tools. When your process is your advantage, generic software flattens it. Custom software sharpens it.",
+      "For businesses that have outgrown generic tools. Car Engineering Center is the example: four workshop branches on one system, with reception, work orders, live floor tracking, customer history and payroll built around how they already worked.",
     deliverables: [
-      "Dashboards that show the numbers that actually run your business",
+      "Dashboards with the numbers you check every morning",
       "Management systems for bookings, orders, patients, cases, or inventory",
-      "Customer portals that let clients help themselves, securely",
-      "SaaS products — from first prototype to paying subscribers",
-      "Solid backend and database architecture that scales with you",
+      "Customer-facing pages, like a QR on an invoice that shows a customer their car's status",
+      "SaaS products, from first prototype to billing",
+      "A database and backend that will still make sense in three years",
     ],
-    fit: "A good fit if you’ve bent an off-the-shelf tool past its limits, if your “system” is a folder of spreadsheets, or if you have a product idea that needs building properly.",
+    fit: "A good fit if you’ve bent an off-the-shelf tool past its limits, or if your “system” is a folder of spreadsheets.",
   },
 ];
 
@@ -105,8 +106,8 @@ export default function Services() {
           className="mt-4 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] font-bold tracking-tight text-white"
         />
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400">
-          Every engagement starts with your problem, not with a product list.
-          These are the three shapes the solution usually takes.
+          Every engagement starts with the problem you describe, and the
+          solution usually takes one of these three shapes.
         </p>
       </div>
 
@@ -132,7 +133,7 @@ export default function Services() {
                 </span>
                 <span
                   className={`font-mono text-sm tracking-widest uppercase ${
-                    paper ? "text-ink-faint" : "text-slate-500"
+                    paper ? "text-ink-faint" : "text-slate-400"
                   }`}
                 >
                   {service.label}
@@ -203,9 +204,9 @@ export default function Services() {
             className="font-display text-[clamp(2rem,5vw,4rem)] leading-[1.02] font-bold tracking-tight text-white"
           />
           <p className="mx-auto mt-5 max-w-lg text-slate-400">
-            That&apos;s normal — it&apos;s my job to figure that out with you.
-            Describe the problem and I&apos;ll recommend the smallest solution
-            that solves it.
+            That&apos;s normal, and working it out with you is part of the
+            job. Describe the problem and I&apos;ll recommend the smallest
+            solution that solves it.
           </p>
           <Magnetic strength={0.3} className="mt-8">
             <Link

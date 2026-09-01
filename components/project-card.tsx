@@ -3,14 +3,26 @@ import AppShot from "@/components/app-shot";
 import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const live = project.kind === "live" || project.kind === "concept";
+  const kind = project.kind ?? "demo";
+  const external = kind === "live" || kind === "concept";
+  const production = kind === "production";
+  const url = project.demoUrl ?? "";
   const shot = <AppShot slug={project.slug} alt={`Screenshot of ${project.title}`} />;
+  const chip = production
+    ? "In production"
+    : kind === "concept"
+      ? "Concept · live"
+      : kind === "live"
+        ? "Live project"
+        : "Interactive demo";
 
   return (
     <div className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-colors hover:border-emerald-500/40">
-      {live ? (
+      {production ? (
+        shot
+      ) : external ? (
         <a
-          href={project.demoUrl}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Visit the live ${project.title} website`}
@@ -18,7 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {shot}
         </a>
       ) : (
-        <Link href={project.demoUrl} aria-label={`Open the ${project.title} live demo`}>
+        <Link href={url} aria-label={`Open the ${project.title} interactive demo`}>
           {shot}
         </Link>
       )}
@@ -29,13 +41,13 @@ export default function ProjectCard({ project }: { project: Project }) {
               {project.title}
             </Link>
           </h3>
-          {live ? (
+          {kind !== "demo" ? (
             <span className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] tracking-wide text-emerald-300 uppercase">
-              {project.kind === "concept" ? "Concept · live" : "Live project"}
+              {chip}
             </span>
           ) : (
             <span className="rounded-full border border-slate-700 px-2 py-0.5 font-mono text-[10px] tracking-wide text-slate-400 uppercase">
-              Demo build
+              {chip}
             </span>
           )}
         </div>
@@ -53,21 +65,25 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
         <div className="mt-5 flex items-center gap-5">
-          {live ? (
+          {production ? (
+            <span className="text-sm text-slate-400">
+              Internal system, no public link
+            </span>
+          ) : external ? (
             <a
-              href={project.demoUrl}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-emerald-400 hover:text-emerald-300"
             >
-              {project.kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
+              {kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
             </a>
           ) : (
             <Link
-              href={project.demoUrl}
+              href={url}
               className="text-sm font-medium text-emerald-400 hover:text-emerald-300"
             >
-              Open live demo →
+              Open the interactive demo →
             </Link>
           )}
           <Link

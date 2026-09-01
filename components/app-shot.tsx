@@ -1,16 +1,21 @@
 import Image from "next/image";
 
-const frames: Record<string, { url: string }> = {
-  "clinic-management": { url: "brightsmile-demo.clinic/book" },
-  "restaurant-platform": { url: "tastebite-demo.restaurant/order" },
-  "crm-automation": { url: "flowdesk-demo.app/pipeline" },
-  "saas-dashboard": { url: "metricly-demo.io/dashboard" },
-  "greenbowl": { url: "greenbowl-demo.shop/order" },
-  "salad-store": { url: "saladstore-eg.vercel.app" },
+/* Address-bar label per project. Public projects show their real host; the
+   production system has no public URL, so its bar says so instead. Every
+   project needs an entry here or the case study renders no screenshot. */
+const frames: Record<string, { label: string }> = {
+  "car-engineering-center": { label: "Internal system · 4 branches" },
+  "salad-store": { label: "saladstore-eg.vercel.app" },
+  "blue-sky-events": { label: "blue-skye.vercel.app" },
+  "clinic-management": { label: "brightsmile-demo.clinic/book" },
+  "restaurant-platform": { label: "tastebite-demo.restaurant/order" },
+  "crm-automation": { label: "flowdesk-demo.app/pipeline" },
+  "saas-dashboard": { label: "metricly-demo.io/dashboard" },
+  greenbowl: { label: "greenbowl-demo.shop/order" },
 };
 
-/* Real screenshot of the working demo app, framed in browser chrome.
-   Images live in public/screens/<slug>.png (1440x900 captures). */
+/* Real screenshot of the app, framed in browser chrome.
+   Images live in public/screens/<slug>.png (16:10 captures). */
 export default function AppShot({ slug, alt }: { slug: string; alt: string }) {
   const frame = frames[slug];
   if (!frame) return null;
@@ -20,8 +25,8 @@ export default function AppShot({ slug, alt }: { slug: string; alt: string }) {
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
         <span className="h-2.5 w-2.5 rounded-full bg-slate-600" />
-        <span className="ml-3 flex-1 truncate rounded-md bg-slate-900/80 px-3 py-1 font-mono text-[10px] text-slate-500">
-          {frame.url}
+        <span className="ml-3 flex-1 truncate rounded-md bg-slate-900/80 px-3 py-1 font-mono text-[10px] text-slate-400">
+          {frame.label}
         </span>
       </div>
       <Image

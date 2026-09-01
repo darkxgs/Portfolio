@@ -84,7 +84,7 @@ function TryInApp({ label, onClick }: { label: string; onClick: () => void }) {
   );
 }
 
-/** Window chrome around a product recreation, with the azure "Live demo" tab. */
+/** Window chrome around a product recreation, with the azure "Interactive demo" tab. */
 function WindowFrame({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
     <div className={`overflow-hidden rounded-2xl border border-graphite-700 bg-graphite-950/80 shadow-2xl shadow-metric-700/20 ${className}`}>
@@ -96,7 +96,7 @@ function WindowFrame({ title, children, className = "" }: { title: string; child
         </span>
         <span className="min-w-0 flex-1 truncate text-center font-mono text-[11px] text-graphite-400">{title}</span>
         <span className="rounded-full border border-metric-400/40 bg-metric-400/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-metric-300">
-          Live demo
+          Interactive demo
         </span>
       </div>
       {children}
@@ -878,7 +878,7 @@ export default function Website({ onOpenApp }: WebsiteProps) {
                         : "border border-graphite-600 text-graphite-100 hover:border-metric-400 hover:text-metric-300"
                     }`}
                   >
-                    Try it in the live demo
+                    Try it in the demo
                   </button>
                 </div>
               );
@@ -986,7 +986,7 @@ export default function Website({ onOpenApp }: WebsiteProps) {
             See your numbers the way Metricly sees them.
           </h2>
           <p className="max-w-md text-sm text-graphite-300 sm:text-base">
-            The live demo is seeded with a full workspace — inspect a month of MRR, switch a plan, open an at-risk
+            The demo is seeded with a full workspace — inspect a month of MRR, switch a plan, open an at-risk
             account&apos;s suggested play. Nothing to install.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">

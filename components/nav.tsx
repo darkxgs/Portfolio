@@ -28,6 +28,16 @@ export default function Nav() {
     };
   }, [open]);
 
+  /* Escape closes the mobile overlay. */
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
@@ -36,7 +46,12 @@ export default function Nav() {
           : scrolled
             ? /* ink translucent — keeps the nav legible over both the
                  dark and the paper sections it overlays */
-              "border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md"
+              /* No backdrop-blur: building the blur layer on the first scroll
+                 stalled rendering for ~400-600ms, which skipped every reveal
+                 animating at that moment (worst right after client-side
+                 navigation). A near-opaque ink bar reads the same over this
+                 dark site and costs nothing. */
+              "border-b border-slate-800/60 bg-slate-950/90"
             : "border-b border-transparent bg-gradient-to-b from-slate-950/80 to-transparent"
       }`}
     >
@@ -63,6 +78,16 @@ export default function Nav() {
               </Link>
             </Magnetic>
           ))}
+          {/* Plain Contact link so the primary route is a nav item on
+              desktop too, not only the call-to-action pill. */}
+          <Magnetic strength={0.3}>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-sm text-slate-400 transition-colors hover:text-white"
+            >
+              Contact
+            </Link>
+          </Magnetic>
           <Magnetic strength={0.3} className="ml-3">
             <Link
               href="/contact"
@@ -96,7 +121,7 @@ export default function Nav() {
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
+        <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
           Navigation
         </p>
         <nav className="mt-6 flex flex-col gap-2">
@@ -126,15 +151,15 @@ export default function Nav() {
           }`}
           style={{ transitionDelay: open ? "480ms" : "0ms" }}
         >
-          <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
+          <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
             Get in touch
           </p>
           <a
-            href="mailto:seifdarkx@gmail.com"
+            href="mailto:hello@seifashraf.dev"
             tabIndex={open ? 0 : -1}
             className="text-sm text-slate-300"
           >
-            seifdarkx@gmail.com
+            hello@seifashraf.dev
           </a>
         </div>
       </div>

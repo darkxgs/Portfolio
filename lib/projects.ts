@@ -1,21 +1,132 @@
 export type Project = {
   slug: string;
-  /* "live" = real production site; "concept" = self-initiated pitch rebuild for a real
-     company, deployed at an external URL; default is a demo build */
-  kind?: "live" | "demo" | "concept";
+  /* "live" = real production site with a public URL; "production" = real system in
+     daily use with NO public URL; "concept" = self-initiated pitch rebuild for a real
+     company, deployed at an external URL; default ("demo") is an interactive demo build */
+  kind?: "live" | "demo" | "concept" | "production";
   title: string;
   tagline: string;
   target: string;
   problem: string;
   solution: string;
   features: { name: string; description: string }[];
+  /* What the project (or, for demos, the demo itself) actually runs on. */
   tech: string[];
+  /* Demos only: the backend and services a production version would ship on. */
+  productionStack?: string[];
   businessValue: string[];
   demoNote: string;
-  demoUrl: string;
+  /* Public URL. Omitted for "production" systems that have no public link. */
+  demoUrl?: string;
+  /* Extra real screens, shown as a grid under the main shot on the case study. */
+  gallery?: { src: string; alt: string; caption?: string }[];
+  /* Collaborators, shown in the case-study honesty card. */
+  credit?: string;
 };
 
+/* Every interactive demo is a client-side Next.js app with seeded fictional data. */
+const demoStack = [
+  "Next.js (App Router)",
+  "TypeScript",
+  "React",
+  "Tailwind CSS",
+  "Client-side state with fictional data",
+];
+
 export const projects: Project[] = [
+  {
+    slug: "car-engineering-center",
+    kind: "production",
+    title: "Car Engineering Center — Workshop Platform",
+    tagline:
+      "An Arabic-first workshop management platform, live across four branches in Amarah, Iraq.",
+    target:
+      "Car Engineering Center (هندسة السيارات), an auto-workshop group with four branches in Amarah, Iraq. Receptionists, technicians, accountants and the workshop's own customers use it every day.",
+    problem:
+      "Before the platform, every inspection was a handwritten card. Once a car went onto the floor there was no way to track it: nobody could say where it was or how long it had been there without going to look. Attendance was kept by hand, and salaries were worked out from it by hand. The four branches ran disconnected from one another.",
+    solution:
+      "One platform for every branch, Arabic-first and right-to-left from the first screen, on web, mobile and print. Reception fills in a three-step wizard and the inspection checklist prices itself into a work order. Every car carries a barcode; scan it and its status is on screen, live. The workshop floor shows a countdown for each car, and overdue turns red on every screen at once. Attendance is pasted in from Excel or the biometric reader and payroll computes itself. Every screen refreshes every half second, so all four branches look at the same numbers. It has grown to 34 screens and views over 12 database tables, about 29,500 lines of TypeScript across 309 commits.",
+    features: [
+      {
+        name: "Live dashboard",
+        description:
+          "Cars received today, in progress, completed and waiting; seven-day revenue against work orders; the split of vehicle statuses. Refreshed every half second.",
+      },
+      {
+        name: "Three-step reception wizard",
+        description:
+          "Details, inspection, review. Typing a phone number auto-fills a returning customer, and the checklist (engine oil, filters, battery: good or needs change) prices itself into a work order in minutes.",
+      },
+      {
+        name: "Workshop floor with live countdowns",
+        description:
+          "Each car on the floor shows its supervisor, technician and bay, with a countdown against the estimate. Overdue turns red on every screen instantly.",
+      },
+      {
+        name: "Work orders with a printable report",
+        description:
+          "Live timing against the estimate, the services done, engine diagnosis and engine condition at intake, and a technician rating before the order closes. The full report prints.",
+      },
+      {
+        name: "Customers and vehicles",
+        description:
+          "Complete visit history for every customer and car, Excel and invoice exports, and a one-click full backup.",
+      },
+      {
+        name: "Digital service book",
+        description:
+          "Every A4 invoice carries a QR code and barcode. The customer scans it and watches their car's status live on their phone, no login. The same page lists the branches and their phone numbers.",
+      },
+      {
+        name: "HR and payroll",
+        description:
+          "Paste attendance from Excel or the biometric reader. Salaries compute from hours × rate, with a monthly summary.",
+      },
+    ],
+    tech: [
+      "Next.js",
+      "React 19",
+      "TypeScript",
+      "Supabase (Postgres, realtime, auth)",
+      "Tailwind CSS",
+    ],
+    businessValue: [
+      "Four branches run on one system, with one dashboard across all of them.",
+      "Staff scan a barcode and customers scan the QR on their invoice; both see the car's status live, without a phone call.",
+      "Payroll comes from pasted attendance and an hourly rate, so the monthly salary run is a paste and a check rather than a calculation by hand.",
+      "Overdue jobs turn red on every screen at once, so a late car is visible to the whole branch the moment it becomes late.",
+    ],
+    demoNote:
+      "A production system, not a prototype: it runs daily across four branches. It is an internal business tool, so there is no public link; the screens here are from the real product.",
+    credit:
+      "Built with Abbas Fadhil Jebur (project supervisor, CRM & data analysis).",
+    gallery: [
+      {
+        src: "/screens/cec-floor.webp",
+        alt: "Workshop floor screen of Car Engineering Center: three car cards with live countdowns, one overdue and highlighted in red.",
+        caption:
+          "Workshop floor: a live countdown for every car, with supervisor, technician and bay. Overdue turns red on every screen.",
+      },
+      {
+        src: "/screens/cec-invoice.webp",
+        alt: "A printed A4 invoice from Car Engineering Center with a QR code, next to a phone showing the car's live status page.",
+        caption:
+          "Digital service book: every A4 invoice carries a QR; the customer scans it and watches the car's status live, no login.",
+      },
+      {
+        src: "/screens/cec-wizard.webp",
+        alt: "Reception wizard of Car Engineering Center: customer and vehicle details above an inspection checklist that has priced itself into a total.",
+        caption:
+          "Reception wizard: a phone number auto-fills a returning customer, and the inspection checklist prices itself into a work order.",
+      },
+      {
+        src: "/screens/cec-payroll.webp",
+        alt: "HR and payroll screen of Car Engineering Center: a monthly summary with hours, rate and salary due above an attendance table.",
+        caption:
+          "HR and payroll: attendance pasted from Excel or the biometric reader; salaries compute from hours × rate.",
+      },
+    ],
+  },
   {
     slug: "salad-store",
     kind: "live",
@@ -92,7 +203,7 @@ export const projects: Project[] = [
     target:
       "Blue Sky Events, an Egyptian congress and exhibition management company staging medical and scientific congresses in Cairo, Alexandria and Luxor since 2013 — ICCE, Oto Alex, EAVMA, PACMM and more.",
     problem:
-      "The company's production work fills five-star ballrooms, but its web presence undersells it: the public page is assembled from large flat images with almost no text a search engine can read, several navigation links return 404 — including registration and sponsorship — and the contact form isn't wired to anything, so enquiries silently disappear.",
+      "The company's production work fills five-star ballrooms, but its website undersells it. The public page is built from large flat images with almost no text a search engine can read, and some of the journeys a visitor might take through the site dead-end.",
     solution:
       "A self-initiated concept rebuild, shipped as a working pitch. Every event name, venue, date and photograph comes from the company's own published record — nothing invented, and the site labels itself a concept. Fully bilingual Arabic/English with true RTL, an editorial motion system, a unified navy photo treatment that turns Instagram-sourced photography into one visual family, and a page that loads in a fraction of the original's weight.",
     features: [
@@ -191,15 +302,13 @@ export const projects: Project[] = [
           "Reception, practitioners, and practice managers each see the parts of the system their job needs, keeping patient data on a need-to-know basis.",
       },
     ],
-    tech: [
-      "Next.js (App Router)",
-      "TypeScript",
+    tech: demoStack,
+    productionStack: [
       "PostgreSQL",
       "Prisma",
       "BullMQ + Redis",
       "Twilio (SMS)",
       "Resend (email)",
-      "Tailwind CSS",
     ],
     businessValue: [
       "Automated reminders target the biggest avoidable cost in a clinic: appointments that are booked, staffed, and then missed.",
@@ -253,15 +362,8 @@ export const projects: Project[] = [
           "Confirmation and ready-for-collection messages go out automatically on WhatsApp, cutting the “is my order ready?” calls that interrupt service.",
       },
     ],
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Stripe",
-      "WhatsApp Business API",
-      "Tailwind CSS",
-    ],
+    tech: demoStack,
+    productionStack: ["PostgreSQL", "Prisma", "Stripe", "WhatsApp Business API"],
     businessValue: [
       "Every order taken directly avoids the 15–35% commission delivery marketplaces typically charge — on a busy takeaway's volume, a meaningful difference to annual profit.",
       "The restaurant owns its customer data — names, order history, contact details — so repeat business comes from its own list, not a platform's algorithm.",
@@ -319,14 +421,12 @@ export const projects: Project[] = [
           "Before a call or meeting, staff get a plain-English summary of the whole relationship in seconds, instead of scrolling months of email.",
       },
     ],
-    tech: [
-      "Next.js",
-      "TypeScript",
+    tech: demoStack,
+    productionStack: [
       "PostgreSQL",
       "Prisma",
       "BullMQ + Redis",
       "LLM API integration",
-      "Tailwind CSS",
     ],
     businessValue: [
       "Fewer lost leads, because follow-up happens on a system schedule rather than when someone remembers.",
@@ -385,16 +485,8 @@ export const projects: Project[] = [
           "Flags accounts whose usage is fading before renewal, giving the team a reason to reach out while it still matters.",
       },
     ],
-    tech: [
-      "Next.js (App Router)",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Stripe Billing",
-      "Recharts",
-      "Auth.js",
-      "Tailwind CSS",
-    ],
+    tech: demoStack,
+    productionStack: ["PostgreSQL", "Prisma", "Stripe Billing", "Auth.js"],
     businessValue: [
       "Product decisions get made from actual activation and retention behaviour instead of gut feel.",
       "Billing and account management become self-serve, cutting the support back-and-forth that eats a small team's week.",
@@ -447,14 +539,8 @@ export const projects: Project[] = [
           "Ingredients running low are flagged before they run out mid-rush, not after.",
       },
     ],
-    tech: [
-      "Next.js (App Router)",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Stripe",
-      "Tailwind CSS",
-    ],
+    tech: demoStack,
+    productionStack: ["PostgreSQL", "Prisma", "Stripe"],
     businessValue: [
       "The configurator turns customisation into revenue — every topping is a visible-price, one-tap add that lifts average order value.",
       "Direct prepaid ordering keeps the margin whole and shortens the physical queue at peak lunch hours.",

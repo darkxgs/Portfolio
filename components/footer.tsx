@@ -7,6 +7,7 @@ const sitemap = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
+  { href: "/demos", label: "Demos" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -52,10 +53,10 @@ export default function Footer() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Magnetic strength={0.25}>
             <a
-              href="mailto:seifdarkx@gmail.com"
+              href="mailto:hello@seifashraf.dev"
               className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-emerald-500/50 hover:text-white"
             >
-              seifdarkx@gmail.com
+              hello@seifashraf.dev
             </a>
           </Magnetic>
           <Magnetic strength={0.25}>
@@ -72,7 +73,7 @@ export default function Footer() {
 
         <div className="mt-20 grid gap-10 border-t border-slate-800/80 pt-10 sm:grid-cols-3">
           <div>
-            <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
+            <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
               Sitemap
             </p>
             <ul className="mt-4 space-y-2">
@@ -89,13 +90,13 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
+            <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
               Socials
             </p>
             <ul className="mt-4 space-y-2">
               <li>
                 <a
-                  href="mailto:seifdarkx@gmail.com"
+                  href="mailto:hello@seifashraf.dev"
                   className="text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   Email
@@ -134,7 +135,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
+            <p className="font-mono text-xs tracking-widest text-slate-400 uppercase">
               Local time
             </p>
             <p className="mt-4">
@@ -143,7 +144,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
           <p>
             <span className="font-medium text-slate-400">Seif Ashraf</span> —
             Full Stack Developer · Websites, software &amp; automation

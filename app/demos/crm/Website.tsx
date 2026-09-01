@@ -165,7 +165,7 @@ function HeroBoard() {
   );
 }
 
-/** Window chrome around a product recreation, with the brass "Live demo" tab. */
+/** Window chrome around a product recreation, with the brass "Interactive demo" tab. */
 function WindowFrame({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
   return (
     <div className={`overflow-hidden rounded-2xl border border-ink-700 bg-ink-950/80 shadow-2xl shadow-flow-700/20 ${className}`}>
@@ -177,7 +177,7 @@ function WindowFrame({ title, children, className = "" }: { title: string; child
         </span>
         <span className="min-w-0 flex-1 truncate text-center font-mono text-[11px] text-ink-400">{title}</span>
         <span className="rounded-full border border-brass-500/40 bg-brass-500/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-brass-300">
-          Live demo
+          Interactive demo
         </span>
       </div>
       {children}
@@ -756,7 +756,7 @@ export default function Website({ onOpenApp }: WebsiteProps) {
                       : "border border-ink-600 text-ink-100 hover:border-flow-400 hover:text-flow-300"
                   }`}
                 >
-                  Try it in the live demo
+                  Try it in the demo
                 </button>
               </div>
             ))}
@@ -857,7 +857,7 @@ export default function Website({ onOpenApp }: WebsiteProps) {
             See your pipeline the way FlowDesk sees it.
           </h2>
           <p className="max-w-md text-sm text-ink-300 sm:text-base">
-            The live demo is seeded with a full workspace — move a lead, fire an automation, ask the assistant for a
+            The demo is seeded with a full workspace — move a lead, fire an automation, ask the assistant for a
             draft. Nothing to install.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">

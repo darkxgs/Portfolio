@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Magnetic from "@/components/site-motion/magnetic";
 import RevealText from "@/components/site-motion/reveal-text";
@@ -7,26 +9,31 @@ import WorkList from "@/components/work-list";
 import { projects } from "@/lib/projects";
 import { toWorkItems } from "@/lib/work-meta";
 
+/* Title and description come from the root layout defaults. */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 const services = [
   {
     n: "01",
     title: "Business Websites",
     description:
-      "Modern, fast websites built to convert visitors into customers — not just look good. Clear structure, strong mobile experience, and messaging that sells.",
+      "A website customers can book, order or enquire from on their phone. Fast on mobile data, and you can edit the text yourself.",
     href: "/services#websites",
   },
   {
     n: "02",
     title: "Business Automation",
     description:
-      "Workflow automation, CRM systems, AI assistants, and internal tools that remove repetitive manual work so your team can focus on customers.",
+      "Appointment reminders and order confirmations that send themselves, and internal tools that replace the spreadsheet passed around by email.",
     href: "/services#automation",
   },
   {
     n: "03",
     title: "Custom Software",
     description:
-      "Dashboards, management systems, customer portals, and SaaS products — built around how your business actually works, not the other way around.",
+      "A management system or customer portal built for the way your business already runs. The workshop platform in my work is one: four branches use it every day.",
     href: "/services#software",
   },
 ];
@@ -133,7 +140,7 @@ export default function Home() {
         />
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pt-28 pb-10">
           <p className="font-mono text-xs tracking-widest text-emerald-400 uppercase sm:text-sm">
-            Portfolio — 2026
+            Freelance developer · Cairo · working with UK &amp; Irish businesses
           </p>
 
           <div className="relative">
@@ -142,9 +149,13 @@ export default function Home() {
               aria-hidden="true"
               className="pointer-events-none absolute top-1/2 right-10 z-0 hidden -translate-y-[52%] rotate-[-2deg] lg:block xl:right-24"
             >
-              <img
-                src="/seif.png"
+              <Image
+                src="/seif-portrait.webp"
                 alt=""
+                width={470}
+                height={600}
+                priority
+                sizes="(min-width:1024px) 235px, 0px"
                 className="h-[300px] w-[235px] rounded-t-full object-cover object-top ring-1 ring-emerald-400/70 ring-offset-4 ring-offset-slate-950"
               />
             </div>
@@ -159,13 +170,16 @@ export default function Home() {
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:items-end">
             <div className="flex flex-col items-start gap-6">
               <div className="inline-flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900 p-2">
-                <img
-                  src="/seif.png"
+                <Image
+                  src="/seif-avatar.webp"
                   alt="Seif Ashraf"
+                  width={96}
+                  height={96}
+                  sizes="36px"
                   className="h-9 w-9 rounded-full object-cover object-top"
                 />
                 <span className="text-sm text-slate-200">
-                  Cairo based · working worldwide
+                  Cairo · two hours ahead of London
                 </span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-300">
                   <Globe />
@@ -174,20 +188,18 @@ export default function Home() {
               <div className="flex items-start gap-4">
                 <ArrowDownRight className="mt-1 shrink-0 text-emerald-400" />
                 <p className="max-w-md text-lg leading-snug text-white sm:text-xl">
-                  Full Stack Developer — websites, custom software &amp;
-                  automation that help businesses{" "}
-                  <em className="font-accent text-[1.15em] font-normal text-emerald-400 italic">
-                    grow
-                  </em>
+                  I build the website, booking system or back-office tool your
+                  business is missing.
                 </p>
               </div>
             </div>
 
             <div>
               <p className="max-w-xl leading-relaxed text-slate-400">
-                I help companies replace manual processes, outdated websites,
-                and disconnected tools with software built around how they
-                actually work — so they win more customers and waste less time.
+                Two of them run in production today: a workshop platform used
+                daily across four branches, and a bilingual ordering site for a
+                Cairo restaurant. Five more are working demos you can click
+                through before we ever speak.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Magnetic strength={0.3}>
@@ -208,9 +220,9 @@ export default function Home() {
                 </Magnetic>
                 <RotatingBadge className="ml-2 hidden sm:block" />
               </div>
-              <p className="mt-8 font-mono text-xs tracking-wide text-slate-500">
-                Next.js · TypeScript · PostgreSQL · Stripe · WhatsApp API · AI
-                integrations
+              <p className="mt-8 font-mono text-xs tracking-wide text-slate-400">
+                Next.js · React · TypeScript · Supabase / PostgreSQL · Tailwind
+                CSS · Arabic/English RTL
               </p>
             </div>
           </div>
@@ -229,7 +241,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="font-mono text-xs tracking-widest text-emerald-700 uppercase">
+              <p className="font-mono text-xs tracking-widest text-emerald-800 uppercase">
                 01 — Work
               </p>
               <RevealText
@@ -254,9 +266,8 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-soft">
-            A live production site and a set of production-grade demo builds —
-            every one opens in your browser, so you can see the real thing, not
-            just read about it. Demos are clearly labeled as demos.
+            Two systems in production, one concept rebuilt for a real company,
+            and five demos you can click through. Demos are demos and say so.
           </p>
           <div className="mt-12">
             <WorkList items={workItems} tone="paper" />

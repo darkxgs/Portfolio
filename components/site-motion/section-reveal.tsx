@@ -3,16 +3,22 @@
 import { useRef, type ReactNode } from "react";
 import {
   gsap,
+  ScrollTrigger,
   prefersReducedMotion,
   isCoarsePointer,
 } from "./gsap";
 import { useIsoLayoutEffect } from "./use-iso-layout-effect";
+import { isInViewport, REVEAL_SAFETY_MS } from "./reveal-safety";
 
 /* Wrap a section; every descendant carrying data-reveal fades in and
    rises as it enters the viewport (each element gets its own trigger,
    so staggering emerges from layout). Runs for EVERYONE — reveals are
-   part of the design, not gated behind reduced-motion. SSR renders
-   everything visible, so JS-off users see a complete page. */
+   part of the design, not gated behind reduced-motion; under
+   prefers-reduced-motion the rise is dropped and the fade shortens to
+   0.3s. SSR renders everything visible, so JS-off users see a complete
+   page; with JS on, globals.css pre-hides `[data-reveal]` inside the
+   `data-reveal-root` scope until GSAP takes over, so nothing paints and
+   then vanishes. */
 export function SectionReveal({
   children,
   className = "",
@@ -33,32 +39,54 @@ export function SectionReveal({
     );
     if (targets.length === 0) return;
 
-    const tweens = targets.map((t, i) =>
-      gsap.fromTo(
-        t,
-        { autoAlpha: 0, y },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "power3.out",
-          delay: (i % 4) * 0.06,
-          scrollTrigger: { trigger: t, start: "top 92%", once: true },
-        },
-      ),
-    );
+    const reduced = prefersReducedMotion();
+    /* The trigger only STARTS the tween; the tween is not bound to it.
+       A bound tween gets jumped to its end state whenever ScrollTrigger
+       refreshes (which happens after client-side navigation, when the
+       document height changes), so reveals after the first page visit
+       froze on their first frame and then snapped. */
+    const items = targets.map((t, i) => {
+      gsap.set(t, reduced ? { autoAlpha: 0 } : { autoAlpha: 0, y });
+      const tween = gsap.to(t, {
+        autoAlpha: 1,
+        y: 0,
+        duration: reduced ? 0.3 : 0.9,
+        ease: reduced ? "power1.out" : "power3.out",
+        delay: (i % 4) * 0.06,
+        paused: true,
+      });
+      const trigger = ScrollTrigger.create({
+        trigger: t,
+        start: "top 92%",
+        once: true,
+        onEnter: () => tween.play(),
+      });
+      return { tween, trigger };
+    });
+
+    /* Safety net: anything still hidden but on screen after the grace
+       period plays its reveal regardless of its trigger. */
+    const safety = window.setTimeout(() => {
+      items.forEach(({ tween, trigger }) => {
+        const target = tween.targets()[0] as Element;
+        if (tween.progress() > 0 || !isInViewport(target)) return;
+        trigger.kill();
+        tween.play();
+      });
+    }, REVEAL_SAFETY_MS);
 
     return () => {
-      tweens.forEach((tw) => {
-        tw.scrollTrigger?.kill();
-        tw.kill();
+      window.clearTimeout(safety);
+      items.forEach(({ tween, trigger }) => {
+        trigger.kill();
+        tween.kill();
       });
       gsap.set(targets, { clearProps: "opacity,visibility,transform" });
     };
   }, [y]);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} data-reveal-root>
       {children}
     </div>
   );
