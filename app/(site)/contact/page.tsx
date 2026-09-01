@@ -6,7 +6,8 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Seif Ashraf — Full Stack Developer. Describe your problem and get an honest recommendation.",
+    "Get in touch with Seif Ashraf, freelance full-stack developer in Cairo working with UK and Irish businesses. Describe your problem and get an honest recommendation.",
+  alternates: { canonical: "/contact" },
 };
 
 const steps = [
@@ -18,15 +19,37 @@ const steps = [
   },
   {
     n: "2",
-    title: "I reply within 24 hours",
+    title: "I reply within one working day",
     description:
-      "With honest first thoughts: whether software can help, roughly what it would involve, and what I&apos;d need to know.",
+      "With honest first thoughts: whether software can help, roughly what it would involve, and what I'd need to know.",
   },
   {
     n: "3",
     title: "We talk it through",
     description:
-      "A short call to align on scope and outcome. You get a clear written proposal — fixed scope, no surprises.",
+      "A short call to align on scope and outcome. You get a clear written proposal with a fixed scope, no surprises.",
+  },
+];
+
+/* Facts only: how cross-border engagements actually run. */
+const abroad = [
+  {
+    title: "Invoices by PayPal",
+    description: "Paid in GBP, EUR or USD.",
+  },
+  {
+    title: "Two hours ahead of London, all year",
+    description:
+      "Cairo is two hours ahead of London all year, so we overlap your working day.",
+  },
+  {
+    title: "A written proposal first",
+    description:
+      "Fixed scope and price in writing before any commitment.",
+  },
+  {
+    title: "You own everything from day one",
+    description: "The code, the domain and the accounts are yours from the start.",
   },
 ];
 
@@ -75,14 +98,13 @@ export default function Contact() {
             Tell me what slows your business down.
           </h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-slate-400">
-            The best first message isn&apos;t &quot;I need a website&quot; —
-            it&apos;s &quot;here&apos;s what&apos;s costing us time or
-            customers.&quot; Start there, and I&apos;ll take it seriously.
+            The most useful first message describes what is costing you time or
+            customers. Start there and I&apos;ll take it seriously.
           </p>
 
           <Magnetic strength={0.3} className="mt-10">
             <a
-              href="mailto:seifdarkx@gmail.com?subject=Project%20enquiry"
+              href="mailto:hello@seifashraf.dev?subject=Project%20enquiry"
               className="flex h-44 w-44 flex-col items-center justify-center gap-1 rounded-full bg-emerald-500 p-6 text-center text-slate-950 transition-colors hover:bg-emerald-400 sm:h-52 sm:w-52"
             >
               <span className="text-base font-medium">Email me</span>
@@ -103,24 +125,24 @@ export default function Contact() {
               </svg>
             </a>
           </Magnetic>
-          <p className="mt-6 text-sm text-slate-500">
-            Direct email — no forms, no auto-responders. I read every message.
+          <p className="mt-6 text-sm text-slate-400">
+            Direct email, no forms and no auto-responders. I read every message.
           </p>
 
           {/* Channel rows */}
           <SectionReveal>
             <div className="mt-12 border-t border-slate-800">
               <a
-                href="mailto:seifdarkx@gmail.com?subject=Project%20enquiry"
+                href="mailto:hello@seifashraf.dev?subject=Project%20enquiry"
                 data-reveal
                 className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-slate-500">01</span>
+                  <span className="font-mono text-xs text-slate-400">01</span>
                   <div>
                     <p className="font-medium text-white">Email</p>
                     <p className="font-mono text-sm text-slate-400">
-                      seifdarkx@gmail.com
+                      hello@seifashraf.dev
                     </p>
                   </div>
                 </div>
@@ -134,7 +156,7 @@ export default function Contact() {
                 className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-slate-500">02</span>
+                  <span className="font-mono text-xs text-slate-400">02</span>
                   <div>
                     <p className="font-medium text-white">WhatsApp</p>
                     <p className="font-mono text-sm text-slate-400">
@@ -152,7 +174,7 @@ export default function Contact() {
                 className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-slate-500">03</span>
+                  <span className="font-mono text-xs text-slate-400">03</span>
                   <div>
                     <p className="font-medium text-white">Instagram</p>
                     <p className="font-mono text-sm text-slate-400">
@@ -170,7 +192,7 @@ export default function Contact() {
                 className="group flex items-center justify-between gap-4 border-b border-slate-800 py-5 transition-colors hover:bg-slate-900/40"
               >
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-slate-500">04</span>
+                  <span className="font-mono text-xs text-slate-400">04</span>
                   <div>
                     <p className="font-medium text-white">LinkedIn</p>
                     <p className="font-mono text-sm text-slate-400">
@@ -184,25 +206,48 @@ export default function Contact() {
           </SectionReveal>
         </div>
 
-        <div className="h-fit rounded-3xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10">
-          <h2 className="font-display text-lg font-bold text-white">
-            What happens next
-          </h2>
-          <div className="mt-8 space-y-8">
-            {steps.map((step) => (
-              <div key={step.n} className="flex gap-5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 font-mono text-sm text-emerald-400">
-                  {step.n}
+        <div className="space-y-8">
+          <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10">
+            <h2 className="font-display text-lg font-bold text-white">
+              What happens next
+            </h2>
+            <div className="mt-8 space-y-8">
+              {steps.map((step) => (
+                <div key={step.n} className="flex gap-5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 font-mono text-sm text-emerald-400">
+                    {step.n}
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-white">{step.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium text-white">{step.title}</h3>
-                  <p
-                    className="mt-1.5 text-sm leading-relaxed text-slate-400"
-                    dangerouslySetInnerHTML={{ __html: step.description }}
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-8 sm:p-10">
+            <h2 className="font-display text-lg font-bold text-white">
+              Working with me from the UK or Ireland
+            </h2>
+            <ul className="mt-8 space-y-6">
+              {abroad.map((item) => (
+                <li key={item.title} className="flex gap-4">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"
                   />
-                </div>
-              </div>
-            ))}
+                  <div>
+                    <h3 className="font-medium text-white">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

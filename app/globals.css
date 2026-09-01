@@ -136,6 +136,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keyboard focus: emerald-400 ring, offset so it clears rounded pills. */
+:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 4px;
+}
+
 /* ===================================================================
    Appended — award redesign: display face, keyframes, motion utilities
    =================================================================== */
@@ -222,6 +228,13 @@ html.lenis body {
   transform: translateZ(0);
   contain: strict;
 }
+/* A fixed, full-viewport mix-blend layer is a constant compositing cost
+   on phones and tablets for a texture nobody notices there. */
+@media (pointer: coarse) {
+  .film-grain {
+    display: none;
+  }
+}
 
 /* Hairline grid: 1px lines every 8rem at ~3% opacity — hero only. */
 .grid-hairline {
@@ -248,5 +261,29 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .animate-badge-spin {
     animation: none;
+  }
+}
+
+/* ===================================================================
+   Reveal pre-hide — no flash of un-hidden content
+   ===================================================================
+   The inline script in app/layout.tsx adds `js` to <html> before first
+   paint, so these rules put the reveal targets in their "from" state
+   before hydration; GSAP then takes over with inline styles. Scoped to
+   the site's own components (data-reveal-text / data-reveal-root) so
+   the demos' independent `[data-reveal]` system is untouched. The same
+   script adds `js-settled` after 2.5s, which lifts the pre-hide for
+   anything GSAP never reached. With JS off nothing here applies. */
+html.js:not(.js-settled) [data-reveal-text] [data-reveal-line] {
+  transform: translateY(120%);
+}
+html.js:not(.js-settled) [data-reveal-root] [data-reveal] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Reduced motion swaps the slide for a fade, so pre-hide by opacity. */
+  html.js:not(.js-settled) [data-reveal-text] [data-reveal-line] {
+    transform: none;
+    opacity: 0;
   }
 }

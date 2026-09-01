@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import {
   gsap,
@@ -18,6 +19,16 @@ import {
    glide. Coarse (touch) pointers keep native scrolling, which is
    already smooth. */
 export default function SmoothScroll({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
+  /* Client-side navigation swaps the page content without a load event,
+     so ScrollTrigger never recomputes its positions for the new document
+     height. Refresh once the new page has painted. */
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => window.cancelAnimationFrame(id);
+  }, [pathname]);
+
   useEffect(() => {
     if (isCoarsePointer()) return;
 
@@ -31,7 +42,11 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.raf(time * 1000);
     };
     gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    /* Default lag smoothing: after a frame stall GSAP resumes tweens from
+       where they were instead of jumping them forward by the lost time.
+       Lenis's own scrolling is unaffected; only the scrub parallax could
+       drift by a frame, which is invisible. */
+    gsap.ticker.lagSmoothing(100, 33);
 
     return () => {
       gsap.ticker.remove(tick);

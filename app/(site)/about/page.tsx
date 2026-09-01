@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Magnetic from "@/components/site-motion/magnetic";
 import RevealText from "@/components/site-motion/reveal-text";
@@ -7,38 +8,25 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Seif Ashraf — Full Stack Developer specializing in web applications, business automation, AI integrations, and custom software.",
+    "Seif Ashraf, freelance full-stack developer in Cairo working with UK and Irish small businesses. Two systems in production; bilingual Arabic/English builds a specialty.",
+  alternates: { canonical: "/about" },
 };
 
 const specialties = [
   {
-    name: "Web applications",
-    description: "Fast, modern apps built with Next.js, TypeScript, and React.",
+    name: "Back-office systems",
+    description:
+      "Car Engineering Center: reception, work orders, floor tracking and payroll for four workshop branches, every screen refreshed every half second.",
   },
   {
-    name: "Business automation",
+    name: "Bilingual Arabic/English websites",
     description:
-      "Workflows, reminders, and integrations that remove repetitive manual work.",
+      "Salad Store: an Arabic-first ordering site for a Cairo salad bar, one tap to English, every dish opening WhatsApp with the order pre-filled.",
   },
   {
-    name: "AI integrations",
+    name: "Customer-facing tracking",
     description:
-      "Assistants and automations powered by large language models, applied to real business tasks.",
-  },
-  {
-    name: "Custom dashboards",
-    description:
-      "Clear views of the numbers that matter — leads, orders, bookings, revenue.",
-  },
-  {
-    name: "Backend systems",
-    description:
-      "Reliable APIs, background jobs, and integrations that keep everything running.",
-  },
-  {
-    name: "Database architecture",
-    description:
-      "Well-structured data models that stay fast and flexible as you grow.",
+      "The Car Engineering Center digital service book: a QR on every invoice that lets the customer watch their car's status on their phone, no login.",
   },
 ];
 
@@ -46,7 +34,7 @@ const principles = [
   {
     title: "Business first, technology second",
     description:
-      "A project succeeds when it changes a business result — more bookings, fewer no-shows, less admin time. The stack is a means to that end.",
+      "A project succeeds when it changes a number the business cares about, like bookings kept or hours of admin saved. The stack is a means to that end.",
   },
   {
     title: "Honest advice",
@@ -71,33 +59,54 @@ export default function About() {
         <RevealText
           as="h1"
           mode="load"
-          lines={["Hi, I'm", "Seif Ashraf."]}
-          className="mt-4 font-display text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] font-bold tracking-tight text-white"
+          lines={[
+            "Seif Ashraf.",
+            "I build the systems",
+            <>
+              small businesses{" "}
+              <em className="font-accent font-normal italic">run on.</em>
+            </>,
+          ]}
+          className="mt-4 font-display text-[clamp(2.5rem,6.5vw,5.5rem)] leading-[0.98] font-bold tracking-tight text-white"
         />
         <SectionReveal>
           <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_minmax(0,24rem)] lg:items-start">
             <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-slate-400">
               <p data-reveal>
-                I&apos;m a full stack developer who builds websites, custom
-                software, and automation systems for businesses. My focus is
-                simple: find where a business loses time or customers, and build
-                the system that fixes it.
+                I&apos;m a freelance full-stack developer in Cairo, and I work
+                with small businesses in the UK and Ireland. Two of my systems
+                are in production today. Car Engineering Center is an
+                Arabic-first workshop management platform used every day across
+                four branches in Amarah, Iraq: reception, work orders, live
+                floor tracking, customer history and payroll on one system.
+                Salad Store is a bilingual ordering website for a salad bar in
+                Heliopolis, Cairo, where every dish opens WhatsApp with the
+                order already written.
               </p>
               <p data-reveal>
-                Most of the companies I work with don&apos;t need &quot;more
-                technology&quot;. They need one well-built system that fits how
-                they already work — a booking flow that fills the calendar, an
-                ordering system that keeps the margin in-house, a dashboard that
-                finally shows what&apos;s going on. That&apos;s what I build.
+                Arabic-first and bilingual Arabic/English builds with proper
+                right-to-left layout are a specialty. The workshop platform is
+                Arabic and RTL throughout; Salad Store and the Blue Sky concept
+                switch between Arabic and English with one tap. I work in
+                TypeScript on Next.js and React, with Supabase or PostgreSQL
+                behind it and Tailwind CSS in front.
+              </p>
+              <p data-reveal>
+                I work in short cycles. You see working software in the first
+                weeks rather than a big reveal at the end, and we adjust while
+                changes are still cheap.
               </p>
             </div>
             <figure
               data-reveal
               className="relative overflow-hidden rounded-3xl border border-slate-800"
             >
-              <img
-                src="/seif.png"
+              <Image
+                src="/seif-portrait.webp"
                 alt="Portrait of Seif Ashraf"
+                width={470}
+                height={600}
+                sizes="(min-width:1024px) 520px, 100vw"
                 className="w-full object-cover saturate-[0.85]"
               />
               <div
@@ -123,7 +132,7 @@ export default function About() {
                 <>
                   What I{" "}
                   <em className="font-accent font-normal italic">
-                    specialize
+                    specialise
                   </em>{" "}
                   in
                 </>,
@@ -167,7 +176,7 @@ export default function About() {
             <div className="mt-10 grid gap-10 border-t border-slate-800 pt-10 md:grid-cols-3">
               {principles.map((p, i) => (
                 <div key={p.title} data-reveal>
-                  <p className="font-mono text-sm text-slate-500">
+                  <p className="font-mono text-sm text-slate-400">
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="mt-3 font-display text-xl font-bold text-white">

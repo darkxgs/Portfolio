@@ -4,6 +4,7 @@ import type { WorkListItem } from "@/components/work-list";
 /* Presentation-only metadata for the award-style work list.
    Content data itself stays in lib/projects.ts, untouched. */
 const categories: Record<string, string> = {
+  "car-engineering-center": "Production · Workshop platform",
   "salad-store": "Website · E-commerce",
   "blue-sky-events": "Concept · Congress house",
   "clinic-management": "Web application",
@@ -16,6 +17,7 @@ const categories: Record<string, string> = {
 /* Per-project brand tint — each product's real identity color.
    Used for the row dot, hover accents, and the preview frame ring. */
 const accents: Record<string, string> = {
+  "car-engineering-center": "#e11d48", // CEC red
   "salad-store": "#3e8e51", // leaf
   "blue-sky-events": "#2b9fe3", // sky
   "clinic-management": "#146c77", // teal
@@ -32,7 +34,8 @@ export function toWorkItems(projects: Project[]): WorkListItem[] {
     category: categories[p.slug] ?? "Web application",
     year: "2026",
     kind: p.kind ?? "demo",
-    demoUrl: p.demoUrl,
+    /* Production systems have no public URL; the list renders a plain chip for them. */
+    demoUrl: p.demoUrl ?? "",
     accent: accents[p.slug] ?? "#34d399",
   }));
 }
