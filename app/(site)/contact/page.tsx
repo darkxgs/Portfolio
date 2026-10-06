@@ -202,6 +202,23 @@ export default function Contact() {
                 </div>
                 <HoverArrow />
               </a>
+              <a
+                href="/Seif_Ashraf_CV.pdf"
+                download
+                data-reveal
+                className="group flex items-center justify-between gap-4 border-b border-ground-800 py-5 transition-colors hover:bg-ground-900/40"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="font-mono text-xs text-slate-400">05</span>
+                  <div>
+                    <p className="font-medium text-white">CV</p>
+                    <p className="font-mono text-sm text-slate-400">
+                      Download PDF
+                    </p>
+                  </div>
+                </div>
+                <HoverArrow />
+              </a>
             </div>
           </SectionReveal>
         </div>
