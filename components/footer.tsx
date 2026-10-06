@@ -69,6 +69,15 @@ export default function Footer() {
               WhatsApp
             </a>
           </Magnetic>
+          <Magnetic strength={0.25}>
+            <a
+              href="/Seif_Ashraf_CV.pdf"
+              download
+              className="block rounded-full border border-slate-700 px-6 py-3 font-mono text-sm text-slate-200 transition-colors hover:border-accent-500/50 hover:text-white"
+            >
+              Download CV
+            </a>
+          </Magnetic>
         </div>
 
         <div className="mt-20 grid gap-10 border-t border-ground-800/80 pt-10 sm:grid-cols-3">
@@ -130,6 +139,15 @@ export default function Footer() {
                   className="text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Seif_Ashraf_CV.pdf"
+                  download
+                  className="text-sm text-slate-400 transition-colors hover:text-white"
+                >
+                  CV (PDF)
                 </a>
               </li>
             </ul>
