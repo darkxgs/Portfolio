@@ -19,6 +19,10 @@ Open http://localhost:3000.
 2. Import the repository at https://vercel.com/new — Vercel auto-detects Next.js, no configuration needed.
 3. (Recommended) Attach a custom domain, e.g. `seifashraf.dev`, in the Vercel project settings.
 
+## CV
+
+The downloadable CV is `public/Seif_Ashraf_CV.pdf`, served at `/Seif_Ashraf_CV.pdf` and linked from the footer and the contact page.
+
 ## Structure
 
 - `app/(site)/` — portfolio pages (home, about, services, projects, project case studies, contact) plus `not-found.tsx` for unknown project slugs; `app/not-found.tsx` is the branded 404 for unmatched URLs
