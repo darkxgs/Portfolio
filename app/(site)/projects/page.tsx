@@ -8,7 +8,7 @@ import { toWorkItems } from "@/lib/work-meta";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Two production systems, a concept rebuild and five interactive demos by Seif Ashraf: a workshop platform used across four branches, a bilingual restaurant site, a concept site for a real company, and demo apps you can click through in your browser.",
+    "Two production systems, a website rebuild for an industrial IoT company, a concept rebuild and five interactive demos by Seif Ashraf: a workshop platform used across four branches, a bilingual restaurant site, the NeoWave site and product code generator, a concept site for a real company, and demo apps you can click through in your browser.",
   alternates: { canonical: "/projects" },
 };
 
@@ -35,8 +35,10 @@ export default function Projects() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400">
           Two systems in production: a workshop management platform used every
           day across four branches in Amarah, Iraq, and a bilingual ordering
-          site for a Cairo salad bar. One concept site rebuilt for a real
-          company from its published record. And five{" "}
+          site for a Cairo salad bar. A full website rebuild for NeoWave, an
+          industrial IoT company, with a product code generator and admin
+          running on Postgres. One concept site rebuilt for a real company
+          from its published record. And five{" "}
           <Link
             href="/demos"
             className="text-accent-400 underline decoration-accent-400/40 underline-offset-4 transition-colors hover:text-accent-300"

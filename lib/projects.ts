@@ -128,6 +128,102 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "neowave",
+    kind: "live",
+    title: "NeoWave — Website & Product Code Generator",
+    tagline:
+      "A full rebuild of an industrial IoT company's website, with a database-backed product code generator and its own admin.",
+    target:
+      "NeoWave, a building-automation and industrial IoT manufacturer: 60 devices across five product families, from room sensors and smart thermostats to 28-port industrial switches, BTU meters, fire alarm and gas detection. Its visitors are system integrators, engineers and building owners who need specs, datasheets and exact ordering codes.",
+    problem:
+      "The old WordPress site sold engineered hardware through a generic template. An audit found no main heading, meta description or link previews on the homepage, 9 of 17 images without alt text, stat counters that read 0 to search engines, a whole category (Flow Sensors) missing from the products page, products listed twice, typos in labels and URLs, and news that had not moved since February 2024. The Career page had no way to apply. Worst of all, the product code generator, the tool customers use to build an ordering code, was embedded through a temporary preview link that could expire at any time, and its data was split across three sources that disagreed with each other.",
+    solution:
+      "Nine public pages and an admin, rebuilt in one visual system: a deep navy ground, the logo's blue, a geometric display face, and a motion layer of smooth scrolling, split-text reveals, scroll-scrubbed copy, 3D tilt cards and a velocity-driven marquee. New photography and two seamless 1080p video loops were AI-generated from NeoWave's real product photos, so the devices in every scene are the real ones. The product code generator was rebuilt from its source onto a new Postgres schema that merges the three old data sources into 35 models, 135 option groups and 460 options, and fixes a bug in the old app that dropped the -XP suffix from model codes. Staff edit everything in a signed-in admin and press Publish; the public generator serves the new snapshot within a minute, with no redeploy.",
+    features: [
+      {
+        name: "Product code generator",
+        description:
+          "Pick a model, narrow it with type and feature filters, and choose each option while the ordering code assembles itself live. Paste an existing code to decode it, share a configuration as a link, or send it straight into a quote request.",
+      },
+      {
+        name: "Admin with publish snapshots",
+        description:
+          "Create and edit models, drag option groups into order, paste a whole list of options at once, and upload product photos, with a live code preview. Publish saves a snapshot the public site picks up within a minute; if the API is ever down, the generator falls back to a static copy.",
+      },
+      {
+        name: "Activity log and team accounts",
+        description:
+          "Every change is recorded with who made it. Admins add teammates, who get a one-time password and change it on first sign-in. Two people editing the same model can't silently overwrite each other.",
+      },
+      {
+        name: "Catalog of 60 devices",
+        description:
+          "All 13 categories in five families, each device with its datasheet one click away: 82 datasheets and manuals in total. The missing category and the duplicate listings are fixed.",
+      },
+      {
+        name: "Editorial motion system",
+        description:
+          "A preloader, smooth scroll, line-masked headline reveals, copy that highlights word by word as you scroll, parallax, magnetic buttons and an interactive wave. Hover effects are built so they never fight the scroll animations.",
+      },
+      {
+        name: "AI-generated imagery from real products",
+        description:
+          "Ten new scenes and two seamless video loops, generated with NeoWave's real product photos as reference: the sensor on a living-room wall, the thermostat in an apartment, switches in a factory cabinet.",
+      },
+      {
+        name: "Career, news and contact",
+        description:
+          "An open-application form that prepares the email for the applicant, three news articles, and a contact page that arrives pre-filled when a visitor comes from the generator with a code.",
+      },
+    ],
+    tech: [
+      "HTML, CSS & vanilla JavaScript",
+      "GSAP + ScrollTrigger",
+      "Lenis",
+      "Node.js serverless functions",
+      "Neon Postgres",
+      "S3-compatible object storage",
+      "Python build pipeline",
+      "Vercel + Web Analytics",
+      "AI image & video generation",
+    ],
+    businessValue: [
+      "Customers build, decode and share exact ordering codes on the company's own site, and a finished code goes straight into a quote request.",
+      "Product data has one home. Staff update it in the admin and publish in seconds, without a developer or a redeploy.",
+      "The generator no longer depends on a temporary preview link that could break without warning.",
+      "The audit fixes (headings, meta descriptions, link previews, alt text, real stat numbers, the missing category, the typos) make the catalog findable and shareable.",
+    ],
+    demoNote:
+      "A real company's website, rebuilt end to end: audit, design, motion, AI-generated imagery, the generator rebuild, database, admin and hosting. The new site is live at neowave-site.vercel.app; the admin is private.",
+    demoUrl: "https://neowave-site.vercel.app",
+    gallery: [
+      {
+        src: "/screens/nw-generator.webp",
+        alt: "NeoWave product code generator: a model list with filter chips beside a configured sensor whose ordering code TxTHV94-XP-2-2-W is shown segment by segment.",
+        caption:
+          "Product code generator: every option choice fills its segment of the ordering code live.",
+      },
+      {
+        src: "/screens/nw-products.webp",
+        alt: "NeoWave products page hero: the headline Every device. One ecosystem. beside a lineup of real NeoWave devices, with counts of 60 devices, 13 categories, 5 families and 82 datasheets.",
+        caption:
+          "Products: 60 devices in 13 categories, each with its datasheet one click away.",
+      },
+      {
+        src: "/screens/nw-decoder.webp",
+        alt: "NeoWave code generator landing: the headline Build your ordering code. above a field for pasting a code to decode, with counts of 35 models, 460 options and 6 product types.",
+        caption:
+          "Paste any existing ordering code and the generator decodes it back into its options.",
+      },
+      {
+        src: "/screens/nw-career.webp",
+        alt: "NeoWave career page hero: Join our global team over an AI-generated scene of NeoWave devices on a desk with a city skyline at night.",
+        caption:
+          "Career: an AI-generated video loop built from the real products, and an open-application form.",
+      },
+    ],
+  },
+  {
     slug: "salad-store",
     kind: "live",
     title: "Salad Store — Salad Bar & Wraps",

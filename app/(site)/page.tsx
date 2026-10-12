@@ -270,8 +270,10 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-soft">
-            Two systems in production, one concept rebuilt for a real company,
-            and five demos you can click through. Demos are demos and say so.
+            Two systems in production, a website and product configurator
+            rebuilt for an industrial IoT company, one concept rebuilt for a
+            real company, and five demos you can click through. Demos are demos
+            and say so.
           </p>
           <div className="mt-12">
             <WorkList items={workItems} tone="paper" />
