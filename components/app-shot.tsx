@@ -5,6 +5,7 @@ import Image from "next/image";
    project needs an entry here or the case study renders no screenshot. */
 const frames: Record<string, { label: string }> = {
   "car-engineering-center": { label: "Internal system · 4 branches" },
+  mawid: { label: "mawid-bay.vercel.app" },
   neowave: { label: "neowave-site.vercel.app" },
   "salad-store": { label: "saladstore-eg.vercel.app" },
   "blue-sky-events": { label: "blue-skye.vercel.app" },

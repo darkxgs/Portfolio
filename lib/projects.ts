@@ -2,8 +2,10 @@ export type Project = {
   slug: string;
   /* "live" = real production site with a public URL; "production" = real system in
      daily use with NO public URL; "concept" = self-initiated pitch rebuild for a real
-     company, deployed at an external URL; default ("demo") is an interactive demo build */
-  kind?: "live" | "demo" | "concept" | "production";
+     company, deployed at an external URL; "product" = my own full-stack product with a
+     real backend, live with a demo account (not client work); default ("demo") is an
+     interactive demo build */
+  kind?: "live" | "demo" | "concept" | "production" | "product";
   title: string;
   tagline: string;
   target: string;
@@ -124,6 +126,101 @@ export const projects: Project[] = [
         alt: "HR and payroll screen of Car Engineering Center: a monthly summary with hours, rate and salary due above an attendance table.",
         caption:
           "HR and payroll: attendance pasted from Excel or the biometric reader; salaries compute from hours × rate.",
+      },
+    ],
+  },
+  {
+    slug: "mawid",
+    kind: "product",
+    title: "Mawid — Booking & Front Desk for Gulf Clinics",
+    tagline:
+      "An Arabic-first booking platform for clinics and salons: online booking, WhatsApp reminders, a live schedule and a bilingual front-desk assistant.",
+    target:
+      "Clinics, salons and studios in the Gulf, shown through a demo dental clinic in Dubai. Patients book from their phone in Arabic or English; the owner and the front desk run the day from one screen.",
+    problem:
+      "Small clinics in the Gulf still take most bookings by phone and WhatsApp and write them in a paper book or a shared spreadsheet. Two receptionists can give the same chair to two patients, a missed visit costs the slot because nobody sent a reminder, and nobody can say how full next week is without counting by hand. Most booking tools are built in English first and treat Arabic as a translation.",
+    solution:
+      "Every business gets a public booking page, Arabic and right-to-left by default with English one tap away, and a dashboard for the front desk. Patients pick a service, a person or \"first available\", and a real free time; the time is held for a few minutes while they type, so nobody else can take it. They get a WhatsApp confirmation, a calendar file and a private link to move or cancel. The front desk sees the whole team side by side on a live timeline, books phone and walk-in visits through the same checks, and marks visits attended or missed in one tap. Reminders go out the day before and two hours before. Double bookings are stopped by the database itself, not only by the app.",
+    features: [
+      {
+        name: "Arabic-first booking page",
+        description:
+          "Right-to-left by default, English one tap away. A day strip shows how booked each day is, and the chosen time is held with a visible countdown while the patient fills in their details.",
+      },
+      {
+        name: "No double bookings, by design",
+        description:
+          "A Postgres exclusion constraint covers each person's occupied time, cleaning gaps included. A test fires five holds at the same slot at once and exactly one wins.",
+      },
+      {
+        name: "Live front-desk schedule",
+        description:
+          "Every team member side by side on one timeline with a line for the current time, day totals, who is up next, and visits waiting to be checked out.",
+      },
+      {
+        name: "Reminders that send once",
+        description:
+          "WhatsApp (and email) reminders the day before and two hours before. Each one is claimed in the database before it goes out, so two overlapping runs can never message a patient twice.",
+      },
+      {
+        name: "Bilingual front-desk assistant",
+        description:
+          "Ask in English or Arabic, like \"مين عنده مواعيد بكرة الصبح؟\", and get answers from the live schedule. It books, moves or cancels only after a confirm card. Rule-based and tested, no AI model.",
+      },
+      {
+        name: "Insights and exports",
+        description:
+          "Appointments per day, busiest hours, no-show rate, where bookings came from and how full each person's week was. Bookings export to CSV.",
+      },
+      {
+        name: "Team, services and rules",
+        description:
+          "Bilingual services with prices and cleaning gaps, shifts and breaks, time off, booking rules, and the booking link with a QR code to print.",
+      },
+    ],
+    tech: [
+      "Next.js 16 (App Router, Server Actions)",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Drizzle ORM",
+      "Tailwind CSS 4",
+      "Vercel + Vercel Cron",
+      "Vitest + GitHub Actions",
+    ],
+    businessValue: [
+      "Patients book themselves at any hour, in their own language, so the phone rings less.",
+      "A chair can never go to two people, even when two receptionists click at the same moment.",
+      "Reminders go out on their own, so fewer slots are lost to people who forgot.",
+      "The owner sees takings, no-shows and how full each person's week is without counting by hand.",
+    ],
+    demoNote:
+      "My own product, designed and built end to end: product design, database, booking engine, reminders, the assistant, tests and deployment. It is not client work. The live site runs a demo dental clinic on generated data that resets every night, so anyone can book as a patient and then run the front desk. Photography and the hero film were generated with Higgsfield. The code is public at github.com/darkxgs/mawid.",
+    demoUrl: "https://mawid-bay.vercel.app",
+    gallery: [
+      {
+        src: "/screens/mawid-booking.webp",
+        alt: "Mawid patient booking page in Arabic: the clinic's cover photo and name above a list of services with prices, beside a dark ticket that fills in as the patient chooses.",
+        caption:
+          "The patient's booking page opens in Arabic, right to left, with English one tap away.",
+      },
+      {
+        src: "/screens/mawid-today.webp",
+        alt: "Mawid Today screen: three team members side by side on a timeline with a line for the current time, day totals above, and who is up next on the right.",
+        caption:
+          "Today: the whole team on one timeline, with a line for the current time and visits waiting to be checked out.",
+      },
+      {
+        src: "/screens/mawid-assistant.webp",
+        alt: "Mawid assistant answering an Arabic question about tomorrow morning with a list of six appointments and follow-up buttons.",
+        caption:
+          "The assistant answers in the language it is asked in, from the live schedule.",
+      },
+      {
+        src: "/screens/mawid-insights.webp",
+        alt: "Mawid Insights screen: appointments, takings, no-show rate and online share, a bar chart of appointments per day, and a breakdown of how people booked.",
+        caption:
+          "Insights: appointments per day, takings, no-shows and where bookings came from.",
       },
     ],
   },

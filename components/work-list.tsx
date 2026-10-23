@@ -11,7 +11,7 @@ export type WorkListItem = {
   title: string;
   category: string;
   year: string;
-  kind: "live" | "demo" | "concept" | "production";
+  kind: "live" | "demo" | "concept" | "production" | "product";
   /* Empty for "production" systems, which have no public link. */
   demoUrl: string;
   /* Per-project brand tint (hex) — dot, hover accents, preview ring. */
@@ -193,7 +193,7 @@ export default function WorkList({
                     rel="noopener noreferrer"
                     className={`relative z-10 rounded-full border px-3 py-1 font-mono text-[10px] tracking-wide uppercase transition-colors duration-300 ${accentBorder} ${liveChip}`}
                   >
-                    {item.kind === "live" ? "Live project" : "Concept · live"}
+                    {item.kind === "live" ? "Live project" : item.kind === "product" ? "Own product · live" : "Concept · live"}
                   </a>
                 ) : (
                   <Link

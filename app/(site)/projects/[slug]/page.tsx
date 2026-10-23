@@ -100,19 +100,22 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const kind = project.kind ?? "demo";
-  /* live + concept open an external URL; demo opens an internal route;
-     production is a real system with no public link at all. */
-  const external = kind === "live" || kind === "concept";
+  /* live, concept and product open an external URL; demo opens an internal
+     route; production is a real system with no public link at all. */
+  const external = kind === "live" || kind === "concept" || kind === "product";
+  const product = kind === "product";
   const production = kind === "production";
   const url = project.demoUrl ?? "";
 
   const chip = production
     ? "In production"
-    : kind === "concept"
-      ? "Concept · live"
-      : kind === "live"
-        ? "Live project"
-        : "Interactive demo";
+    : product
+      ? "Own product · live"
+      : kind === "concept"
+        ? "Concept · live"
+        : kind === "live"
+          ? "Live project"
+          : "Interactive demo";
 
   const shot = (
     <AppShot
@@ -170,7 +173,11 @@ export default async function ProjectPage({
               rel="noopener noreferrer"
               className={primaryButton}
             >
-              {kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
+              {kind === "concept"
+                ? "Open the live concept →"
+                : product
+                  ? "Open the live demo →"
+                  : "Visit the live site →"}
             </a>
           ) : (
             <Link href={url} className={primaryButton}>
@@ -186,7 +193,9 @@ export default async function ProjectPage({
           <p className="text-sm text-slate-400">
             {kind === "live"
               ? "Opens in a new tab — this is the real site, in production."
-              : kind === "concept"
+              : product
+                ? "Opens in a new tab — my own product, running a demo clinic you can book into and manage."
+                : kind === "concept"
                 ? "Opens in a new tab — a live concept preview built as a pitch, not commissioned work."
                 : "Runs in your browser — fictional data, nothing to install."}
           </p>
@@ -220,7 +229,9 @@ export default async function ProjectPage({
             ? "A real screen from the production system. It is an internal tool, so there is no public link."
             : kind === "live"
               ? "Real screenshot of the production site — click it to visit."
-              : kind === "concept"
+              : product
+                ? "Real screenshot of the live product — click it to open the demo clinic."
+                : kind === "concept"
                 ? "Real screenshot of the live concept — click it to browse the full site."
                 : "Real screenshot of the working demo — click it to try the app itself."}
         </p>
@@ -361,7 +372,7 @@ export default async function ProjectPage({
       <div className="mt-24 rounded-2xl bg-paper p-6 sm:p-8">
         <p className="text-sm leading-relaxed text-ink-soft">
           <span className="font-medium text-ink-text">
-            {kind === "live" || production ? "About this project:" : "Honesty note:"}
+            {kind === "live" || production || product ? "About this project:" : "Honesty note:"}
           </span>{" "}
           {project.demoNote}
         </p>
@@ -384,7 +395,9 @@ export default async function ProjectPage({
             ? "This one is in daily production use. If your business needs its own back-office system, I can build the version that fits how you work."
             : kind === "live"
               ? "This one is live in production. If your business needs something like it, I can build the version that fits how you work."
-              : kind === "concept"
+              : product
+                ? "This is my own product, live with a demo clinic you can try. If your business needs booking like this, I can set it up for you or build the version that fits how you work."
+                : kind === "concept"
                 ? "This concept was built from a real company's published record. If your business deserves the same treatment, I can build the version that fits how you work."
                 : "This demo maps to a real problem. If it's one your business has, I can build the version that fits how you work."}
         </p>
@@ -407,7 +420,7 @@ export default async function ProjectPage({
                   rel="noopener noreferrer"
                   className={secondaryButton}
                 >
-                  {kind === "concept" ? "Browse the concept" : "Visit the live site"}
+                  {kind === "concept" ? "Browse the concept" : product ? "Open the live demo" : "Visit the live site"}
                 </a>
               ) : (
                 <Link href={url} className={secondaryButton}>

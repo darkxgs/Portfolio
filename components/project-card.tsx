@@ -4,17 +4,20 @@ import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const kind = project.kind ?? "demo";
-  const external = kind === "live" || kind === "concept";
+  const external = kind === "live" || kind === "concept" || kind === "product";
   const production = kind === "production";
+  const product = kind === "product";
   const url = project.demoUrl ?? "";
   const shot = <AppShot slug={project.slug} alt={`Screenshot of ${project.title}`} />;
   const chip = production
     ? "In production"
-    : kind === "concept"
-      ? "Concept · live"
-      : kind === "live"
-        ? "Live project"
-        : "Interactive demo";
+    : product
+      ? "Own product · live"
+      : kind === "concept"
+        ? "Concept · live"
+        : kind === "live"
+          ? "Live project"
+          : "Interactive demo";
 
   return (
     <div className="group flex flex-col rounded-2xl border border-ground-800 bg-ground-900/40 p-6 transition-colors hover:border-accent-500/40">
@@ -76,7 +79,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="text-sm font-medium text-accent-400 hover:text-accent-300"
             >
-              {kind === "concept" ? "Open the live concept →" : "Visit the live site →"}
+              {kind === "concept" ? "Open the live concept →" : product ? "Open the live demo →" : "Visit the live site →"}
             </a>
           ) : (
             <Link

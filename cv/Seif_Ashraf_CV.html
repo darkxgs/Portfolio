@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seif Ashraf — CV</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --ink: #1c1f24; --teal: #2f6f73; --muted: #5a616b; --soft: #3d434c; --rule: #d5dae0; }
+  html, body { background: #fff; }
+  body {
+    width: 210mm;
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    font-size: 11.5px;
+    line-height: 1.36;
+    padding: 36px 45px 24px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+  header { border-bottom: 1.5px solid var(--ink); padding-bottom: 8px; }
+  h1 { font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.2px; }
+  .role { color: var(--teal); font-size: 13.6px; font-weight: 700; margin-top: 4px; }
+  .contact { color: var(--soft); font-size: 11.4px; margin-top: 4px; }
+  h2 {
+    color: var(--teal);
+    font-size: 11.6px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+    margin: 10px 0 4px;
+  }
+  .entry { margin-top: 6px; }
+  .entry:first-of-type { margin-top: 0; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .title { font-size: 12.6px; font-weight: 700; }
+  .meta { color: var(--muted); font-size: 11.4px; white-space: nowrap; }
+  .stack { color: var(--teal); font-size: 11.2px; margin-top: 1px; }
+  ul { list-style: none; margin-top: 2px; }
+  li { position: relative; padding-left: 16px; margin-top: 1px; }
+  li::before { content: ""; position: absolute; left: 3px; top: 0.62em; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); }
+  p.plain { margin-top: 1px; }
+  .skills p { margin-top: 1px; }
+  b { font-weight: 700; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Seif Ashraf</h1>
+    <div class="role">Full-Stack &amp; Mobile Developer</div>
+    <div class="contact">Cairo, Egypt · +20 106 989 6831 · <a href="mailto:seifdarkx@gmail.com">seifdarkx@gmail.com</a> · <a href="https://www.seifashraf.dev">seifashraf.dev</a> · <a href="https://www.linkedin.com/in/seifashraf-dev/">linkedin.com/in/seifashraf-dev</a></div>
+  </header>
+
+  <h2>Summary</h2>
+  <p class="plain">Full-stack and mobile developer with 3 years of experience shipping production software end to end, from database design to UI. Builds live social apps, business platforms and client websites with React, Next.js, React Native, Laravel and Supabase, with full Arabic/English RTL. Works with Claude Code daily to ship fast while keeping code reviewed and tested.</p>
+
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="row"><span class="title">Full-Stack Mobile Developer, LinkUp (LINKUP LIVE CHAT LLC, USA)</span><span class="meta">Jun 2026 – Present · Remote</span></div>
+    <div class="stack">React Native (Expo SDK 52), expo-router, Zustand, Firebase, Agora, TypeScript</div>
+    <ul>
+      <li>Develop LinkUp, a live audio-room social app with voice rooms, virtual gifting, VIP and agency systems, real-money transactions and Arabic/English RTL.</li>
+      <li>Audited a ~650-file TypeScript codebase (scored 73/100); found an 8,000-line god component, a logic bug in host tasks and silently swallowed errors in auth and payment paths, and wrote a prioritized fix plan.</li>
+      <li>Led QA and bug triage: merged tester reports from 3 Arabic sources into one 58-item English tracker and shipped fixes in reviewed rounds.</li>
+      <li>Designed IP-based country scoping for the admin dashboard, including VPN edge cases; wrote the team's AI-assisted coding standards (feature branches, pull requests, code review).</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="title">Freelance Full-Stack Developer, <a href="https://www.seifashraf.dev">seifashraf.dev</a></span><span class="meta">Remote</span></div>
+    <p class="plain">Websites, booking systems and back-office software for small businesses, from scoping to deployment and support. Key projects below.</p>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="title">Full-Stack Developer, NeoWave</span><span class="meta">Feb 2025 – Mar 2025 · Remote</span></div>
+    <ul>
+      <li>Built a Product Code Generator platform with Next.js and React, including API integrations and authentication; optimized assets to cut page load times.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="title">Web Developer, Ejada</span><span class="meta">Feb 2025 – Mar 2025 · Remote</span></div>
+    <ul>
+      <li>Built responsive React/Next.js web apps with UI/UX designers; improved performance and cross-browser support.</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+  <div class="entry">
+    <div class="row"><span class="title">Car Engineering Center, Workshop Management Platform</span><span class="meta">In production · 4 branches</span></div>
+    <div class="stack">Next.js, React 19, TypeScript, Supabase (PostgreSQL, Realtime, Auth), Tailwind CSS</div>
+    <ul>
+      <li>Built the platform a car workshop chain in Iraq runs on daily: 34 screens, 12 tables, ~29,500 lines of TypeScript, 309 commits.</li>
+      <li>Engineered work orders priced automatically from inspection checklists, a live workshop floor with per-car countdowns, and a real-time multi-branch dashboard.</li>
+      <li>Added QR-code invoices so customers track their car live without logging in, and payroll computed from biometric or Excel attendance.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="title">Mawid, Booking Platform for Gulf Clinics</span><span class="meta">Own product · <a href="https://mawid-bay.vercel.app">mawid-bay.vercel.app</a></span></div>
+    <div class="stack">Next.js 16, React 19, TypeScript, PostgreSQL (Neon), Drizzle ORM, Tailwind CSS, Vercel</div>
+    <ul>
+      <li>Built an Arabic-first booking and front-desk product for clinics: patient booking, a live team schedule, WhatsApp reminders and insights.</li>
+      <li>Made double booking impossible in the database with a Postgres exclusion constraint, tested with five simultaneous holds on one slot.</li>
+      <li>Wrote a bilingual English/Arabic assistant that books, moves or cancels only after confirmation; 36 automated tests run in CI.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="row"><span class="title">Salad Store, Bilingual Ordering Site</span><span class="meta">Live · <a href="https://saladstore-eg.vercel.app">saladstore-eg.vercel.app</a></span></div>
+    <p class="plain">Arabic/English ordering and e-commerce site for a Cairo salad bar. Also built 6 interactive demos on seifashraf.dev: dental booking with reminders, CRM, SaaS metrics dashboard, restaurant ordering, bowl builder and an events site.</p>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>Languages:</b> TypeScript, JavaScript, PHP, Java, Python, SQL</p>
+    <p><b>Front end and mobile:</b> React, Next.js, React Native (Expo), Tailwind CSS, HTML/CSS, responsive and RTL design</p>
+    <p><b>Back end and data:</b> Node.js, Express, Laravel, Supabase, Firebase, PostgreSQL, MySQL, Drizzle ORM, REST APIs, authentication</p>
+    <p><b>Realtime and integrations:</b> Agora, LiveKit, Supabase Realtime, Twilio (SMS, WhatsApp OTP)</p>
+    <p><b>Tools and process:</b> Git, GitHub, pull requests, code review, Vitest, CI, QA and bug triage, code audits, Vercel, Claude Code, Cursor</p>
+  </div>
+
+  <h2>Education and Certifications</h2>
+  <p class="plain"><b>Misr International Computer Academy (MICA)</b>, Giza, Egypt · Diploma, 2026 · Graduation project: software system for the Ministry of Industry and Trade</p>
+  <p class="plain" style="margin-top:3px">Oracle Academy award, Java Fundamentals · RoboCup MICA Egypt 2025, certificate of achievement · MICA Java Summer Camp</p>
+  <p class="plain"><b>Languages:</b> Arabic (native), English (professional)</p>
+</body>
+</html>

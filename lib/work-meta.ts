@@ -5,6 +5,7 @@ import type { WorkListItem } from "@/components/work-list";
    Content data itself stays in lib/projects.ts, untouched. */
 const categories: Record<string, string> = {
   "car-engineering-center": "Production · Workshop platform",
+  mawid: "Product · Booking platform",
   neowave: "Website · Product configurator",
   "salad-store": "Website · E-commerce",
   "blue-sky-events": "Concept · Congress house",
@@ -19,6 +20,7 @@ const categories: Record<string, string> = {
    Used for the row dot, hover accents, and the preview frame ring. */
 const accents: Record<string, string> = {
   "car-engineering-center": "#e11d48", // CEC red
+  mawid: "#e9a23b", // Mawid saffron
   neowave: "#3087c8", // NeoWave logo blue
   "salad-store": "#3e8e51", // leaf
   "blue-sky-events": "#2b9fe3", // sky

@@ -5,7 +5,7 @@ const destinations = [
   {
     href: "/projects",
     label: "Projects",
-    note: "Two production systems, a website rebuild, one concept and five demos.",
+    note: "Two production systems, my own booking product, a website rebuild, one concept and five demos.",
   },
   {
     href: "/demos",

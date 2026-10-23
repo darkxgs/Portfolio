@@ -34,7 +34,7 @@ const services = [
     label: "Business Automation",
     title: "Stop paying staff to do what software does better",
     intro:
-      "For businesses where the same task is done by hand every day, like confirmations typed out one at a time or attendance copied into a salary sheet. In the workshop platform I built, salaries now compute from pasted attendance and an hourly rate; that used to be a monthly job done by hand.",
+      "For businesses where the same task is done by hand every day, like confirmations typed out one at a time or attendance copied into a salary sheet. In the workshop platform I built, salaries now compute from pasted attendance and an hourly rate; that used to be a monthly job done by hand. Mawid, my booking product, sends WhatsApp reminders the day before and two hours before a visit, without anyone pressing send.",
     deliverables: [
       "Reminders and confirmations that send themselves",
       "A CRM that records every lead and customer without anyone typing it in twice",
