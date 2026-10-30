@@ -32,11 +32,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Seif Ashraf — Freelance Web Developer for UK & Irish Small Businesses",
+      "Seif Ashraf — Freelance Full-Stack Developer, Arabic & English Web Apps",
     template: "%s — Seif Ashraf",
   },
   description:
-    "Freelance full-stack developer in Cairo building websites, booking systems and back-office software for UK and Irish small businesses. Two production systems in daily use, plus five interactive demos you can try in your browser.",
+    "Freelance full-stack developer building bilingual Arabic and English websites, booking systems and business software for companies in the Gulf, the UK and beyond. Two production systems in daily use and five live products you can try in your browser.",
 };
 
 /* Runs before first paint. `js` lets globals.css pre-hide the elements the
@@ -76,7 +76,7 @@ const jsonLd = {
       url: siteUrl,
       email: "hello@seifashraf.dev",
       founder: { "@id": `${siteUrl}/#person` },
-      areaServed: ["GB", "IE"],
+      areaServed: ["SA", "AE", "KW", "QA", "BH", "OM", "EG", "GB", "IE"],
       address: {
         "@type": "PostalAddress",
         addressLocality: "Cairo",

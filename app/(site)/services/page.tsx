@@ -7,7 +7,7 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Websites, automation and custom software for small businesses, by Seif Ashraf, a freelance full-stack developer in Cairo working with UK and Irish businesses.",
+    "Websites, automation and custom software for small businesses, by Seif Ashraf, a freelance full-stack developer building bilingual Arabic and English software for businesses in the Gulf, the UK and beyond.",
   alternates: { canonical: "/services" },
 };
 

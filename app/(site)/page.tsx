@@ -140,7 +140,7 @@ export default function Home() {
         />
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 pt-28 pb-10">
           <p className="font-mono text-xs tracking-widest text-accent-400 uppercase sm:text-sm">
-            Freelance developer · Cairo · working with UK &amp; Irish businesses
+            Freelance full-stack developer · Arabic &amp; English · remote
           </p>
 
           <div className="relative">
@@ -183,7 +183,7 @@ export default function Home() {
                   className="h-9 w-9 rounded-full object-cover object-top"
                 />
                 <span className="text-sm text-slate-200">
-                  Cairo · two hours ahead of London
+                  Cairo · working hours that overlap the Gulf and the UK
                 </span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ground-800 text-slate-300">
                   <Globe />

@@ -6,7 +6,7 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Seif Ashraf, freelance full-stack developer in Cairo working with UK and Irish businesses. Describe your problem and get an honest recommendation.",
+    "Get in touch with Seif Ashraf, freelance full-stack developer working remotely with businesses in the Gulf, the UK and beyond. Describe your problem and get an honest recommendation.",
   alternates: { canonical: "/contact" },
 };
 
@@ -35,12 +35,12 @@ const steps = [
 const abroad = [
   {
     title: "Invoices by PayPal",
-    description: "Paid in GBP, EUR or USD.",
+    description: "Paid in USD, GBP or EUR.",
   },
   {
-    title: "Two hours ahead of London, all year",
+    title: "Your working day, not mine",
     description:
-      "Cairo is two hours ahead of London all year, so we overlap your working day.",
+      "Cairo is within two hours of Riyadh, Dubai and London all year, so we share most of your working day.",
   },
   {
     title: "A written proposal first",
@@ -247,7 +247,7 @@ export default function Contact() {
 
           <div className="rounded-3xl border border-accent-500/20 bg-accent-500/5 p-8 sm:p-10">
             <h2 className="font-display text-lg font-bold text-white">
-              Working with me from the UK or Ireland
+              Working with me from abroad
             </h2>
             <ul className="mt-8 space-y-6">
               {abroad.map((item) => (

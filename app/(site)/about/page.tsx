@@ -8,7 +8,7 @@ import { SectionReveal } from "@/components/site-motion/section-reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Seif Ashraf, freelance full-stack developer in Cairo working with UK and Irish small businesses. Two systems in production; bilingual Arabic/English builds a specialty.",
+    "Seif Ashraf, freelance full-stack developer building Arabic and English software for small businesses in the Gulf, the UK and beyond. Two systems in production; bilingual Arabic/English builds a specialty.",
   alternates: { canonical: "/about" },
 };
 
@@ -73,8 +73,9 @@ export default function About() {
           <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_minmax(0,24rem)] lg:items-start">
             <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-slate-400">
               <p data-reveal>
-                I&apos;m a freelance full-stack developer in Cairo, and I work
-                with small businesses in the UK and Ireland. Two of my systems
+                I&apos;m a freelance full-stack developer in Cairo. I build
+                Arabic and English software for small businesses in the Gulf,
+                the UK and beyond. Two of my systems
                 are in production today. Car Engineering Center is an
                 Arabic-first workshop management platform used every day across
                 four branches in Amarah, Iraq: reception, work orders, live
