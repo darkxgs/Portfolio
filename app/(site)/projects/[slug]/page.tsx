@@ -194,7 +194,7 @@ export default async function ProjectPage({
             {kind === "live"
               ? "Opens in a new tab — this is the real site, in production."
               : product
-                ? "Opens in a new tab — my own product, running a demo clinic you can book into and manage."
+                ? "Opens in a new tab — my own product, with a live demo you can use."
                 : kind === "concept"
                 ? "Opens in a new tab — a live concept preview built as a pitch, not commissioned work."
                 : "Runs in your browser — fictional data, nothing to install."}
@@ -230,7 +230,7 @@ export default async function ProjectPage({
             : kind === "live"
               ? "Real screenshot of the production site — click it to visit."
               : product
-                ? "Real screenshot of the live product — click it to open the demo clinic."
+                ? "Real screenshot of the live product — click it to open the demo."
                 : kind === "concept"
                 ? "Real screenshot of the live concept — click it to browse the full site."
                 : "Real screenshot of the working demo — click it to try the app itself."}
@@ -396,7 +396,7 @@ export default async function ProjectPage({
             : kind === "live"
               ? "This one is live in production. If your business needs something like it, I can build the version that fits how you work."
               : product
-                ? "This is my own product, live with a demo clinic you can try. If your business needs booking like this, I can set it up for you or build the version that fits how you work."
+                ? "This is my own product, live with a demo you can try. If your business needs something like it, I can set it up for you or build the version that fits how you work."
                 : kind === "concept"
                 ? "This concept was built from a real company's published record. If your business deserves the same treatment, I can build the version that fits how you work."
                 : "This demo maps to a real problem. If it's one your business has, I can build the version that fits how you work."}
