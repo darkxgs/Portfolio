@@ -6,6 +6,10 @@ import type { WorkListItem } from "@/components/work-list";
 const categories: Record<string, string> = {
   "car-engineering-center": "Production · Workshop platform",
   mawid: "Product · Booking platform",
+  khatm: "Product · Invoicing",
+  sufra: "Product · Restaurant ordering",
+  nabd: "Product · Uptime monitoring",
+  kashf: "Product · Store audit",
   neowave: "Website · Product configurator",
   "salad-store": "Website · E-commerce",
   "blue-sky-events": "Concept · Congress house",
@@ -21,6 +25,10 @@ const categories: Record<string, string> = {
 const accents: Record<string, string> = {
   "car-engineering-center": "#e11d48", // CEC red
   mawid: "#e9a23b", // Mawid saffron
+  khatm: "#4b45c6", // Khatm seal indigo
+  sufra: "#2f9e6e", // Sufra green
+  nabd: "#22a06b", // Nabd pulse
+  kashf: "#2a4bd7", // Kashf blue
   neowave: "#3087c8", // NeoWave logo blue
   "salad-store": "#3e8e51", // leaf
   "blue-sky-events": "#2b9fe3", // sky

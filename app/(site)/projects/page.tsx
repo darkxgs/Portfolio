@@ -8,7 +8,7 @@ import { toWorkItems } from "@/lib/work-meta";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Two production systems, Mawid (my own booking platform for Gulf clinics), a website rebuild for an industrial IoT company, a concept rebuild and five interactive demos by Seif Ashraf: a workshop platform used across four branches, a bilingual restaurant site, an Arabic-first booking product with a live demo clinic, the NeoWave site and product code generator, a concept site for a real company, and demo apps you can click through in your browser.",
+    "Two production systems, five products of my own (Mawid, Khatm, Sufra, Nabd and Kashf), a website rebuild for an industrial IoT company, a concept rebuild and five interactive demos by Seif Ashraf: a workshop platform used across four branches, a bilingual restaurant site, an Arabic-first booking product with a live demo clinic, the NeoWave site and product code generator, a concept site for a real company, and demo apps you can click through in your browser.",
   alternates: { canonical: "/projects" },
 };
 
@@ -35,9 +35,11 @@ export default function Projects() {
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400">
           Two systems in production: a workshop management platform used every
           day across four branches in Amarah, Iraq, and a bilingual ordering
-          site for a Cairo salad bar. Mawid, my own Arabic-first booking
-          platform for Gulf clinics, live with a demo clinic you can book into
-          and run. A full website rebuild for NeoWave, an
+          site for a Cairo salad bar. Five products of my own, each live with
+          a demo you can use: Mawid for clinic bookings, Khatm for bilingual
+          Saudi tax invoices, Sufra for restaurant table ordering, Nabd for
+          uptime monitoring and status pages, and Kashf, a check-up for online
+          stores. A full website rebuild for NeoWave, an
           industrial IoT company, with a product code generator and admin
           running on Postgres. One concept site rebuilt for a real company
           from its published record. And five{" "}

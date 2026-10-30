@@ -225,6 +225,310 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "khatm",
+    kind: "product",
+    title: "Khatm — Bilingual Tax Invoices for Saudi Businesses",
+    tagline:
+      "Invoicing for small businesses in Saudi Arabia: tax invoices in Arabic and English on one A4 page, with the ZATCA QR code, payments, credit notes and the quarter's VAT.",
+    target:
+      "Freelancers, studios and small companies in Saudi Arabia that send a handful of tax invoices a month, shown through a demo design studio in Riyadh with six months of history.",
+    problem:
+      "Saudi tax invoices have to be bilingual, carry the seller's and buyer's VAT details, round VAT the way ZATCA does and include a QR code. Small businesses still make them in Word or Excel, renumber them by hand, retype the total in words, and fix mistakes by editing an invoice that was already sent, which the rules don't allow.",
+    solution:
+      "You write a tax invoice, a simplified invoice or a quotation once and Khatm lays it out in Arabic and English on one A4 page: Umm al-Qura dates under the Gregorian ones, VAT per category to the halala, the total in words in both languages, bank details and the business's own round seal. Issuing numbers the document, freezes both parties and writes the QR code; after that it can't be edited, and mistakes are corrected with a credit note that points back to the invoice. Each document gets a private link the customer opens in their own language. Payments and credit notes settle invoices, and the overview shows what's owed, how late it is and the VAT due this quarter.",
+    features: [
+      {
+        name: "One page in two languages",
+        description:
+          "English from the left, Arabic from the right, whatever language the app is in. The editor draws the page live as you type, and the print stylesheet gives an exact A4 page.",
+      },
+      {
+        name: "ZATCA QR code",
+        description:
+          "The phase-one QR (seller, VAT number, time stamp, total and VAT as TLV fields) is tested against ZATCA's published example and against Arabic seller names, where lengths are counted in bytes.",
+      },
+      {
+        name: "Numbers with no gaps",
+        description:
+          "A document is checked, locked and numbered in the same database update that moves the sequence on, so two invoices issued at the same moment can never share a number.",
+      },
+      {
+        name: "Amounts in words, both languages",
+        description:
+          "Arabic counting rules handled properly: ريالان، ثلاثة ريالات، أحد عشر ريالًا، ألفا ريال. Tested on the awkward cases up to billions.",
+      },
+      {
+        name: "Payments and credit notes",
+        description:
+          "Part payments, transfers, cash or card. Credit notes can never add up to more than the invoice, and accepted quotations turn into draft invoices with the same lines.",
+      },
+      {
+        name: "The quarter's VAT",
+        description:
+          "Standard-rated, zero-rated, export, exempt and out-of-scope sales, each net of credit notes, with the VAT due and a CSV download.",
+      },
+    ],
+    tech: [
+      "Next.js 16 (App Router, Cache Components, Server Actions)",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Drizzle ORM",
+      "Tailwind CSS 4",
+      "Vercel + Vercel Cron",
+      "Vitest + GitHub Actions",
+    ],
+    businessValue: [
+      "Invoices that meet ZATCA's first phase without retyping anything in two languages.",
+      "No duplicate or missing invoice numbers, even when two people issue at once.",
+      "The owner sees who owes what and how late, and the VAT figure for the return, without a spreadsheet.",
+      "Customers get a link in their own language with the IBAN to pay into.",
+    ],
+    demoNote:
+      "My own product, designed and built end to end. It is not client work and hasn't been certified by ZATCA; it covers the first phase (the QR code), not the second (clearance through FATOORA). \"Open the demo\" gives every visitor a private copy of a made-up design studio with six months of invoices, deleted after a day. The code is public at github.com/darkxgs/khatm.",
+    demoUrl: "https://khatm-invoices.vercel.app",
+    gallery: [
+      {
+        src: "/screens/khatm-overview.webp",
+        alt: "Khatm overview: SAR 52,268.50 owed across five invoices, a breakdown by how late each is, money received this month, VAT on this quarter's sales and six months of sales as bars.",
+        caption: "The overview says what you're owed as a sentence, then how late it is.",
+      },
+      {
+        src: "/screens/khatm-overview-ar.webp",
+        alt: "The same Khatm overview in Arabic, laid out right to left.",
+        caption: "The whole app works in Arabic, right to left.",
+      },
+      {
+        src: "/screens/khatm-vat.webp",
+        alt: "Khatm VAT return screen for Q4 2026: standard-rated sales, zero-rated, exports, exempt and out of scope, with the VAT due.",
+        caption: "The sales side of the VAT return, net of credit notes, ready to download.",
+      },
+    ],
+  },
+  {
+    slug: "sufra",
+    kind: "product",
+    title: "Sufra — Table Ordering and Kitchen Board for Restaurants",
+    tagline:
+      "Guests scan the QR code on their table, order from a bilingual menu with photos, and the order lands on a live kitchen board. Staff see the whole floor at a glance.",
+    target:
+      "Cafés and casual restaurants in the Gulf and Egypt, shown through a demo grill and bakery called Jamr that keeps taking orders while you watch.",
+    problem:
+      "In a busy restaurant, orders go from table to waiter to a paper slip to the kitchen, and something gets lost on the way: a missing side, a table that waited forty minutes, a bill nobody brought. Most QR menus are just a PDF; they don't send anything to the kitchen or tell the floor which table needs attention.",
+    solution:
+      "Every table has its own QR code. Guests open the menu in Arabic or English, choose options, add notes and send the order; they can call a waiter or ask for the bill from the same page. Orders arrive on a kitchen board split by station, with timers, and move from new to cooking to ready with one tap. The floor plan shows every table's state, from seated to waiting for food to wants the bill, and what needs attention right now. Staff sign in with the restaurant's code and a PIN, and a tablet can join the kitchen by scanning a one-time QR.",
+    features: [
+      {
+        name: "QR menu that actually orders",
+        description:
+          "Bilingual menu with photos, calories, options and notes. The order goes straight to the kitchen; guests see it move from received to ready.",
+      },
+      {
+        name: "Live kitchen board",
+        description:
+          "Columns for new, cooking and ready, filtered by station (grill, oven, cold, drinks), with a timer on every ticket and a busy-night mode that keeps the demo full.",
+      },
+      {
+        name: "Floor plan",
+        description:
+          "Every table's state at a glance, and a list of what needs attention: food ready to serve, a waiter call, a bill request.",
+      },
+      {
+        name: "Safe with two people on one ticket",
+        description:
+          "Every move says which state the screen showed. If someone else already moved the ticket, the update matches nothing and the screen says so, instead of skipping a step.",
+      },
+      {
+        name: "Staff sign-in",
+        description:
+          "PINs hashed with scrypt and limited per code and visitor; a kitchen tablet joins by scanning a one-time code from a screen that's already signed in.",
+      },
+    ],
+    tech: [
+      "Next.js 16 (App Router, Server Actions)",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Drizzle ORM",
+      "Tailwind CSS 4",
+      "Vercel",
+      "Vitest + GitHub Actions",
+    ],
+    businessValue: [
+      "Fewer lost or wrong orders, because the guest's order is what the kitchen reads.",
+      "Tables turn faster when waiters see who needs them instead of walking the floor.",
+      "The kitchen sees how long every ticket has waited, by station.",
+      "No app to install for guests: the QR code on the table is the whole setup.",
+    ],
+    demoNote:
+      "My own product, designed and built end to end; it is not client work. \"Open the live demo\" gives you a private copy of a demo restaurant that resets after a day: order from a table on your phone and watch it arrive on the kitchen board. Menu photos were generated with Higgsfield. The code is public at github.com/darkxgs/sufra.",
+    demoUrl: "https://sufra-tables.vercel.app",
+    gallery: [
+      {
+        src: "/screens/sufra-menu.webp",
+        alt: "Sufra guest menu for table 4 at Jamr: a cover photo, a search box, category tabs and dishes with photos, prices and calories.",
+        caption: "The guest's menu, opened by scanning the QR code on table 4.",
+      },
+      {
+        src: "/screens/sufra-floor.webp",
+        alt: "Sufra floor plan: ten tables showing free, waiting for food and wants the bill, with a list of what needs attention on the right.",
+        caption: "The floor: every table's state, and what needs a waiter now.",
+      },
+      {
+        src: "/screens/sufra-today.webp",
+        alt: "Sufra Today screen: orders, sales, average time to ready and tables seated, with orders per hour and the most ordered dishes.",
+        caption: "Today at a glance: sales, speed and what's selling.",
+      },
+    ],
+  },
+  {
+    slug: "nabd",
+    kind: "product",
+    title: "Nabd — Uptime Monitoring and Status Pages",
+    tagline:
+      "Checks your websites and APIs around the clock, opens an incident when one stops answering, alerts the team, and keeps a public status page in English and Arabic.",
+    target:
+      "Small teams and agencies that run a few sites or APIs for clients and need to know before the client calls. The live demo watches the sites I've built.",
+    problem:
+      "Most small teams find out a site is down when a customer complains. The monitoring tools that exist are built in English only, and a status page that customers in the Gulf can read in Arabic is rare.",
+    solution:
+      "Nabd checks each monitor on a schedule, from the outside, the way a visitor would: status code, an optional keyword on the page, response time. A monitor goes down only after a chosen number of failed checks in a row, so one dropped request isn't an outage. Then it opens an incident, alerts the team by email, Slack, Discord or webhook, and updates a status page that customers can read in English or Arabic. The first good check closes the incident and posts the update on its own.",
+    features: [
+      {
+        name: "Checks that confirm before alerting",
+        description:
+          "Down only after one to five failed checks in a row, your choice. Slow, failing and keyword checks each have their own cause, written in plain words.",
+      },
+      {
+        name: "Incidents with a timeline",
+        description:
+          "Automatic updates when a monitor goes down and comes back, plus notes from the team, each with an Arabic version for the status page.",
+      },
+      {
+        name: "Alerts through an outbox",
+        description:
+          "Detecting an outage only writes alert rows; delivery claims them with SKIP LOCKED, retries failures and logs the result, so a slow Slack never delays a check and a crash never loses an alert.",
+      },
+      {
+        name: "Bilingual status pages",
+        description:
+          "90 days of uptime per component, current incidents and history, in English or Arabic with right-to-left layout.",
+      },
+      {
+        name: "One scheduler row, many triggers",
+        description:
+          "No always-on server: a GitHub Actions heartbeat, page views and a daily cron all ask for a run, and one database row makes sure the work happens once.",
+      },
+    ],
+    tech: [
+      "Next.js 16 (App Router, Server Actions)",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Drizzle ORM",
+      "Tailwind CSS 4",
+      "Vercel + GitHub Actions heartbeat",
+      "Vitest",
+    ],
+    businessValue: [
+      "You hear about an outage from Nabd, not from a customer.",
+      "Customers see an honest status page in their own language instead of guessing.",
+      "No false alarms from a single dropped request.",
+      "Runs on free hosting with no always-on server.",
+    ],
+    demoNote:
+      "My own product, designed and built end to end; it is not client work. The shared demo watches my real live sites every fifteen minutes, plus a test service that fails on purpose twice a day so there's always an incident to look at. History from before the demo started is sample data and is shown faded. The code is public at github.com/darkxgs/nabd.",
+    demoUrl: "https://nabd-status.vercel.app",
+    gallery: [
+      {
+        src: "/screens/nabd-monitor.webp",
+        alt: "Nabd monitor page for the demo target: uptime for 24 hours, 7, 30 and 90 days, median and 95th percentile response time, recent checks as a strip and a response time chart.",
+        caption: "One monitor: uptime, response times and every recent check.",
+      },
+      {
+        src: "/screens/nabd-incident.webp",
+        alt: "Nabd incident timeline: first failed check, investigating, and resolved after 45 minutes, each update in English and Arabic.",
+        caption: "An incident writes its own timeline, in both languages.",
+      },
+      {
+        src: "/screens/nabd-status-ar.webp",
+        alt: "Nabd public status page in Arabic for Seif Ashraf's projects: all systems normal, with 90 days of uptime for each site.",
+        caption: "The public status page in Arabic, right to left.",
+      },
+    ],
+  },
+  {
+    slug: "kashf",
+    kind: "product",
+    title: "Kashf — A Free Check-up for Online Stores",
+    tagline:
+      "Paste a store's address and Kashf opens it the way a shopper's phone does, checks speed, search, trust, mobile and Arabic support and security, then writes a prescription: what to fix first, and how.",
+    target:
+      "Owners of online stores on Shopify, Salla, Zid, WooCommerce or custom builds, especially Arabic-speaking ones, who know the store could sell more but not what's wrong.",
+    problem:
+      "Store owners hear that their site is slow or that Google can't find it, but the tools that check this give a wall of technical scores. They don't say which problem costs the most sales, how long the fix takes, or anything about Arabic support.",
+    solution:
+      "Kashf fetches the store like a phone would, follows it to a product page, measures page weight, server response and every file, reads the HTML, structured data, robots and security headers, and asks Google's PageSpeed for real speed numbers. About fifty checks each produce a finding with a reason and a fix. The report scores five areas and turns the findings into a prescription ordered by how much each fix is worth and how long it takes. Every report has a link to share and prints cleanly as a PDF, in English or Arabic.",
+    features: [
+      {
+        name: "A prescription, not a score dump",
+        description:
+          "Findings are ranked by impact and effort (a quick fix, an hour or two, a project), each with why it matters and how to fix it.",
+      },
+      {
+        name: "Arabic and mobile checks",
+        description:
+          "Right-to-left direction, Arabic fonts, language tags and tap targets, which most audit tools ignore.",
+      },
+      {
+        name: "Built to fetch strangers' sites safely",
+        description:
+          "Every address and redirect is checked against private networks before it's fetched, with size and time limits, so the tool can't be used to reach internal services.",
+      },
+      {
+        name: "Platform detection",
+        description:
+          "Recognises Shopify, Salla, Zid, WooCommerce and others, and words the fix for that platform.",
+      },
+      {
+        name: "Nothing guessed by AI",
+        description:
+          "Every finding comes from something Kashf measured or read on the page.",
+      },
+    ],
+    tech: [
+      "Next.js 16 (App Router, Server Actions)",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL (Neon)",
+      "Drizzle ORM",
+      "Google PageSpeed Insights API",
+      "Tailwind CSS 4",
+      "Vercel",
+    ],
+    businessValue: [
+      "Owners know which one change will help sales most, not just a list of scores.",
+      "Fixes come with effort estimates, so they can be planned or handed to a developer.",
+      "A shareable report and PDF that a developer or agency can work from.",
+      "Free, in a minute, with no sign-up.",
+    ],
+    demoNote:
+      "My own product, designed and built end to end; it is not client work. It checks any public store. The demo store inside Kashf is built with deliberate problems so the report always has something to show; its product photos were generated with Higgsfield. The code is public at github.com/darkxgs/kashf.",
+    demoUrl: "https://kashf-audit.vercel.app",
+    gallery: [
+      {
+        src: "/screens/kashf-ar.webp",
+        alt: "Kashf report in Arabic for the demo store: score 68, five area scores and the prescription, right to left.",
+        caption: "The same report in Arabic.",
+      },
+      {
+        src: "/screens/kashf-landing.webp",
+        alt: "Kashf home page: a headline, an address box with Check my store, and a real report from the demo store beside it.",
+        caption: "Paste an address; no sign-up.",
+      },
+    ],
+  },
+  {
     slug: "neowave",
     kind: "live",
     title: "NeoWave — Website & Product Code Generator",

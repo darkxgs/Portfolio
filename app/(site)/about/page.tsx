@@ -87,9 +87,11 @@ export default function About() {
                 Arabic-first and bilingual Arabic/English builds with proper
                 right-to-left layout are a specialty. The workshop platform is
                 Arabic and RTL throughout; Salad Store and the Blue Sky concept
-                switch between Arabic and English with one tap. Mawid, my own
-                booking platform for Gulf clinics, opens in Arabic for patients
-                and answers the front desk in either language. I work in
+                switch between Arabic and English with one tap. My own products
+                are bilingual too: Mawid books clinic visits, Khatm writes Saudi
+                tax invoices in Arabic and English, Sufra takes restaurant
+                orders from a QR code, and Nabd's status pages read in either
+                language. I work in
                 TypeScript on Next.js and React, with Supabase or PostgreSQL
                 behind it and Tailwind CSS in front.
               </p>
